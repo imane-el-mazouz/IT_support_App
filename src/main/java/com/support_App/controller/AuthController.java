@@ -3,6 +3,7 @@ package com.support_App.controller;
 
 import com.support_App.dto.AuthRequestDTO;
 import com.support_App.dto.JwtResponseDTO;
+import com.support_App.enums.Role;
 import com.support_App.model.User;
 import com.support_App.service.UserAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,6 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<JwtResponseDTO> registerUser(@RequestBody User user) {
         try {
-
             JwtResponseDTO response = userAuthService.signUp(user);
             return ResponseEntity.ok(response);
         } catch (Exception e) {

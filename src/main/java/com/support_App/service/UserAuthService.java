@@ -47,23 +47,46 @@ public class UserAuthService implements UserDetailsService {
                 .build();
     }
 
-    public JwtResponseDTO signUp(User userRequest) {
-        if (userRepository.findByEmail(userRequest.getName()) != null) {
-            throw new RuntimeException("Username is already taken.");
-        }
-        if (userRequest.getRole() == null) {
-            userRequest.setRole(Role.UserU);
-        }
-        userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-
-        User savedUser = userRepository.save(userRequest);
-        String token = jwtService.generateToken(savedUser.getName(),savedUser.getRole());
-
-        return JwtResponseDTO.builder()
-                .accessToken(token)
-                .user(savedUser)
-                .build();
+//    public JwtResponseDTO signUp(User userRequest) {
+//        if (userRepository.findByEmail(userRequest.getName()) != null) {
+//            throw new RuntimeException("Username is already taken.");
+//        }
+//        if (userRequest.getRole() == null) {
+//            userRequest.setRole(Role.UserU);
+//        }
+//        userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+//
+//        User savedUser = userRepository.save(userRequest);
+//        String token = jwtService.generateToken(savedUser.getName(),savedUser.getRole());
+//
+//        return JwtResponseDTO.builder()
+//                .accessToken(token)
+//                .user(savedUser)
+//                .build();
+//    }
+public JwtResponseDTO signUp(User userRequest) {
+    if (userRepository.findByEmail(userRequest.getEmail()) != null) {
+        throw new RuntimeException("Email is already taken.");
     }
+    if (userRequest.getRole() == null) {
+        userRequest.setRole(Role.UserU);
+    } else {
+        try {
+            userRequest.setRole(Role.valueOf(userRequest.getRole().name()));
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Invalid role: " + userRequest.getRole().name());
+        }
+    }
+    userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+    User savedUser = userRepository.save(userRequest);
+
+    String token = jwtService.generateToken(savedUser.getEmail(), savedUser.getRole());
+
+    return JwtResponseDTO.builder()
+            .accessToken(token)
+            .user(savedUser)
+            .build();
+}
 
     public JwtResponseDTO login(AuthRequestDTO authRequestDTO) {
         Authentication authentication = authenticationManager.authenticate(
