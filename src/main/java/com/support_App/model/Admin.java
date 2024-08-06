@@ -31,4 +31,7 @@ public class Admin extends User {
     @JsonManagedReference
     @JsonIgnore
     private List<Breakdown> breakdowns;
+
+
+
 }

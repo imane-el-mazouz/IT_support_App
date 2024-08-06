@@ -17,6 +17,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class UserAuthService implements UserDetailsService {
 
@@ -38,16 +40,24 @@ public class UserAuthService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
         if (user == null) {
-            throw new UsernameNotFoundException("User not found with username: " + email);
+            throw new UsernameNotFoundException("User not found with email: " + email);
         }
         return org.springframework.security.core.userdetails.User
-                .withUsername(user.getName())
+                .withUsername(user.getEmail())
                 .password(user.getPassword())
                 .roles(user.getRole().name())
                 .build();
     }
+//@Override
+//public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+//    User user = userRepository.findByEmail(email);
+//    if (user == null) {
+//        throw new UsernameNotFoundException("User not found with email: " + email);
+//    }
+//    return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), new ArrayList<>());
+//}
 
-//    public JwtResponseDTO signUp(User userRequest) {
+    //    public JwtResponseDTO signUp(User userRequest) {
 //        if (userRepository.findByEmail(userRequest.getName()) != null) {
 //            throw new RuntimeException("Username is already taken.");
 //        }
@@ -95,8 +105,7 @@ public JwtResponseDTO signUp(User userRequest) {
 
         if (authentication.isAuthenticated()) {
             User user =userRepository.findByEmail(authRequestDTO.getEmail());
-            String token = jwtService.generateToken(user.getName(),user.getRole());
-
+            String token = jwtService.generateToken(user.getEmail(), user.getRole());
             return JwtResponseDTO.builder()
                     .accessToken(token)
                     .user(user)

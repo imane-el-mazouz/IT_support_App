@@ -3,14 +3,23 @@ package com.support_App.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.support_App.enums.EquipmentStatus;
 import jakarta.persistence.*;
 import com.support_App.enums.Status;
 import com.support_App.enums.TypeE;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Equipment {
 
     @Id
@@ -21,8 +30,8 @@ public class Equipment {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false, length = 225)
-    private Status status;
+    @Column(name = "Equipmentstatus", nullable = false, length = 225)
+    private EquipmentStatus Equipmentstatus;
 
     private LocalDate purchaseDate;
     private LocalDate warrantyEndDate;
@@ -42,5 +51,6 @@ public class Equipment {
     @JsonManagedReference
     @JsonIgnore
     private List<Breakdown> breakdowns;
+
 
 }
