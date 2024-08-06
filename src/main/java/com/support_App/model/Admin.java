@@ -17,20 +17,20 @@ import java.util.List;
 @Setter
 public class Admin extends User {
 
-    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    @JsonIgnore
-    private List<Equipment> equipments;
+//    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    @JsonIgnore
+//    private List<Equipment> equipments;
 
 //    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JsonManagedReference
 //    @JsonIgnore
 //    private List<SupportTicket> supportTickets;
 
-    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    @JsonIgnore
-    private List<Breakdown> breakdowns;
+//    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    @JsonIgnore
+//    private List<Breakdown> breakdowns;
 
 
 

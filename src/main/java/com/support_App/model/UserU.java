@@ -18,10 +18,10 @@ public class UserU extends User{
     @JsonIgnore
     private List<SupportTicket> supportTickets;
 
-    @OneToMany(mappedBy = "userU", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    @JsonIgnore
-    private List<Breakdown> breakdowns;
+//    @OneToMany(mappedBy = "userU", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    @JsonIgnore
+//    private List<Breakdown> breakdowns;
 
 
 }

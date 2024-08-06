@@ -13,7 +13,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -42,15 +44,25 @@ public class Equipment {
 
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JsonBackReference
+//    @JsonIgnore
+//    private Admin admin;
+
+//    @OneToMany(mappedBy = "equipment", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    @JsonIgnore
+//    private List<Breakdown> breakdowns;
+
+    @ManyToMany(mappedBy = "equipments")
     @JsonIgnore
-    private Admin admin;
+    @JsonBackReference
+    private Set<Breakdown> breakdowns = new HashSet<>();
 
     @OneToMany(mappedBy = "equipment", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     @JsonIgnore
-    private List<Breakdown> breakdowns;
+    private List<SupportTicket> supportTickets;
 
 
 }
