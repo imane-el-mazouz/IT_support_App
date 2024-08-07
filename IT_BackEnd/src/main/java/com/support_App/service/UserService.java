@@ -90,4 +90,7 @@ public class UserService implements UserDetailsService {
         admin.setRole(Role.Admin);
         return userRepository.save(admin);
     }
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }
