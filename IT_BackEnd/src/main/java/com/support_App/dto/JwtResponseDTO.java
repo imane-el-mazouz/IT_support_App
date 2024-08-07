@@ -11,7 +11,5 @@ import lombok.*;
 public class JwtResponseDTO {
     private String accessToken;
 
-    public JwtResponseDTO(String error, Object o) {
-    }
-//    private User user;
+    private User user;
 }

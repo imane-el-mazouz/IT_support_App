@@ -12,6 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/ticket")
 @CrossOrigin(origins = "*")
@@ -39,5 +41,32 @@ public ResponseEntity<SupportTicket> addTicket(@RequestBody SupportTicket suppor
     return ResponseEntity.ok(newTicket);
 }
 
+//    @PreAuthorize("hasRole('Admin')")
+//    @PatchMapping("/{ticketId}/assign/{technicianId}")
+//    public ResponseEntity<SupportTicket> assignTicketToTechnician(@PathVariable Long ticketId, @PathVariable Long technicianId) {
+//        SupportTicket updatedTicket = supportTicketService.assignTicketToTechnician(ticketId, technicianId);
+//        return ResponseEntity.ok(updatedTicket);
+//    }
+@PreAuthorize("hasRole('Admin')")
+@PutMapping("/{ticketId}/assign/{technicianId}")
+public ResponseEntity<SupportTicket> assignTicketToTechnician(@PathVariable Long ticketId, @PathVariable Long technicianId) {
+    SupportTicket updatedTicket = supportTicketService.assignTicketToTechnician(ticketId, technicianId);
+    return ResponseEntity.ok(updatedTicket);
+}
+
+
+    @PreAuthorize("hasRole('UserU') or hasRole('Admin') or hasRole('Technician')")
+    @GetMapping("/{ticketId}")
+    public ResponseEntity<SupportTicket> getTicketById(@PathVariable Long ticketId) {
+        SupportTicket ticket = supportTicketService.getTicketById(ticketId);
+        return ResponseEntity.ok(ticket);
+    }
+
+    @PreAuthorize("hasRole('Technician')")
+    @GetMapping("/technician/{technicianId}")
+    public ResponseEntity<List<SupportTicket>> getTicketsByTechnicianId(@PathVariable Long technicianId) {
+        List<SupportTicket> tickets = supportTicketService.getTicketsByTechnicianId(technicianId);
+        return ResponseEntity.ok(tickets);
+    }
 
 }

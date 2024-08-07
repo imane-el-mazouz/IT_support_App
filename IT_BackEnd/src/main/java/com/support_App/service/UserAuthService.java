@@ -94,7 +94,7 @@ public JwtResponseDTO signUp(User userRequest) {
 
     return JwtResponseDTO.builder()
             .accessToken(token)
-//            .user(savedUser)
+            .user(savedUser)
             .build();
 }
 
@@ -108,7 +108,7 @@ public JwtResponseDTO signUp(User userRequest) {
             String token = jwtService.generateToken(user.getEmail(), user.getRole());
             return JwtResponseDTO.builder()
                     .accessToken(token)
-//                    .user(user)
+                    .user(user)
                     .build();
         } else {
             throw new UsernameNotFoundException("Invalid user request.");
