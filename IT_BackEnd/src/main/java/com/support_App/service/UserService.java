@@ -82,14 +82,14 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
     }
 
-    public User createAdminUser(String name, String email, String password) {
-        Admin admin = new Admin();
-        admin.setName(name);
-        admin.setEmail(email);
-        admin.setPassword(passwordEncoder.encode(password));
-        admin.setRole(Role.Admin);
-        return userRepository.save(admin);
-    }
+//    public User createAdminUser(String name, String email, String password) {
+//        Admin admin = new Admin();
+//        admin.setName(name);
+//        admin.setEmail(email);
+//        admin.setPassword(passwordEncoder.encode(password));
+//        admin.setRole(Role.Admin);
+//        return userRepository.save(admin);
+//    }
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }

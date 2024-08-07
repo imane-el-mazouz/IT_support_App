@@ -1,5 +1,6 @@
 package com.support_App.service;
 
+import com.support_App.enums.Status;
 import com.support_App.exception.BreakdownNotFoundException;
 import com.support_App.exception.SupportTicketNotFoundException;
 import com.support_App.exception.TechnicianNotFoundException;
@@ -68,5 +69,19 @@ public SupportTicket saveTicket(SupportTicket supportTicket, Long breakdownId, U
             throw new TechnicianNotFoundException("User with ID " + technicianId + " is not a technician");
         }
     }
+
+    public Status getTicketStatusById(Long ticketId) {
+        SupportTicket ticket = supportTicketRepository.findById(ticketId)
+                .orElseThrow(() -> new SupportTicketNotFoundException("Ticket not found with ID " + ticketId));
+        return ticket.getTicketStatus();
+    }
+
+    public SupportTicket updateTicketStatus(Long ticketId, Status status) {
+        SupportTicket ticket = supportTicketRepository.findById(ticketId)
+                .orElseThrow(() -> new SupportTicketNotFoundException("Ticket not found with ID " + ticketId));
+        ticket.setTicketStatus(status);
+        return supportTicketRepository.save(ticket);
+    }
+
 
 }

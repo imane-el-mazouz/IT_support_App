@@ -1,6 +1,7 @@
 package com.support_App.controller;
 
 
+import com.support_App.enums.Status;
 import com.support_App.model.SupportTicket;
 import com.support_App.model.User;
 import com.support_App.service.SupportTicketService;
@@ -67,6 +68,20 @@ public ResponseEntity<SupportTicket> assignTicketToTechnician(@PathVariable Long
     public ResponseEntity<List<SupportTicket>> getTicketsByTechnicianId(@PathVariable Long technicianId) {
         List<SupportTicket> tickets = supportTicketService.getTicketsByTechnicianId(technicianId);
         return ResponseEntity.ok(tickets);
+    }
+
+    @PreAuthorize("hasRole('Technician')")
+    @PutMapping("/{ticketId}/status")
+    public ResponseEntity<SupportTicket> updateTicketStatus(@PathVariable Long ticketId, @RequestParam Status status) {
+        SupportTicket updatedTicket = supportTicketService.updateTicketStatus(ticketId, status);
+        return ResponseEntity.ok(updatedTicket);
+    }
+
+    @PreAuthorize("hasRole('UserU') ")
+    @GetMapping("/{ticketId}/status")
+    public ResponseEntity<String> getTicketStatusById(@PathVariable Long ticketId) {
+        String status = String.valueOf(supportTicketService.getTicketStatusById(ticketId));
+        return ResponseEntity.ok(status);
     }
 
 }
