@@ -37,25 +37,37 @@ public class BreakdownController {
     @Autowired
     private BreakdownService breakdownService;
 
+    @PreAuthorize("hasRole('Admin')")
     @PostMapping
     public ResponseEntity<Breakdown> addBreakdown(@RequestBody Breakdown breakdown) {
         Breakdown newBreakdown = breakdownService.addBreakdown(breakdown);
         return ResponseEntity.ok(newBreakdown);
     }
 
+
+    @PreAuthorize("hasRole('Admin')")
+    @PostMapping("/{equipmentId}")
+    public ResponseEntity<Breakdown> addBreakdownToEquipment(@PathVariable Long equipmentId, @RequestBody Breakdown breakdown) {
+        Breakdown newBreakdown = breakdownService.addBreakdownToEquipment(equipmentId, breakdown);
+        return ResponseEntity.ok(newBreakdown);
+    }
+
+    @PreAuthorize("hasRole('Admin')")
     @PutMapping("/{id}")
     public ResponseEntity<Breakdown> updateBreakdown(@PathVariable Long id, @RequestBody Breakdown breakdownDetails) {
         Breakdown updatedBreakdown = breakdownService.updateBreakdown(id, breakdownDetails);
         return ResponseEntity.ok(updatedBreakdown);
     }
 
+    @PreAuthorize("hasRole('Admin')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBreakdown(@PathVariable Long id) {
         breakdownService.deleteBreakdown(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/equipment/{equipmentId}")
+    @PreAuthorize("hasRole('Admin')")
+    @GetMapping("/equipment/{equipmentId}/breakdowns")
     public ResponseEntity<List<Breakdown>> getBreakdownsByEquipmentId(@PathVariable Long equipmentId) {
         List<Breakdown> breakdowns = breakdownService.getBreakdownsByEquipmentId(equipmentId);
         return ResponseEntity.ok(breakdowns);

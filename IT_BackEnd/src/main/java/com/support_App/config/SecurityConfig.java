@@ -50,9 +50,9 @@ public class SecurityConfig {
           authorizeRequests
             .requestMatchers("/api/auth/**").permitAll()
             .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-             .requestMatchers("/api/admin/**").hasRole("ADMIN")
 
                   .anyRequest().authenticated()
+
         );
 
 

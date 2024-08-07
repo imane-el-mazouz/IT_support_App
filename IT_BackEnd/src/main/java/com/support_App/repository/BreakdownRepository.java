@@ -11,8 +11,8 @@ import java.util.List;
 public interface BreakdownRepository extends JpaRepository<Breakdown , Long> {
 
 //      List<Breakdown> findByEquipmentsId(Long equipmentId);
-      @Query("SELECT b FROM Breakdown b JOIN b.equipments e WHERE e.id = :equipmentId")
-      List<Breakdown> findBreakdownsByEquipmentId(Long equipmentId);
+@Query("SELECT b FROM Breakdown b JOIN b.equipments e WHERE e.id = :equipmentId")
+List<Breakdown> findBreakdownsByEquipmentId(Long equipmentId);
 
 
 }

@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -38,6 +39,9 @@ public class Breakdown {
     @JsonIgnore
     private Admin admin;
 
+    @OneToMany(mappedBy = "breakdown", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<SupportTicket> supportTicketList;
 //    @Setter
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JsonBackReference

@@ -84,7 +84,19 @@ import java.util.Optional;
             breakdownRepository.delete(breakdown);
         }
 
-        public List<Breakdown> getBreakdownsByEquipmentId(Long equipmentId) {
-            return breakdownRepository.findBreakdownsByEquipmentId(equipmentId);
+        public Breakdown addBreakdownToEquipment(Long equipmentId, Breakdown breakdown) {
+            Equipment equipment = equipmentRepository.findById(equipmentId)
+                    .orElseThrow(() -> new RuntimeException("Equipment not found with id: " + equipmentId));
+
+            breakdown.getEquipments().add(equipment);
+            return breakdownRepository.save(breakdown);
         }
+
+//        public List<Breakdown> getBreakdownsByEquipmentId(Long equipmentId) {
+//            return breakdownRepository.findBreakdownsByEquipmentId(equipmentId);
+//        }
+public List<Breakdown> getBreakdownsByEquipmentId(Long equipmentId) {
+    return breakdownRepository.findBreakdownsByEquipmentId(equipmentId);
+}
+
     }

@@ -45,14 +45,12 @@ public class SupportTicket {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
     @JsonIgnore
     @JoinColumn(name = "equipment_id")
     private Equipment equipment;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
     @JsonIgnore
     @JoinColumn(name = "breakdown_id")
     private Breakdown breakdown;

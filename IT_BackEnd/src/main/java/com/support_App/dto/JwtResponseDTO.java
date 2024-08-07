@@ -10,5 +10,8 @@ import lombok.*;
 @Builder
 public class JwtResponseDTO {
     private String accessToken;
-    private User user;
+
+    public JwtResponseDTO(String error, Object o) {
+    }
+//    private User user;
 }

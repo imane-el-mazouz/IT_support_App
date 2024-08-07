@@ -57,7 +57,7 @@ public class Equipment {
 
 
     @OneToMany(mappedBy = "equipment", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+//    @JsonManagedReference
     @JsonIgnore
     private List<SupportTicket> supportTickets;
 

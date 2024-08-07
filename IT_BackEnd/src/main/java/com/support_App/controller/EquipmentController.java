@@ -4,6 +4,7 @@ import com.support_App.model.Equipment;
 import com.support_App.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,29 +17,39 @@ public class EquipmentController {
     @Autowired
     private EquipmentService equipmentService;
 
+
+    @PreAuthorize("hasRole('Admin')")
     @PostMapping
     public ResponseEntity<Equipment> addEquipment(@RequestBody Equipment equipment) {
         Equipment newEquipment = equipmentService.addEquipment(equipment);
         return ResponseEntity.ok(newEquipment);
     }
 
+
+//    @PreAuthorize("hasRole('Admin')")
     @PutMapping("/{id}")
     public ResponseEntity<Equipment> updateEquipment(@PathVariable Long id, @RequestBody Equipment equipmentDetails) {
         Equipment updatedEquipment = equipmentService.updateEquipment(id, equipmentDetails);
         return ResponseEntity.ok(updatedEquipment);
     }
 
+
+//    @PreAuthorize("hasRole('Admin')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEquipment(@PathVariable Long id) {
         equipmentService.deleteEquipment(id);
         return ResponseEntity.noContent().build();
     }
 
+
+//    @PreAuthorize("hasRole('Admin')")
     @GetMapping
     public ResponseEntity<List<Equipment>> getAllEquipments() {
         List<Equipment> equipments = equipmentService.getAllEquipments();
         return ResponseEntity.ok(equipments);
     }
+
+//    @PreAuthorize("hasRole('Admin')")
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Equipment>> getEquipmentById(@PathVariable Long id) {
         Optional<Equipment> equipment1 = equipmentService.getEquipmentById(id);
