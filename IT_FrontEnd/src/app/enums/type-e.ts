@@ -1,0 +1,6 @@
+export enum TypeE {
+  LAPTOP= 'LAPTOP',
+  DESKTOP= 'DESKTOP',
+  PRINTER = 'PRINTER',
+  SERVER = 'SERVER'
+}

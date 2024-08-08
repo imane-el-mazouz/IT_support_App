@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../../../service/profile_service/profile.service';
+import { ProfileService } from '../../service/profile_service/profile.service';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
 
@@ -48,11 +48,9 @@ export class ProfileComponent implements OnInit {
     if (userId) {
       this.profileService.getUserProfile(userId).subscribe(
         (user) => {
-          console.log('User Profile:', user);
+          console.log('UserU Profile:', user);
           this.profileForm.patchValue({
             name: user.name,
-            phone: user.phone,
-            address: user.address
           });
         },
         (error) => {

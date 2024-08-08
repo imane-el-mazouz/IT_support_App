@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import {Person} from "../../model/Person/person";
+import {User} from "../../model/User/user";
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,9 @@ export class ProfileService {
   constructor(private http: HttpClient) {}
 
 
-  getUserProfile(userId: number): Observable<Person> {
+  getUserProfile(userId: number): Observable<User> {
     const url = `${this.apiUrl}/user/${userId}`;
-    return this.http.get<Person>(url, { headers: this.getAuthHeaders() }).pipe(
+    return this.http.get<User>(url, { headers: this.getAuthHeaders() }).pipe(
       catchError(error => {
         console.error('Error fetching user profile:', error);
         return throwError(() => new Error('Error fetching user profile'));
@@ -33,9 +33,9 @@ export class ProfileService {
     });
   }
 
-  updateUserProfile(userId: number | null, updatedProfile: Partial<Person>): Observable<Person> {
+  updateUserProfile(userId: number | null, updatedProfile: Partial<User>): Observable<User> {
     const url = `${this.apiUrl}/${userId}`;
-    return this.http.put<Person>(url, updatedProfile, { headers: this.getAuthHeaders() }).pipe(
+    return this.http.put<User>(url, updatedProfile, { headers: this.getAuthHeaders() }).pipe(
       catchError(error => {
         console.error('Error updating user profile:', error);
         return throwError(() => new Error('Error updating user profile'));

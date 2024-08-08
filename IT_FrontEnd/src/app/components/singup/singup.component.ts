@@ -4,16 +4,15 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth_service/auth-service.service';
-import {User} from "../../model/user_model/user";
-import {FooterComponent} from "../footer/footer.component";
-import {NavbarComponent} from "../navbar/navbar.component";
+import {User} from "../../model/User/user";
+
 
 @Component({
   selector: 'app-signup',
   templateUrl: './singup.component.html',
   standalone: true,
   imports: [
-    ReactiveFormsModule,FooterComponent ,NavbarComponent
+    ReactiveFormsModule
   ],
   styleUrls: ['./singup.component.scss']
 })
