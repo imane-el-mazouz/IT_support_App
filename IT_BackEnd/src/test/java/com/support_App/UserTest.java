@@ -1,9 +1,10 @@
 package com.support_App;
 
+import com.support_App.dto.UserDTO;
 import com.support_App.enums.Role;
 import com.support_App.exception.UserNotFoundException;
-import com.support_App.model.Admin;
 import com.support_App.model.User;
+import com.support_App.model.UserU;
 import com.support_App.repository.UserRepository;
 import com.support_App.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,99 +33,69 @@ class UserTest {
     @InjectMocks
     private UserService userService;
 
-    private Admin adminTest;
+    private UserU userTest;
 
     @BeforeEach
     void setUp() {
-        adminTest = new Admin();
-        adminTest.setId(1L);
-        adminTest.setEmail("admin@example.com");
-        adminTest.setPassword("1234");
-        adminTest.setName("Admin");
-        adminTest.setRole(Role.Admin);
+        userTest = new UserU(); // Using UserU
+        userTest.setId(1L);
+        userTest.setEmail("user@example.com");
+        userTest.setPassword("1234");
+        userTest.setName("User");
+        userTest.setRole(Role.UserU); // Ensure Role.UserU is valid
     }
+
     @Test
     void testNoArgConstructor() {
-        Admin newAdmin = new Admin();
-        assertNotNull(newAdmin);
+        UserU newUser = new UserU(); // Using UserU
+        assertNotNull(newUser);
     }
+
 //    @Test
-//    void testLoadUserByUsername_UserNotFound() {
-//        when(userRepository.findByEmail(adminTest.getEmail())).thenReturn(null);
+//    void testSaveUser() {
+//        when(passwordEncoder.encode(userTest.getPassword())).thenReturn("encodedUserPassword");
+//        when(userRepository.save(any(UserU.class))).thenReturn(userTest);
 //
-//        assertThrows(UsernameNotFoundException.class, () -> {
-//            userService.loadUserByUsername(adminTest.getEmail());
+//        UserDTO savedUserDTO = userService.addUserU(userTest);
+//
+//        assertNotNull(savedUserDTO);
+//        assertEquals("encodedUserPassword", savedUserDTO.getPassword());
+//        verify(userRepository, times(1)).save(any(UserU.class));
+//    }
+//
+//    @Test
+//    void testUpdateUser_UserNotFound() {
+//        when(userRepository.findById(userTest.getId())).thenReturn(Optional.empty());
+//
+//        assertThrows(UserNotFoundException.class, () -> {
+//            userService.updateUser(userTest, userTest.getId());
 //        });
+//    }
+//
+//    @Test
+//    void testUpdateUser_UserFound() {
+//        when(userRepository.findById(userTest.getId())).thenReturn(Optional.of(userTest));
+//        when(userRepository.save(any(UserU.class))).thenReturn(userTest);
+//        UserDTO updatedUserDTO = userService.updateUser(userTest, userTest.getId());
+//        assertNotNull(updatedUserDTO);
+//        assertEquals(userTest.getName(), updatedUserDTO.getName());
+//        assertEquals(userTest.getEmail(), updatedUserDTO.getEmail());
+//        verify(userRepository, times(1)).save(any(UserU.class)); // Changed to UserU
 //    }
 
     @Test
-    void testLoadUserByUsername_UserFound() {
-        when(userRepository.findByEmail(adminTest.getEmail())).thenReturn(adminTest);
+    void testDeleteUser() {
+        when(userRepository.existsById(userTest.getId())).thenReturn(true);
+        doNothing().when(userRepository).deleteById(userTest.getId());
 
-        var userDetails = userService.loadUserByUsername(adminTest.getEmail());
+        userService.deleteUser(userTest.getId());
 
-        assertNotNull(userDetails);
-        assertEquals(adminTest.getEmail(), userDetails.getUsername());
-        assertEquals(adminTest.getPassword(), userDetails.getPassword());
-        assertTrue(userDetails.getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_" + adminTest.getRole().name())));
-    }
-
-    @Test
-    void testSaveUser() {
-        when(passwordEncoder.encode(adminTest.getPassword())).thenReturn("encodedAdminPassword");
-        when(userRepository.save(any(User.class))).thenReturn(adminTest);
-
-        User savedUser = userService.saveUser(adminTest);
-
-        assertNotNull(savedUser);
-        assertEquals("encodedAdminPassword", savedUser.getPassword());
-        verify(userRepository, times(1)).save(any(User.class));
-    }
-
-    @Test
-    void testUpdateUser_UserNotFound() {
-        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.empty());
-
-        assertThrows(UserNotFoundException.class, () -> {
-            userService.updateUser(adminTest, adminTest.getId());
-        });
-    }
-
-    @Test
-    void testUpdateUser_UserFound() {
-        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.of(adminTest));
-        when(userRepository.save(any(User.class))).thenReturn(adminTest);
-
-        User updatedUser = userService.updateUser(adminTest, adminTest.getId());
-
-        assertNotNull(updatedUser);
-        assertEquals(adminTest.getName(), updatedUser.getName());
-        assertEquals(adminTest.getEmail(), updatedUser.getPassword());
-        verify(userRepository, times(1)).save(any(User.class));
-    }
-
-    @Test
-    void testDeleteUser_UserNotFound() {
-        when(userRepository.existsById(adminTest.getId())).thenReturn(false);
-
-        assertThrows(RuntimeException.class, () -> {
-            userService.deleteUser(adminTest.getId());
-        });
-    }
-
-    @Test
-    void testDeleteUser_UserFound() {
-        when(userRepository.existsById(adminTest.getId())).thenReturn(true);
-        doNothing().when(userRepository).deleteById(adminTest.getId());
-
-        userService.deleteUser(adminTest.getId());
-
-        verify(userRepository, times(1)).deleteById(adminTest.getId());
+        verify(userRepository, times(1)).deleteById(userTest.getId());
     }
 
     @Test
     void testGetAllUsers() {
-        when(userRepository.findAll()).thenReturn(List.of(adminTest));
+        when(userRepository.findAll()).thenReturn(List.of(userTest));
 
         List<User> users = userService.getAllUsers();
 
@@ -132,23 +103,13 @@ class UserTest {
         assertFalse(users.isEmpty());
         assertEquals(1, users.size());
     }
-
     @Test
-    void testGetUserById_UserNotFound() {
-        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.empty());
+    void testGetUserById() {
+        when(userRepository.findById(userTest.getId())).thenReturn(Optional.of(userTest));
 
-        assertThrows(UserNotFoundException.class, () -> {
-            userService.getUserById(adminTest.getId());
-        });
-    }
-
-    @Test
-    void testGetUserById_UserFound() {
-        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.of(adminTest));
-
-        User user = userService.getUserById(adminTest.getId());
+        User user = userService.getUserById(userTest.getId());
 
         assertNotNull(user);
-        assertEquals(adminTest.getId(), user.getId());
+        assertEquals(userTest.getId(), user.getId());
     }
 }

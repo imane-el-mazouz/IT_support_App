@@ -1,136 +1,132 @@
 package com.support_App;
 
+import com.support_App.enums.EquipmentStatus;
+import com.support_App.enums.Status;
+import com.support_App.enums.TypeE;
+import com.support_App.model.Admin;
+import com.support_App.model.Equipment;
+import com.support_App.repository.EquipmentRepository;
+import com.support_App.service.EquipmentService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.*;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+
 
 @SpringBootTest
 class EquipmentTest {
 
-//    @Mock
-//    private UserRepository userRepository;
-//
-//    @Mock
-//    private PasswordEncoder passwordEncoder;
-//
-//    @InjectMocks
-//    private UserService userService;
-//
-//    private Admin adminTest;
-//
-//    @BeforeEach
-//    void setUp() {
-//        adminTest = new Admin();
-//        adminTest.setId(1L);
-//        adminTest.setEmail("admin@example.com");
-//        adminTest.setPassword("1234");
-//        adminTest.setName("Admin");
-//        adminTest.setRole(Role.Admin);
-//    }
-//    @Test
-//    void testNoArgConstructor() {
-//        Admin newAdmin = new Admin();
-//        assertNotNull(newAdmin);
-//    }
-////    @Test
-////    void testLoadUserByUsername_UserNotFound() {
-////        when(userRepository.findByEmail(adminTest.getEmail())).thenReturn(null);
-////
-////        assertThrows(UsernameNotFoundException.class, () -> {
-////            userService.loadUserByUsername(adminTest.getEmail());
-////        });
-////    }
-//
-//    @Test
-//    void testLoadUserByUsername_UserFound() {
-//        when(userRepository.findByEmail(adminTest.getEmail())).thenReturn(adminTest);
-//
-//        var userDetails = userService.loadUserByUsername(adminTest.getEmail());
-//
-//        assertNotNull(userDetails);
-//        assertEquals(adminTest.getEmail(), userDetails.getUsername());
-//        assertEquals(adminTest.getPassword(), userDetails.getPassword());
-//        assertTrue(userDetails.getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_" + adminTest.getRole().name())));
-//    }
-//
-//    @Test
-//    void testSaveUser() {
-//        when(passwordEncoder.encode(adminTest.getPassword())).thenReturn("encodedAdminPassword");
-//        when(userRepository.save(any(User.class))).thenReturn(adminTest);
-//
-//        User savedUser = userService.saveUser(adminTest);
-//
-//        assertNotNull(savedUser);
-//        assertEquals("encodedAdminPassword", savedUser.getPassword());
-//        verify(userRepository, times(1)).save(any(User.class));
-//    }
-//
-//    @Test
-//    void testUpdateUser_UserNotFound() {
-//        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.empty());
-//
-//        assertThrows(UserNotFoundException.class, () -> {
-//            userService.updateUser(adminTest, adminTest.getId());
-//        });
-//    }
-//
-//    @Test
-//    void testUpdateUser_UserFound() {
-//        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.of(adminTest));
-//        when(userRepository.save(any(User.class))).thenReturn(adminTest);
-//
-//        User updatedUser = userService.updateUser(adminTest, adminTest.getId());
-//
-//        assertNotNull(updatedUser);
-//        assertEquals(adminTest.getName(), updatedUser.getName());
-//        assertEquals(adminTest.getEmail(), updatedUser.getPassword());
-//        verify(userRepository, times(1)).save(any(User.class));
-//    }
-//
-//    @Test
-//    void testDeleteUser_UserNotFound() {
-//        when(userRepository.existsById(adminTest.getId())).thenReturn(false);
-//
-//        assertThrows(RuntimeException.class, () -> {
-//            userService.deleteUser(adminTest.getId());
-//        });
-//    }
-//
-//    @Test
-//    void testDeleteUser_UserFound() {
-//        when(userRepository.existsById(adminTest.getId())).thenReturn(true);
-//        doNothing().when(userRepository).deleteById(adminTest.getId());
-//
-//        userService.deleteUser(adminTest.getId());
-//
-//        verify(userRepository, times(1)).deleteById(adminTest.getId());
-//    }
-//
-//    @Test
-//    void testGetAllUsers() {
-//        when(userRepository.findAll()).thenReturn(List.of(adminTest));
-//
-//        List<User> users = userService.getAllUsers();
-//
-//        assertNotNull(users);
-//        assertFalse(users.isEmpty());
-//        assertEquals(1, users.size());
-//    }
-//
-//    @Test
-//    void testGetUserById_UserNotFound() {
-//        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.empty());
-//
-//        assertThrows(UserNotFoundException.class, () -> {
-//            userService.getUserById(adminTest.getId());
-//        });
-//    }
-//
-//    @Test
-//    void testGetUserById_UserFound() {
-//        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.of(adminTest));
-//
-//        User user = userService.getUserById(adminTest.getId());
-//
-//        assertNotNull(user);
-//        assertEquals(adminTest.getId(), user.getId());
-//    }
+    @Mock
+    private EquipmentRepository equipmentRepository;
+
+    @InjectMocks
+    private EquipmentService equipmentService;
+
+    private Equipment equipment;
+
+    @BeforeEach
+    void setUp() {
+        equipment = new Equipment();
+        equipment.setId(1L);
+        equipment.setName("Pc");
+        equipment.setDescription("Dell PC");
+        equipment.setEquipmentstatus(EquipmentStatus.ACTIVE);
+        equipment.setPurchaseDate(LocalDate.now());
+        equipment.setWarrantyEndDate(LocalDate.of(2025, 1, 1));
+        equipment.setType(TypeE.LAPTOP);
+        equipment.setBreakdowns(new HashSet<>());
+        equipment.setSupportTickets(List.of());
+    }
+
+    @Test
+    void testNoArgConstructor() {
+        Equipment equipment1 = new Equipment();
+        assertNotNull(equipment1);
+    }
+
+    @Test
+    public void testGetters() {
+        assertEquals(1L, equipment.getId());
+        assertEquals("Pc", equipment.getName());
+        assertEquals("Dell PC", equipment.getDescription());
+        assertEquals(EquipmentStatus.ACTIVE, equipment.getEquipmentstatus());
+        assertEquals(LocalDate.now(), equipment.getPurchaseDate());
+    }
+
+    @Test
+    void testGetAllEquipments() {
+        when(equipmentRepository.findAll()).thenReturn(List.of(equipment));
+        List<Equipment> result = equipmentService.getAllEquipments();
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        assertEquals(equipment.getId(), result.get(0).getId());
+        verify(equipmentRepository, times(1)).findAll();
+    }
+
+    	@Test
+	void testSaveEquipment() {
+		when(equipmentRepository.save(any(Equipment.class))).thenAnswer(invocation -> {
+			Equipment saveEquipment = invocation.getArgument(0);
+			if (saveEquipment.getId() == null) {
+                saveEquipment.setId(1L);
+			}
+			return saveEquipment;
+		});
+		Equipment equipment1 = new Equipment();
+		Equipment equipment2 = equipmentService.addEquipment(equipment1);
+		assertNotNull(equipment2);
+		assertEquals(1L, equipment2.getId());
+	}
+    @Test
+    void testUpdateEquipment() {
+        when(equipmentRepository.findById(1L)).thenReturn(Optional.of(equipment));
+        when(equipmentRepository.save(any(Equipment.class))).thenReturn(equipment);
+
+        Equipment updatedEquipment = new Equipment();
+        updatedEquipment.setName("Updated Pc");
+        updatedEquipment.setDescription("Updated Dell PC");
+
+        Equipment result = equipmentService.updateEquipment(1L, updatedEquipment);
+        assertNotNull(result);
+        assertEquals("Updated Pc", result.getName());
+        assertEquals("Updated Dell PC", result.getDescription());
+        verify(equipmentRepository, times(1)).findById(1L);
+        verify(equipmentRepository, times(1)).save(equipment);
+    }
+
+    @Test
+    void testDeleteEquipment() {
+        when(equipmentRepository.findById(1L)).thenReturn(Optional.of(equipment));
+
+        equipmentService.deleteEquipment(1L);
+        verify(equipmentRepository, times(1)).findById(1L);
+        verify(equipmentRepository, times(1)).delete(equipment);
+    }
+
+    @Test
+    void testGetEquipmentById() {
+        when(equipmentRepository.findById(1L)).thenReturn(Optional.of(equipment));
+
+        Optional<Equipment> result = equipmentService.getEquipmentById(1L);
+        assertNotNull(result);
+        Assertions.assertTrue(result.isPresent());
+        assertEquals("Pc", result.get().getName());
+        verify(equipmentRepository, times(1)).findById(1L);
+    }
+
 }
+
+
