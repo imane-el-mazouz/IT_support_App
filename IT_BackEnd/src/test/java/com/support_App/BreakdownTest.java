@@ -1,153 +1,90 @@
 package com.support_App;
 
-import com.support_App.enums.Role;
-import com.support_App.exception.UserNotFoundException;
-import com.support_App.model.Admin;
-import com.support_App.model.User;
-import com.support_App.repository.UserRepository;
-import com.support_App.service.UserService;
+import com.support_App.enums.RepairStatus;
+import com.support_App.model.Breakdown;
+import com.support_App.model.Equipment;
+import com.support_App.repository.BreakdownRepository;
+import com.support_App.repository.EquipmentRepository;
+import com.support_App.service.BreakdownService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 @SpringBootTest
+@Transactional
 class BreakdownTest {
 
-//    @Mock
-//    private UserRepository userRepository;
-//
-//    @Mock
-//    private PasswordEncoder passwordEncoder;
-//
-//    @InjectMocks
-//    private UserService userService;
-//
-//    private Admin adminTest;
-//
-//    @BeforeEach
-//    void setUp() {
-//        adminTest = new Admin();
-//        adminTest.setId(1L);
-//        adminTest.setEmail("admin@example.com");
-//        adminTest.setPassword("1234");
-//        adminTest.setName("Admin");
-//        adminTest.setRole(Role.Admin);
+    @Autowired
+    private BreakdownService breakdownService;
+
+    @Autowired
+    private BreakdownRepository breakdownRepository;
+
+    @Autowired
+    private EquipmentRepository equipmentRepository;
+
+    private Breakdown breakdown;
+    private Equipment equipment;
+
+    @BeforeEach
+    void setUp() {
+        equipment = new Equipment();
+        equipment.setId(1L);
+        equipmentRepository.save(equipment);
+
+        breakdown = new Breakdown();
+        breakdown.setDescription("Test Description");
+        breakdown.setReportedDate(LocalDate.now());
+        breakdown.setRepairStatus(RepairStatus.Reported);
+        breakdown.setEquipments(new HashSet<>());
+    }
+
+    @Test
+    void testAddBreakdown() {
+        Breakdown savedBreakdown = breakdownService.addBreakdown(breakdown);
+        assertNotNull(savedBreakdown.getId());
+        assertEquals("Test Description", savedBreakdown.getDescription());
+    }
+
+    @Test
+    void testUpdateBreakdown() {
+        Breakdown savedBreakdown = breakdownService.addBreakdown(breakdown);
+        savedBreakdown.setDescription("Updated Description");
+        Breakdown updatedBreakdown = breakdownService.updateBreakdown(savedBreakdown.getId(), savedBreakdown);
+        assertEquals("Updated Description", updatedBreakdown.getDescription());
+    }
+
+    @Test
+    void testDeleteBreakdown() {
+        Breakdown savedBreakdown = breakdownService.addBreakdown(breakdown);
+        breakdownService.deleteBreakdown(savedBreakdown.getId());
+        assertThrows(RuntimeException.class, () -> breakdownRepository.findById(savedBreakdown.getId()).orElseThrow(() -> new RuntimeException("Breakdown not found")));
+    }
+
+//    @Test
+//    void testAddBreakdownToEquipment() {
+//        Breakdown savedBreakdown = breakdownService.addBreakdown(breakdown);
+//        Breakdown updatedBreakdown = breakdownService.addBreakdownToEquipment(equipment.getId(), savedBreakdown);
+//        assertNotNull(updatedBreakdown);
+//        assertTrue(updatedBreakdown.getEquipments().contains(equipment));
 //    }
 //    @Test
-//    void testNoArgConstructor() {
-//        Admin newAdmin = new Admin();
-//        assertNotNull(newAdmin);
+//    void testGetBreakdownsByEquipmentId() {
+//        Breakdown savedBreakdown = breakdownService.addBreakdown(breakdown);
+//        breakdownService.addBreakdownToEquipment(equipment.getId(), savedBreakdown);
+//        List<Breakdown> breakdowns = breakdownService.getBreakdownsByEquipmentId(equipment.getId());
+//        assertNotNull(breakdowns);
+//        assertFalse(breakdowns.isEmpty());
+//        assertTrue(breakdowns.contains(savedBreakdown));
 //    }
-////    @Test
-////    void testLoadUserByUsername_UserNotFound() {
-////        when(userRepository.findByEmail(adminTest.getEmail())).thenReturn(null);
-////
-////        assertThrows(UsernameNotFoundException.class, () -> {
-////            userService.loadUserByUsername(adminTest.getEmail());
-////        });
-////    }
-//
-//    @Test
-//    void testLoadUserByUsername_UserFound() {
-//        when(userRepository.findByEmail(adminTest.getEmail())).thenReturn(adminTest);
-//
-//        var userDetails = userService.loadUserByUsername(adminTest.getEmail());
-//
-//        assertNotNull(userDetails);
-//        assertEquals(adminTest.getEmail(), userDetails.getUsername());
-//        assertEquals(adminTest.getPassword(), userDetails.getPassword());
-//        assertTrue(userDetails.getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_" + adminTest.getRole().name())));
-//    }
-//
-//    @Test
-//    void testSaveUser() {
-//        when(passwordEncoder.encode(adminTest.getPassword())).thenReturn("encodedAdminPassword");
-//        when(userRepository.save(any(User.class))).thenReturn(adminTest);
-//
-//        User savedUser = userService.saveUser(adminTest);
-//
-//        assertNotNull(savedUser);
-//        assertEquals("encodedAdminPassword", savedUser.getPassword());
-//        verify(userRepository, times(1)).save(any(User.class));
-//    }
-//
-//    @Test
-//    void testUpdateUser_UserNotFound() {
-//        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.empty());
-//
-//        assertThrows(UserNotFoundException.class, () -> {
-//            userService.updateUser(adminTest, adminTest.getId());
-//        });
-//    }
-//
-//    @Test
-//    void testUpdateUser_UserFound() {
-//        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.of(adminTest));
-//        when(userRepository.save(any(User.class))).thenReturn(adminTest);
-//
-//        User updatedUser = userService.updateUser(adminTest, adminTest.getId());
-//
-//        assertNotNull(updatedUser);
-//        assertEquals(adminTest.getName(), updatedUser.getName());
-//        assertEquals(adminTest.getEmail(), updatedUser.getPassword());
-//        verify(userRepository, times(1)).save(any(User.class));
-//    }
-//
-//    @Test
-//    void testDeleteUser_UserNotFound() {
-//        when(userRepository.existsById(adminTest.getId())).thenReturn(false);
-//
-//        assertThrows(RuntimeException.class, () -> {
-//            userService.deleteUser(adminTest.getId());
-//        });
-//    }
-//
-//    @Test
-//    void testDeleteUser_UserFound() {
-//        when(userRepository.existsById(adminTest.getId())).thenReturn(true);
-//        doNothing().when(userRepository).deleteById(adminTest.getId());
-//
-//        userService.deleteUser(adminTest.getId());
-//
-//        verify(userRepository, times(1)).deleteById(adminTest.getId());
-//    }
-//
-//    @Test
-//    void testGetAllUsers() {
-//        when(userRepository.findAll()).thenReturn(List.of(adminTest));
-//
-//        List<User> users = userService.getAllUsers();
-//
-//        assertNotNull(users);
-//        assertFalse(users.isEmpty());
-//        assertEquals(1, users.size());
-//    }
-//
-//    @Test
-//    void testGetUserById_UserNotFound() {
-//        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.empty());
-//
-//        assertThrows(UserNotFoundException.class, () -> {
-//            userService.getUserById(adminTest.getId());
-//        });
-//    }
-//
-//    @Test
-//    void testGetUserById_UserFound() {
-//        when(userRepository.findById(adminTest.getId())).thenReturn(Optional.of(adminTest));
-//
-//        User user = userService.getUserById(adminTest.getId());
-//
-//        assertNotNull(user);
-//        assertEquals(adminTest.getId(), user.getId());
-//    }
+
 }
