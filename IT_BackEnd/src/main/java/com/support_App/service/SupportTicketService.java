@@ -2,16 +2,19 @@ package com.support_App.service;
 
 import com.support_App.enums.Status;
 import com.support_App.exception.BreakdownNotFoundException;
+import com.support_App.exception.EquipmentNotFoundException;
 import com.support_App.exception.SupportTicketNotFoundException;
 import com.support_App.exception.TechnicianNotFoundException;
 import com.support_App.model.*;
 import com.support_App.repository.BreakdownRepository;
+import com.support_App.repository.EquipmentRepository;
 import com.support_App.repository.SupportTicketRepository;
 import com.support_App.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SupportTicketService {
@@ -23,6 +26,9 @@ public class SupportTicketService {
     private BreakdownRepository breakdownRepository;
 
     @Autowired
+    private EquipmentRepository equipmentRepository;
+
+    @Autowired
     private UserRepository userRepository;
 
 
@@ -30,11 +36,16 @@ public class SupportTicketService {
 //
 //        return supportTicketRepository.save(supportTicket);
 //    }
-public SupportTicket saveTicket(SupportTicket supportTicket, Long breakdownId, User user) {
+public SupportTicket saveTicket(SupportTicket supportTicket, Long breakdownId, Long equipmentId, User user) {
     Breakdown breakdown = breakdownRepository.findById(breakdownId)
             .orElseThrow(() -> new BreakdownNotFoundException("Breakdown not found with ID " + breakdownId));
 
+    Equipment equipment = equipmentRepository.findById(equipmentId)
+            .orElseThrow(() -> new EquipmentNotFoundException("Equipment not found with ID " + equipmentId));
+
     supportTicket.setBreakdown(breakdown);
+    supportTicket.setEquipment(equipment);
+    supportTicket.setTicketStatus(Status.Cancelled);
     supportTicket.setUserU((UserU) user);
     return supportTicketRepository.save(supportTicket);
 }

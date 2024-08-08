@@ -37,6 +37,12 @@ public class BreakdownController {
     @Autowired
     private BreakdownService breakdownService;
 
+    /**
+     * Adds a new Breakdown to the system.
+     *
+     * @param breakdown The Breakdown object to be added.
+     * @return The added Breakdown object wrapped in a ResponseEntity.
+     */
     @PreAuthorize("hasRole('Admin')")
     @PostMapping
     public ResponseEntity<Breakdown> addBreakdown(@RequestBody Breakdown breakdown) {
@@ -44,7 +50,13 @@ public class BreakdownController {
         return ResponseEntity.ok(newBreakdown);
     }
 
-
+    /**
+     * Associates a new Breakdown with the specified Equipment.
+     *
+     * @param equipmentId The ID of the Equipment to which the Breakdown will be associated.
+     * @param breakdown   The Breakdown object to be added.
+     * @return The added Breakdown object wrapped in a ResponseEntity.
+     */
     @PreAuthorize("hasRole('Admin')")
     @PostMapping("/{equipmentId}")
     public ResponseEntity<Breakdown> addBreakdownToEquipment(@PathVariable Long equipmentId, @RequestBody Breakdown breakdown) {
@@ -52,6 +64,13 @@ public class BreakdownController {
         return ResponseEntity.ok(newBreakdown);
     }
 
+    /**
+     * Updates an existing Breakdown's details.
+     *
+     * @param id              The ID of the Breakdown to be updated.
+     * @param breakdownDetails The new details for the Breakdown.
+     * @return The updated Breakdown object wrapped in a ResponseEntity.
+     */
     @PreAuthorize("hasRole('Admin')")
     @PutMapping("/{id}")
     public ResponseEntity<Breakdown> updateBreakdown(@PathVariable Long id, @RequestBody Breakdown breakdownDetails) {
@@ -59,12 +78,25 @@ public class BreakdownController {
         return ResponseEntity.ok(updatedBreakdown);
     }
 
+    /**
+     * Deletes a Breakdown by its ID.
+     *
+     * @param id The ID of the Breakdown to be deleted.
+     * @return An empty ResponseEntity with HTTP status 204 (No Content).
+     */
+
     @PreAuthorize("hasRole('Admin')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBreakdown(@PathVariable Long id) {
         breakdownService.deleteBreakdown(id);
         return ResponseEntity.noContent().build();
     }
+    /**
+     * Retrieves a list of Breakdowns associated with a specific Equipment.
+     *
+     * @param equipmentId The ID of the Equipment.
+     * @return A list of Breakdown objects wrapped in a ResponseEntity.
+     */
 
     @PreAuthorize("hasRole('Admin')")
     @GetMapping("/equipment/{equipmentId}/breakdowns")

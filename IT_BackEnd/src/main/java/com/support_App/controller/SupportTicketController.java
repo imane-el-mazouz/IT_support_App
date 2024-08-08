@@ -33,14 +33,24 @@ public class SupportTicketController {
 //        return ResponseEntity.ok(newTicket);
 //    }
 @PreAuthorize("hasRole('UserU')")
-@PostMapping("/{breakdownId}")
-public ResponseEntity<SupportTicket> addTicket(@RequestBody SupportTicket supportTicket, @PathVariable Long breakdownId) {
+@PostMapping("/{breakdownId}/{equipmentId}")
+public ResponseEntity<SupportTicket> addTicket(@RequestBody SupportTicket supportTicket, @PathVariable Long breakdownId, @PathVariable Long equipmentId) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String email = authentication.getName();
     User user = userService.findByEmail(email);
-    SupportTicket newTicket = supportTicketService.saveTicket(supportTicket, breakdownId , user);
+    SupportTicket newTicket = supportTicketService.saveTicket(supportTicket, breakdownId, equipmentId, user);
     return ResponseEntity.ok(newTicket);
 }
+
+//@PreAuthorize("hasRole('UserU')")
+//@PostMapping("/{breakdownId}")
+//public ResponseEntity<SupportTicket> addTicket(@RequestBody SupportTicket supportTicket, @PathVariable Long breakdownId) {
+//    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//    String email = authentication.getName();
+//    User user = userService.findByEmail(email);
+//    SupportTicket newTicket = supportTicketService.saveTicket(supportTicket, breakdownId , user);
+//    return ResponseEntity.ok(newTicket);
+//}
 
 //    @PreAuthorize("hasRole('Admin')")
 //    @PatchMapping("/{ticketId}/assign/{technicianId}")

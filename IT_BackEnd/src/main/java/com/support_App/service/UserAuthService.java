@@ -79,7 +79,7 @@ public JwtResponseDTO signUp(User userRequest) {
         throw new RuntimeException("Email is already taken.");
     }
     if (userRequest.getRole() == null) {
-        userRequest.setRole(Role.UserU);
+        userRequest.setRole(Role.Admin);
     } else {
         try {
             userRequest.setRole(Role.valueOf(userRequest.getRole().name()));
