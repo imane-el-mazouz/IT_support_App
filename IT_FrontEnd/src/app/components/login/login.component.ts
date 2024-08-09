@@ -26,27 +26,29 @@ export class LoginComponent {
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   login(): void {
-    const { username, password } = this.loginForm.value;
+    const { email, password } = this.loginForm.value;
 
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.http.post<{ accessToken: string, user: { role: string } }>('http://localhost:8081/api/auth/login', { username, password })
+    this.http.post<{ accessToken: string, user: { role: string } }>('http://localhost:8080/api/auth/login', { email, password })
       .subscribe(
         response => {
           this.authService.setToken(response.accessToken);
 
-          if (response.user.role === 'ADMIN') {
+          if (response.user.role === 'Admin') {
             this.router.navigate(['/dashboard']);
-          } else if (response.user.role === 'CLIENT') {
-            this.router.navigate(['/home']);
+          } else if (response.user.role === 'UserU') {
+            this.router.navigate(['/userU'])
+          }else if (response.user.role === 'Technician'){
+            this.router.navigate(['/technician'])
           } else {
             this.errorMessage = 'role undefined: ' + response.user.role;
           }

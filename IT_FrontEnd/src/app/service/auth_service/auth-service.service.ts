@@ -2,6 +2,7 @@ import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import {Observable} from "rxjs";
 import {HttpHeaders} from "@angular/common/http";
+import {Role} from "../../enums/role";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import {HttpHeaders} from "@angular/common/http";
 export class AuthService {
   private tokenKey = 'token';
   private userIdKey = 'userId';
+  private userRoleKey = 'userRole';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
@@ -24,6 +26,21 @@ export class AuthService {
     }
     return null;
   }
+
+  setUserRole(role : Role): void{
+    if(isPlatformBrowser(this.platformId)){
+      localStorage.setItem(this.userRoleKey , role)
+    }
+  }
+
+  getUserRole() : Role | null {
+    if (isPlatformBrowser((this.platformId))){
+      return localStorage.getItem(this.userRoleKey) as Role
+    }
+    return null;
+
+  }
+
 
   clearToken(): void {
     if (isPlatformBrowser(this.platformId)) {

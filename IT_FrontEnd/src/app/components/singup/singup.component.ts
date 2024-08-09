@@ -37,7 +37,7 @@ export class SignupComponent {
   signup(): void {
     const { name, username, password } = this.signupForm.value;
     let info : User = this.signupForm.value;
-    this.http.post<{ accessToken: string, user: any }>('http://localhost:8081/api/auth/signup', {
+    this.http.post<{ accessToken: string, user: any }>('http://localhost:8080/api/auth/signup', {
       name,
       username,
       password,
