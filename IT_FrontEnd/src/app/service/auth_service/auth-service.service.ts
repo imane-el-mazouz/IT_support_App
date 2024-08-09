@@ -33,13 +33,23 @@ export class AuthService {
     }
   }
 
-  getUserRole() : Role | null {
-    if (isPlatformBrowser((this.platformId))){
-      return localStorage.getItem(this.userRoleKey) as Role
+  // getUserRole() : Role | null {
+  //   if (isPlatformBrowser((this.platformId))){
+  //     return localStorage.getItem(this.userRoleKey) as Role
+  //   }
+  //   return null;
+  //
+  // }
+
+  getUserRole(): Role | null {
+    const token = this.getToken();
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.role as Role;
     }
     return null;
-
   }
+
 
 
   clearToken(): void {

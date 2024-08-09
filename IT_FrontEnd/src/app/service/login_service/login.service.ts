@@ -8,12 +8,7 @@ import {Role} from "../../enums/role";
 })
 export class LoginComponent {
   constructor(private authService: AuthService, private http: HttpClient) { }
-  // login(email: string, password: string): void {
-  //   this.http.post<{ token: string }>('http://localhost:8081/api/auth/login', { email, password })
-  //     .subscribe(response => {
-  //       this.authService.setToken(response.token);
-  //     });
-  // }
+
   login(email: string, password: string): void {
     this.http.post<{ token: string, role: Role }>('http://localhost:8081/api/auth/login', { email, password })
       .subscribe(response => {
