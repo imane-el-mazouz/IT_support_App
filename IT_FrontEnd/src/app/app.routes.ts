@@ -9,6 +9,7 @@ import {GuardComponent} from "./components/guard/guard.component";
 import {Role} from "./enums/role";
 import {SaveUserComponent} from "./components/Admin/save-user/save-user.component";
 import {SaveTechnicianComponent} from "./components/Admin/save-technician/save-technician.component";
+import {ListUsersComponent} from "./components/Admin/list-users/list-users.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,6 +24,7 @@ export const routes: Routes = [
   { path: 'access-denied', component: GuardComponent },
   { path: 'saveUser', component: SaveUserComponent },
   { path: 'saveTech', component: SaveTechnicianComponent },
+  { path: 'users', component: ListUsersComponent },
 
 
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {SaveUserComponent} from "./save-user/save-user.component";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {UserService} from "../../service/user/user.service";
+import {UserUService} from "../../service/user/user.service";
 
 @Component({
   selector: 'app-admin',
@@ -19,7 +19,7 @@ import {UserService} from "../../service/user/user.service";
 export class AdminComponent {
   showSaveUser$ = this.userService.showSaveUser$;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserUService) { }
 
   toggleSaveUserDisplay() {
     this.userService.toggleSaveUserDisplay(true);

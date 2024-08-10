@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {User} from "../../../model/User/user";
-import {UserService} from "../../../service/user/user.service";
+import {UserUService} from "../../../service/user/user.service";
 import {Router} from "@angular/router";
+import {UserU} from "../../../model/UserU/userU";
 
 @Component({
   selector: 'app-save-user',
@@ -14,11 +15,11 @@ import {Router} from "@angular/router";
 })
 export class SaveUserComponent implements OnInit {
   saveForm: FormGroup;
-  users: User[] = [];
+  usersU: UserU[] = [];
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private userService: UserUService,
     private router: Router
   ) {
     this.saveForm = this.fb.group({
@@ -30,9 +31,9 @@ export class SaveUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe({
-      next: (users) => {
-        this.users = users;
-        console.log('Users loaded: ', this.users);
+      next: (usersU) => {
+        this.usersU = usersU;
+        console.log('Users loaded: ', this.usersU);
       },
       error: (error) => {
         console.error('Error loading users', error);
@@ -42,14 +43,14 @@ export class SaveUserComponent implements OnInit {
 
   onSubmit(): void {
     if (this.saveForm.valid) {
-      let user: User = this.saveForm.value;
-      this.userService.saveUser(user).subscribe({
+      let userU: UserU = this.saveForm.value;
+      this.userService.saveUser(userU).subscribe({
         next: (response) => {
-          console.log('User saved successfully', response);
-          this.router.navigate(['/login']);
+          console.log('UserU saved successfully', response);
+          this.router.navigate(['/users']);
         },
         error: (error) => {
-          console.error('Error during saving user', error);
+          console.error('Error during saving userU', error);
           this.router.navigate(['/home']);
         }
       });

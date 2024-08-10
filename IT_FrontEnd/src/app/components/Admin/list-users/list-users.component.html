@@ -1,1 +1,24 @@
-<p>list-users works!</p>
+<main class="main">
+
+  <div class="report-container">
+    <div class="report-header">
+      <h1 class="recent-Articles">All Users</h1>
+    </div>
+
+    <div class="report-body">
+      <div class="report-topic-heading"style="color: black;">
+        <h3 class="t-op">Name</h3>
+        <h3 class="t-op">Email</h3>
+        <h3 class="t-op">Password</h3>
+      </div>
+
+      <div class="items">
+        <div class="item1" *ngFor="let userU of usersU">
+          <h3 class="t-op-nextlvl">{{ userU.name}}</h3>
+          <h3 class="t-op-nextlvl">{{ userU.email}}</h3>
+          <h3 class="t-op-nextlvl">{{ userU.password}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

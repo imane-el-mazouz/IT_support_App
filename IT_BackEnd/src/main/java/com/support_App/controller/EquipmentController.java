@@ -26,7 +26,7 @@ public class EquipmentController {
     }
 
 
-//    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('Admin')")
     @PutMapping("/{id}")
     public ResponseEntity<Equipment> updateEquipment(@PathVariable Long id, @RequestBody Equipment equipmentDetails) {
         Equipment updatedEquipment = equipmentService.updateEquipment(id, equipmentDetails);
@@ -34,7 +34,7 @@ public class EquipmentController {
     }
 
 
-//    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('Admin')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEquipment(@PathVariable Long id) {
         equipmentService.deleteEquipment(id);
@@ -42,14 +42,14 @@ public class EquipmentController {
     }
 
 
-//    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('Admin')")
     @GetMapping
     public ResponseEntity<List<Equipment>> getAllEquipments() {
         List<Equipment> equipments = equipmentService.getAllEquipments();
         return ResponseEntity.ok(equipments);
     }
 
-//    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('Admin')")
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Equipment>> getEquipmentById(@PathVariable Long id) {
         Optional<Equipment> equipment1 = equipmentService.getEquipmentById(id);
