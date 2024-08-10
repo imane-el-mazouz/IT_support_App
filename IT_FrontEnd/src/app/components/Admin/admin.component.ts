@@ -1,13 +1,31 @@
 import { Component } from '@angular/core';
-import {CommonModule} from "@angular/common";
+import {SaveUserComponent} from "./save-user/save-user.component";
+import {AsyncPipe, NgIf} from "@angular/common";
+import {RouterLink} from "@angular/router";
+import {UserService} from "../../service/user/user.service";
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [],
   templateUrl: './admin.component.html',
-  styleUrl: './admin.component.scss'
+  imports: [
+    SaveUserComponent,
+    NgIf,
+    AsyncPipe,
+    RouterLink
+  ],
+  styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
+  showSaveUser$ = this.userService.showSaveUser$;
 
+  constructor(private userService: UserService) { }
+
+  toggleSaveUserDisplay() {
+    this.userService.toggleSaveUserDisplay(true);
+  }
+
+  hideSaveUser() {
+    this.userService.toggleSaveUserDisplay(false);
+  }
 }

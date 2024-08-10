@@ -1,6 +1,7 @@
 package com.support_App.controller;
 
 import com.support_App.dto.UserDTO;
+import com.support_App.model.Technician;
 import com.support_App.model.User;
 import com.support_App.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,13 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+
+    @PreAuthorize("hasRole('Admin')")
+    @GetMapping("/technicians")
+    public List<Technician> getAllTechnicians() {
+        return userService.getAllTechnicians();
+    }
+
 
     @PreAuthorize("hasRole('Admin')")
     @GetMapping("/{id}")

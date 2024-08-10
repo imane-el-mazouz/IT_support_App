@@ -1,13 +1,14 @@
 import { Routes } from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
-import {SignupComponent} from "./components/singup/singup.component";
+import {SignupComponent} from "./components/Admin/singup/singup.component";
 import {DashUserComponent} from "./components/Dash User/dash-user.component";
 import {DashTechComponent} from "./components/dash-tech/dash-tech.component";
 import {AdminComponent} from "./components/Admin/admin.component";
 import {GuardService} from "./service/auth_guard/guard.service";
 import {GuardComponent} from "./components/guard/guard.component";
 import {Role} from "./enums/role";
-import {SaveUserComponent} from "./components/save-user/save-user.component";
+import {SaveUserComponent} from "./components/Admin/save-user/save-user.component";
+import {SaveTechnicianComponent} from "./components/Admin/save-technician/save-technician.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'dashboard', component: AdminComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin }},
   { path: 'access-denied', component: GuardComponent },
   { path: 'saveUser', component: SaveUserComponent },
+  { path: 'saveTech', component: SaveTechnicianComponent },
 
 
 

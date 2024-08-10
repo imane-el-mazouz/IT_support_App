@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {User} from "../../model/User/user";
-import {UserService} from "../../service/user/user.service";
+import {User} from "../../../model/User/user";
+import {UserService} from "../../../service/user/user.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -23,8 +23,8 @@ export class SaveUserComponent implements OnInit {
   ) {
     this.saveForm = this.fb.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]], // Added email validator
-      password: ['', [Validators.required, Validators.minLength(6)]] // Added minlength validator
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4)]]
     });
   }
 
