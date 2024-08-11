@@ -1,0 +1,11 @@
+<div class="ticket-details-container">
+  <h2>Ticket Details</h2>
+  <div *ngIf="ticket">
+    <p><strong>Description:</strong> {{ ticket.description }}</p>
+    <p><strong>Created Date:</strong> {{ ticket.createdDate | date }}</p>
+    <p><strong>Status:</strong> {{ ticket.ticketStatus }}</p>
+    <p><strong>Breakdown:</strong> {{ ticket.breakdown?.description }}</p>
+    <p><strong>Equipment:</strong> {{ ticket.equipment?.name }}</p>
+    <p><strong>Technician:</strong> {{ ticket.technician?.name || 'Not assigned' }}</p>
+  </div>
+</div>

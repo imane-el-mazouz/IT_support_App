@@ -116,7 +116,7 @@ public class BreakdownController {
         return ResponseEntity.ok(breakdowns);
     }
 
-    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('Admin') or hasRole('UserU') or hasRole('Technician')")
     @GetMapping("/breakdowns")
     public ResponseEntity<List<Breakdown>> getAllBreakdowns(){
         List<Breakdown> breakdowns = breakdownService.getAllBreakdowns();

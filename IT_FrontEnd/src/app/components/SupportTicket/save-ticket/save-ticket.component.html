@@ -1,0 +1,27 @@
+<div class="add-ticket-container">
+  <h2>Add Support Ticket</h2>
+  <form [formGroup]="addTicketForm" (ngSubmit)="onSubmit()">
+    <label for="description">Description</label>
+    <input id="description" formControlName="description" type="text" />
+
+    <label for="createdDate">Created Date</label>
+    <input id="createdDate" formControlName="createdDate" type="date" />
+
+    <label for="ticketStatus">Ticket Status</label>
+    <select id="ticketStatus" formControlName="ticketStatus">
+      <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+    </select>
+
+    <label for="breakdown">Breakdown</label>
+    <select id="breakdown" formControlName="breakdownId">
+      <option *ngFor="let breakdown of breakdowns" [value]="breakdown.id">{{ breakdown.description }}</option>
+    </select>
+
+    <label for="equipment">Equipment</label>
+    <select id="equipment" formControlName="equipmentId">
+      <option *ngFor="let equipment of equipments" [value]="equipment.id">{{ equipment.name }}</option>
+    </select>
+
+    <button type="submit" [disabled]="addTicketForm.invalid">Add Ticket</button>
+  </form>
+</div>

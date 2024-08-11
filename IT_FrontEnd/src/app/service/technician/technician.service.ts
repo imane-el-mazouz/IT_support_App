@@ -8,8 +8,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TechnicianService {
-  // private apiUrl = 'http://localhost:8080/api/users';
-  private apiUrl = 'http://localhost:8081/api/users';
+  // private apiUrl = 'http://localhost:8080/api/ticket';
+  private apiUrl = 'http://localhost:8081/api/ticket';
 
   constructor(private http: HttpClient) { }
 

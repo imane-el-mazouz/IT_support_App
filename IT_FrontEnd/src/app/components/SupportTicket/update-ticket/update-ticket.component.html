@@ -1,0 +1,11 @@
+<div class="update-status-container">
+  <h2>Update Ticket Status</h2>
+  <form [formGroup]="statusForm" (ngSubmit)="onSubmit()">
+    <label for="status">Status</label>
+    <select id="status" formControlName="status">
+      <option *ngFor="let status of statuses" [value]="status.value">{{ status.key }}</option>
+    </select>
+
+    <button type="submit" [disabled]="statusForm.invalid">Update Status</button>
+  </form>
+</div>

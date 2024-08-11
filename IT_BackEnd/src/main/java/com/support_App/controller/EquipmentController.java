@@ -42,7 +42,8 @@ public class EquipmentController {
     }
 
 
-    @PreAuthorize("hasRole('Admin')")
+//    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('Admin') or hasRole('UserU') or hasRole('Technician')")
     @GetMapping
     public ResponseEntity<List<Equipment>> getAllEquipments() {
         List<Equipment> equipments = equipmentService.getAllEquipments();
