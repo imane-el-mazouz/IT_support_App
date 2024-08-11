@@ -49,3 +49,26 @@ En tant que développeur full stack Java/Angular dans la société ITSolutions, 
 - **Base de données :** PostgreSQL / MySQL
 - **Tests unitaires :** JUnit
 - **Conteneurisation :** Docker
+
+## Clonage du Projet
+
+Pour cloner ce projet et l'exécuter localement, suivez les étapes ci-dessous :
+
+### Prérequis
+
+Assurez-vous d'avoir installé les éléments suivants sur votre machine :
+
+- Git
+- Java 17 ou plus récent
+- Maven
+- Node.js et npm (pour le frontend Angular)
+- Docker (pour la conteneurisation)
+
+### Étapes pour Cloner et Lancer le Projet
+
+1. **Cloner le dépôt Git :**
+
+   Ouvrez un terminal et exécutez la commande suivante pour cloner le dépôt :
+
+   ```bash
+   git clone https://github.com/imane-el-mazouz/IT_support_App.git
