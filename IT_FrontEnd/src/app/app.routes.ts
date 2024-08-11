@@ -10,6 +10,12 @@ import {Role} from "./enums/role";
 import {SaveUserComponent} from "./components/Admin/save-user/save-user.component";
 import {SaveTechnicianComponent} from "./components/Admin/save-technician/save-technician.component";
 import {ListUsersComponent} from "./components/Admin/list-users/list-users.component";
+import {ListEquipmentComponent} from "./components/Equipment/list-equipment/list-equipment.component";
+import {AddEquipmentComponent} from "./components/Equipment/add-equipment/add-equipment.component";
+import {UpdateEquipmentComponent} from "./components/Equipment/update-equipment/update-equipment.component";
+import {ListBreakdownComponent} from "./components/Breakdown/list-breakdown/list-breakdown.component";
+import {SaveBreakdownComponent} from "./components/Breakdown/save-breakdown/save-breakdown.component";
+import {UpdateBreakdownComponent} from "./components/Breakdown/update-breakdown/update-breakdown.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -25,6 +31,13 @@ export const routes: Routes = [
   { path: 'saveUser', component: SaveUserComponent },
   { path: 'saveTech', component: SaveTechnicianComponent },
   { path: 'users', component: ListUsersComponent },
+  { path: 'equipments', component: ListEquipmentComponent },
+  { path: 'add', component: AddEquipmentComponent },
+  { path: 'update-equipment/:id', component: UpdateEquipmentComponent },
+  { path: 'list-breakdowns', component: ListBreakdownComponent },
+  { path: 'add-breakdown', component: SaveBreakdownComponent },
+  { path: 'update-breakdown/:id', component: UpdateBreakdownComponent },
+
 
 
 

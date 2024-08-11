@@ -91,6 +91,17 @@ public class BreakdownController {
         breakdownService.deleteBreakdown(id);
         return ResponseEntity.noContent().build();
     }
+
+
+    @PreAuthorize("hasRole('Admin')")
+    @GetMapping("/{id}")
+    public ResponseEntity<Breakdown> getBreakdownById(@PathVariable Long id) {
+        Breakdown breakdown = breakdownService.getBreakdownById(id);
+        if (breakdown == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(breakdown);
+    }
     /**
      * Retrieves a list of Breakdowns associated with a specific Equipment.
      *
@@ -102,6 +113,13 @@ public class BreakdownController {
     @GetMapping("/equipment/{equipmentId}/breakdowns")
     public ResponseEntity<List<Breakdown>> getBreakdownsByEquipmentId(@PathVariable Long equipmentId) {
         List<Breakdown> breakdowns = breakdownService.getBreakdownsByEquipmentId(equipmentId);
+        return ResponseEntity.ok(breakdowns);
+    }
+
+    @PreAuthorize("hasRole('Admin')")
+    @GetMapping("/breakdowns")
+    public ResponseEntity<List<Breakdown>> getAllBreakdowns(){
+        List<Breakdown> breakdowns = breakdownService.getAllBreakdowns();
         return ResponseEntity.ok(breakdowns);
     }
 }

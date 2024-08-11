@@ -39,7 +39,7 @@ public class Breakdown {
     @JsonIgnore
     private Admin admin;
 
-    @OneToMany(mappedBy = "breakdown", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "breakdown", fetch = FetchType.LAZY )
     @JsonIgnore
     private List<SupportTicket> supportTicketList;
 //    @Setter

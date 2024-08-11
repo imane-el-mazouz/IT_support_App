@@ -54,9 +54,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
-    @Service
+@Service
     public class BreakdownService {
 
         @Autowired
@@ -84,6 +83,12 @@ import java.util.Optional;
             breakdownRepository.delete(breakdown);
         }
 
+        public Breakdown getBreakdownById(Long id) {
+            Breakdown breakdown = breakdownRepository.findById(id).orElseThrow(() -> new RuntimeException("Breakdown not found"));
+            breakdownRepository.findById(id);
+            return breakdown;
+        }
+
         public Breakdown addBreakdownToEquipment(Long equipmentId, Breakdown breakdown) {
             Equipment equipment = equipmentRepository.findById(equipmentId)
                     .orElseThrow(() -> new RuntimeException("Equipment not found with id: " + equipmentId));
@@ -98,5 +103,9 @@ import java.util.Optional;
 public List<Breakdown> getBreakdownsByEquipmentId(Long equipmentId) {
     return breakdownRepository.findBreakdownsByEquipmentId(equipmentId);
 }
+
+        public List<Breakdown> getAllBreakdowns (){
+            return breakdownRepository.findAll();
+        }
 
     }

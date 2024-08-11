@@ -31,9 +31,7 @@ public class Equipment {
     private String name;
     private String description;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "Equipmentstatus", nullable = false, length = 225)
-    private EquipmentStatus Equipmentstatus;
+
 
     private LocalDate purchaseDate;
     private LocalDate warrantyEndDate;
@@ -41,6 +39,10 @@ public class Equipment {
     @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false, length = 225)
     private TypeE type;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "Equipmentstatus", nullable = false, length = 225)
+    private EquipmentStatus Equipmentstatus;
 
 
 
@@ -61,7 +63,7 @@ public class Equipment {
     @JsonIgnore
     private List<SupportTicket> supportTickets;
 
-    @ManyToMany(mappedBy = "equipments")
+    @ManyToMany(mappedBy = "equipments" , cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Breakdown> breakdowns = new HashSet<>();
 

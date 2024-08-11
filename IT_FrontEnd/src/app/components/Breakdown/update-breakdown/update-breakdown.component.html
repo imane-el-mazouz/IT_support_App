@@ -1,1 +1,22 @@
-<p>update-breakdown works!</p>
+<div class="update-breakdown-container">
+  <h2>Update Breakdown</h2>
+  <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <label for="description">Description</label>
+    <input id="description" formControlName="description" type="text" />
+
+    <label for="reportedDate">Reported Date</label>
+    <input id="reportedDate" formControlName="reportedDate" type="date" />
+
+    <label for="repairStatus">Repair Status</label>
+    <select id="repairStatus" formControlName="repairStatus">
+      <option *ngFor="let status of repairStatuses" [value]="status">{{ status }}</option>
+    </select>
+
+    <button type="submit" [disabled]="updateForm.invalid">Update Breakdown</button>
+  </form>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>

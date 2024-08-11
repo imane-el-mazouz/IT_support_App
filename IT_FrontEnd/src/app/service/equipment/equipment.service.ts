@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { Equipment } from "../../model/Equipment/equipment";
 import { catchError } from "rxjs/operators";
+import {Breakdown} from "../../model/Breakdow/breakdown";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,8 @@ export class EquipmentService {
 
   getEquipments(): Observable<Equipment[]> {
     return this.http.get<Equipment[]>(`${this.apiUrl}`, { headers: this.getHeaders() })
-      .pipe(catchError(this.handleError));
+
+  .pipe(catchError(this.handleError));
   }
 
   saveEquipment(equipment: Equipment): Observable<Equipment> {
@@ -32,11 +34,12 @@ export class EquipmentService {
       .pipe(catchError(this.handleError));
   }
 
-  getEquipmentById(id: number): Observable<Equipment> {
+  getEquipmentById(id: number | undefined): Observable<Equipment> {
     return this.http.get<Equipment>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }
-  updateEquipment(id: number, equipment: Equipment): Observable<Equipment> {
+
+  updateEquipment(id: number | undefined, equipment: Equipment): Observable<Equipment> {
     return this.http.put<Equipment>(`${this.apiUrl}/${id}`, equipment, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }
@@ -46,8 +49,10 @@ export class EquipmentService {
       .pipe(catchError(this.handleError));
   }
 
-
-
+  getBreakdownsByEquipmentId(equipmentId: number): Observable<Breakdown[]> {
+    return this.http.get<Breakdown[]>(`${this.apiUrl}/equipment/${equipmentId}/breakdowns`, { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
+  }
 
   private handleError(error: any): Observable<never> {
     console.error('An error occurred', error);

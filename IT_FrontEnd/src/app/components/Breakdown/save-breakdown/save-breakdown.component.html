@@ -1,1 +1,19 @@
-<p>save-breakdown works!</p>
+<div class="container">
+  <h2>Add New Breakdown</h2>
+  <form [formGroup]="breakdownForm" (ngSubmit)="onSubmit()">
+    <label for="description">Description:</label>
+    <input id="description" formControlName="description" type="text" />
+    <label for="reportedDate">Description:</label>
+    <input id="reportedDate" formControlName="reportedDate" type="datetime-local" />
+
+    <label for="repairStatus">Repair Status:</label>
+    <select id="repairStatus" formControlName="repairStatus">
+      <option *ngFor="let status of repairStatuses | keyvalue" [value]="status.value">
+        {{ status.value }}
+      </option>
+    </select>
+
+
+    <button type="submit" [disabled]="breakdownForm.invalid">Save Breakdown</button>
+  </form>
+</div>

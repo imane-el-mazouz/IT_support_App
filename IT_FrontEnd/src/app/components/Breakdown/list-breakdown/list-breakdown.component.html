@@ -1,1 +1,10 @@
-<p>list-breakdown works!</p>
+<div>
+  <h2>Breakdowns List</h2>
+  <ul>
+    <li *ngFor="let breakdown of breakdowns">
+      <p>{{ breakdown.id }} - {{ breakdown.description }} - {{ breakdown.reportedDate }} - {{ breakdown.repairStatus }}</p>
+      <button (click)="updateBreakdown(breakdown.id)">Update</button>
+      <button (click)="deleteBreakdown(breakdown.id)">Delete</button>
+    </li>
+  </ul>
+</div>

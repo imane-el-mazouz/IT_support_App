@@ -1,1 +1,41 @@
-<p>add-equipment works!</p>
+<main class="main">
+  <div class="reservation-container">
+    <h2>Create Equipment</h2>
+    <form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input id="description" type="text" formControlName="description" required>
+      </div>
+      <div class="form-group">
+        <label for="equipmentStatus">Status</label>
+        <select id="equipmentStatus" formControlName="equipmentStatus" required>
+          <option *ngFor="let equipmentStatus of statusOptions" [value]="equipmentStatus">{{equipmentStatus}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="purchaseDate">Purchase Date</label>
+        <input id="purchaseDate" type="datetime-local" formControlName="purchaseDate" required>
+      </div>
+      <div class="form-group">
+        <label for="warrantyEndDate">Warranty End Date</label>
+        <input id="warrantyEndDate" type="datetime-local" formControlName="warrantyEndDate" required>
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select id="type" formControlName="type" required>
+          <option *ngFor="let type of typeOptions" [value]="type">{{type}}</option>
+        </select>
+      </div>
+
+      <div class="container-login100-form-btn">
+        <button class="login100-form-btn" type="submit" [disabled]="equipmentForm.invalid">
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+</main>
