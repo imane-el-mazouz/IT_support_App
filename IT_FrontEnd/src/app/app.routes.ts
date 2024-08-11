@@ -25,6 +25,7 @@ import {
 } from "./components/SupportTicket/tickets-by-technician/tickets-by-technician.component";
 import {UpdateTicketComponent} from "./components/SupportTicket/update-ticket/update-ticket.component";
 import {TicketStatusComponent} from "./components/SupportTicket/ticket-status/ticket-status.component";
+import {NavComponent} from "./components/nav/nav/nav.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -55,6 +56,8 @@ export const routes: Routes = [
   { path: 'tickets-by-technician/:technicianId', component: TicketsByTechnicianComponent , canActivate: [GuardService], data: { expectedRole: Role.Technician } },
   { path: 'update-ticket-status/:ticketId', component: UpdateTicketComponent , canActivate: [GuardService], data: { expectedRole: Role.Technician } },
   { path: 'ticket-status/:ticketId', component: TicketStatusComponent , canActivate: [GuardService], data: { expectedRole: Role.UserU } },
+
+  { path : 'nav' , component: NavComponent}
 
 
 
