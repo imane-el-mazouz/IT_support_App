@@ -1,0 +1,515 @@
+//.dashboard-screen { background-color: #f8f9fa; display: flex; padding-left: 18px; gap: 2px; flex-wrap: wrap; }
+//.sidebar { align-self: start; display: flex; margin-top: 44px; flex-direction: column; font-family: 'Abhaya Libre ExtraBold', sans-serif; color: #a0aec0; font-weight: 800; }
+//.sidebar-content { display: flex; width: 100%; flex-direction: column; align-items: start; padding: 0 7px; }
+//.logo-container { align-self: center; display: flex; width: 179px; max-width: 100%; gap: 12px; font-size: 14px; color: #2d3748; }
+//.logo { aspect-ratio: 1; object-fit: contain; object-position: center; width: 22px; align-self: start; }
+//.logo-text { flex-grow: 1; width: 141px; }
+//.divider { aspect-ratio: 250; object-fit: contain; object-position: center; width: 100%; align-self: stretch; margin-top: 27px; }
+//.nav-item { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; gap: 12px; font-size: 12px; color: #2d3748; white-space: nowrap; padding: 12px 16px; }
+//.nav-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 30px; border-radius: 12px; }
+//.nav-text { flex-grow: 1; margin: auto 0; }
+//.account-section { color: #2d3748; font-size: 12px; margin: 29px 0 0 23px; }
+//.help-section { display: flex; flex-direction: column; border-radius: 0; position: relative; aspect-ratio: 1.29; margin-top: 70px; width: 100%; align-items: start; color: #fff; padding: 16px; }
+//.help-background { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: cover; object-position: center; }
+//.help-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 35px; border-radius: 0; }
+//.help-title { position: relative; font-size: 14px; line-height: 1.4; margin-top: 25px; }
+//.help-description { position: relative; font-size: 12px; margin-top: 8px; }
+//.help-button { position: relative; justify-content: center; align-items: center; border-radius: 12px; background: #fff; display: flex; margin-top: 14px; min-height: 35px; font-size: 10px; color: #2d3748; white-space: nowrap; text-align: center; padding: 0 8px; }
+//.button-content { align-self: stretch; display: flex; width: 88px; flex-direction: column; overflow: hidden; align-items: center; justify-content: center; margin: auto 0; }
+//.button-text { width: 88px; align-self: stretch; gap: 4px; overflow: hidden; margin: auto 0; }
+//.main-content { background-color: #f8f9fa; display: flex; flex-direction: column; flex-grow: 1; flex-basis: 0; width: fit-content; padding: 26px 31px; }
+//.header { display: flex; margin-top: 9px; width: 100%; flex-direction: column; }
+//.breadcrumb { display: flex; margin-left: 17px; width: 64px; flex-direction: column; color: #2d3748; }
+//.breadcrumb-text { align-self: start; font: 400 24px Helvetica, sans-serif; }
+//.page-title { margin-top: 5px; font: 800 14px/1.4 'Abhaya Libre ExtraBold', sans-serif; }
+//.stats-container { display: flex; margin-top: 40px; gap: 24px; font-family: 'Abhaya Libre ExtraBold', sans-serif; font-weight: 800; flex-wrap: wrap; }
+//.stat-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; gap: 40px 100px; flex: 1; padding: 18px 20px; }
+//.stat-content { align-self: start; display: flex; flex-direction: column; }
+//.stat-label { color: #a0aec0; font-size: 12px; align-self: start; }
+//.stat-value { display: flex; margin-top: 9px; gap: 9px; white-space: nowrap; line-height: 1.4; }
+//.stat-number { color: #2d3748; font-size: 18px; flex-grow: 1; }
+//.stat-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 45px; border-radius: 0; }
+//.search-section { align-self: center; display: flex; width: 335px; max-width: 100%; gap: 40px 48px; }
+//.search-container { display: flex; gap: 18px; flex-grow: 1; flex-basis: auto; }
+//.search-input { border-radius: 15px; border: 0.5px solid #e2e8f0; background: #fff; display: flex; min-height: 40px; overflow: hidden; justify-content: start; }
+//.search-icon-container { display: flex; align-items: center; overflow: hidden; justify-content: center; height: 100%; width: 38px; }
+//.search-icon { align-self: stretch; display: flex; min-height: 20px; align-items: center; gap: 5px; overflow: hidden; justify-content: start; margin: auto 0; padding: 3px 6px; }
+//.search-icon-img { aspect-ratio: 1; object-fit: contain; object-position: center; width: 15px; align-self: stretch; margin: auto 0; }
+//.search-placeholder { display: flex; flex-direction: column; overflow: hidden; color: #a0aec0; justify-content: center; margin: auto 0; font: 800 12px 'Abhaya Libre ExtraBold', sans-serif; }
+//.user-menu { display: flex; min-height: 16px; align-items: center; gap: 4px; overflow: hidden; color: #718096; justify-content: start; margin: auto 0; font: 800 12px 'Abhaya Libre ExtraBold', sans-serif; }
+//.user-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 12px; align-self: stretch; margin: auto 0; }
+//.user-text { align-self: stretch; width: 67px; margin: auto 0; }
+//.notification-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 12px; margin: auto 0; }
+//.total-sales-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; margin-top: 42px; width: 100%; gap: 20px; font-family: 'Abhaya Libre ExtraBold', sans-serif; font-weight: 800; justify-content: space-between; padding: 18px 20px; }
+//.total-sales-content { align-self: start; display: flex; gap: 12px; }
+//.total-sales-info { display: flex; flex-direction: column; }
+//.total-sales-label { color: #a0aec0; font-size: 12px; align-self: start; }
+//.total-sales-value { color: #2d3748; font-size: 18px; line-height: 1.4; margin-top: 11px; }
+//.total-sales-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 45px; border-radius: 0; }
+//.info-cards-container { margin-top: 23px; width: 100%; }
+//.info-cards-row { gap: 20px; display: flex; }
+//.info-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); flex-grow: 1; width: 100%; padding: 18px 19px; }
+//.info-card-content { gap: 20px; display: flex; }
+//.info-card-text { display: flex; width: 100%; flex-direction: column; align-items: start; font-family: 'Abhaya Libre ExtraBold', sans-serif; color: #a0aec0; font-weight: 800; }
+//.info-card-subtitle { font-size: 12px; }
+//.info-card-title { color: #2d3748; font-size: 18px; line-height: 1.4; margin-top: 11px; }
+//.info-card-description { font-size: 14px; line-height: 20px; align-self: stretch; margin-top: 16px; }
+//.info-card-button { display: flex; margin-top: 148px; gap: 5px; color: #2d3748; text-align: center; font: 700 10px Helvetica, sans-serif; }
+//.info-card-button-text { align-self: stretch; gap: 4px; overflow: hidden; margin: auto 0; }
+//.info-card-image { aspect-ratio: 1.41; object-fit: contain; object-position: center; width: 100%; border-radius: 0; flex-grow: 1; }
+//.chart-container { margin-top: 24px; }
+//.chart-row { gap: 20px; display: flex; }
+//.chart-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; width: 100%; flex-direction: column; align-items: start; font-family: 'Abhaya Libre ExtraBold', sans-serif; font-weight: 800; margin: 0 auto; padding: 16px 16px 30px; }
+//.chart-content { border-radius: 12px; align-self: stretch; display: flex; align-items: end; gap: 40px 52px; font-size: 10px; color: #fff; white-space: nowrap; flex-wrap: wrap; padding: 34px 33px; }
+//.chart-labels { align-self: start; display: flex; flex-direction: column; flex: 1; }
+//.chart-bar { border-radius: 15px; background: #fff; display: flex; width: 7px; }
+//.chart-title { color: #2d3748; font-size: 18px; line-height: 1.4; margin-top: 24px; }
+//.chart-subtitle { color: #a0aec0; font-size: 14px; line-height: 1.4; margin-top: 20px; }
+//.chart-legend { display: flex; margin-top: 45px; width: 531px; max-width: 100%; gap: 20px; white-space: nowrap; flex-wrap: wrap; justify-content: space-between; }
+//.legend-item { display: flex; flex-direction: column; align-items: start; width: 101px; max-width: 100%; }
+//.legend-label { display: flex; gap: 10px; font-size: 12px; color: #a0aec0; }
+//.legend-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 25px; border-radius: 0; }
+//.legend-value { color: #2d3748; font-size: 18px; line-height: 1.4; margin-top: 6px; }
+//.legend-chart { object-fit: contain; object-position: center; width: 100%; border-radius: 0; align-self: stretch; margin-top: 22px; }
+//.projects-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; width: 100%; flex-direction: column; margin: 0 auto; padding: 27px 21px; }
+//.projects-header { display: flex; gap: 20px; font-family: 'Abhaya Libre ExtraBold', sans-serif; color: #a0aec0; font-weight: 800; justify-content: space-between; }
+//.projects-title-container { align-self: start; display: flex; margin-top: 5px; flex-direction: column; align-items: start; }
+//.projects-title { color: #2d3748; font-size: 18px; line-height: 1.4; }
+//.projects-subtitle { align-self: stretch; display: flex; margin-top: 16px; gap: 5px; font-size: 14px; line-height: 1.4; }
+//.projects-subtitle-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 15px; align-self: start; }
+//.projects-subtitle-text { flex-grow: 1; width: 109px; }
+//.projects-column-label { font-size: 10px; margin-top: 31px; }
+//.projects-list { display: flex; margin-top: 19px; width: 966px; max-width: 100%; gap: 20px; flex-wrap: wrap; justify-content: space-between; font: 800 14px/1.4 'Abhaya Libre ExtraBold', sans-serif; }
+//.project-item { display: flex; gap: 17px; color: #2d3748; margin: auto 0; }
+//.project-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 20px; }
+//.project-name { flex-basis: auto; }
+//.project-details { display: flex; align-items: start; gap: 40px 100px; flex-wrap: wrap; }
+//.project-budget { aspect-ratio: 3.22; object-fit: contain; object-position: center; width: 74px; }
+//.project-progress { display: flex; flex-direction: column; }
+//.project-progress-text { display: flex; width: 209px; max-width: 100%; gap: 20px; white-space: nowrap; justify-content: space-between; }
+//.project-progress-bar { align-self: end; display: flex; margin-top: 8px; width: 125px; max-width: 100%; flex-direction: column; }
+//.progress-bar-bg { background-color: #e2e8f0; height: 3px; }
+//<style>
+// .progress-bar-fill { background-color: #4fd1c5; z-index: 10; height: 3px; }
+//.orders-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; width: 100%; flex-direction: column; align-items: start; margin: 0 auto; padding: 30px 80px 30px 19px; }
+//.orders-title { color: #2d3748; font: 800 18px/1.4 'Abhaya Libre ExtraBold', sans-serif; }
+//.orders-subtitle { color: #a0aec0; margin-top: 6px; font: 800 14px/1.4 'Abhaya Libre ExtraBold', sans-serif; }
+//.order-item { display: flex; margin-top: 45px; gap: 19px; }
+//.order-icon-container { display: flex; flex-direction: column; }
+//.order-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 16px; }
+//.order-details { align-self: start; display: flex; flex-direction: column; font-family: 'Abhaya Libre ExtraBold', sans-serif; font-weight: 800; }
+//.order-description { color: #2d3748; font-size: 14px; line-height: 1.4; }
+//.order-date { color: #a0aec0; font-size: 12px; align-self: start; margin-top: 12px; }
+//.footer { display: flex; margin-top: 29px; width: 100%; gap: 40px 100px; flex-wrap: wrap; font: 800 12px 'Abhaya Libre ExtraBold', sans-serif; }
+//.footer-text { color: #38b2ac; }
+//.footer-links { align-self: start; display: flex; gap: 40px 46px; color: #a0aec0; flex: 1; }
+//
+//@media (max-width: 991px) {
+//  .sidebar { margin-top: 40px; }
+//  .nav-item { white-space: initial; margin: 0 7px; }
+//  .help-section { margin-top: 40px; }
+//  .help-button { white-space: initial; }
+//  .main-content { max-width: 100%; padding: 0 20px; }
+//  .header { max-width: 100%; margin-top: 33px; }
+//  .breadcrumb { margin-left: 10px; }
+//  .stats-container { margin-top: 40px; }
+//  .total-sales-card { margin-top: 40px; }
+//  .info-cards-container { max-width: 100%; }
+//  .info-card { max-width: 100%; margin-top: 24px; padding: 0 20px; }
+//  .info-card-button { margin-top: 40px; }
+//  .info-card-image { margin-top: 40px; }
+//  .chart-container { max-width: 100%; }
+//  .chart-card { max-width: 100%; margin-top: 24px; padding: 0 20px; }
+//  .chart-content { max-width: 100%; white-space: initial; padding: 0 20px; }
+//  .chart-labels { display: none; white-space: initial; }
+//  .chart-bar { margin-top: 40px; }
+//  .chart-title { margin-left: 5px; }
+//  .chart-subtitle { margin-left: 6px; }
+//  .chart-legend { margin-top: 40px; white-space: initial; }
+//  .projects-card { max-width: 100%; margin-top: 24px; }
+//  .projects-list { max-width: 100%; }
+//  .orders-card { max-width: 100%; margin-top: 24px; padding-right: 20px; }
+//  .orders-title { margin-left: 2px; }
+//  .orders-subtitle { margin-left: 2px; }
+//  .order-item { margin: 40px 0 0 2px; }
+//  .footer { max-width: 100%; margin-right: 4px; }
+//}
+.dashboard-screen {
+  display: flex;
+  background-color: #f8f9fa;
+  font-family: 'Abhaya Libre ExtraBold', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #fff;
+  box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02);
+  padding: 20px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 22px;
+  height: 22px;
+}
+
+.dashboard-title {
+  font-size: 14px;
+  color: #2d3748;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-item {
+  margin-bottom: 12px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 15px;
+  color: #a0aec0;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover,
+.nav-item.active .nav-link {
+  background-color: #fff;
+  color: #2d3748;
+}
+
+.nav-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.section-title {
+  font-size: 12px;
+  color: #2d3748;
+  margin: 20px 0 10px;
+}
+
+.help-section {
+  background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/f9c63863d00a0285b9aead9a7241caf5a9fc71ae6c5606b2a3405672276805da?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d');
+  background-size: cover;
+  border-radius: 15px;
+  padding: 20px;
+  color: #fff;
+  margin-top: 30px;
+}
+
+.help-title {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.help-text {
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.documentation-btn {
+  display: inline-block;
+  background-color: #fff;
+  color: #2d3748;
+  padding: 8px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+}
+
+.main-header {
+  margin-bottom: 30px;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #a0aec0;
+}
+
+.breadcrumb-item.active {
+  color: #2d3748;
+}
+
+.page-title {
+  font-size: 24px;
+  color: #2d3748;
+  margin-top: 10px;
+}
+
+.stats-overview {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-title {
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+.stat-value {
+  font-size: 18px;
+  color: #2d3748;
+  margin: 5px 0;
+}
+
+.stat-change {
+  font-size: 14px;
+}
+
+.stat-change.positive {
+  color: #48bb78;
+}
+
+.stat-change.negative {
+  color: #e53e3e;
+}
+
+.stat-icon {
+  width: 45px;
+  height: 45px;
+}
+
+.info-cards {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.info-card {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.info-content {
+  flex: 1;
+}
+
+.info-title {
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+.info-subtitle {
+  font-size: 18px;
+  color: #2d3748;
+  margin: 10px 0;
+}
+
+.info-description {
+  font-size: 14px;
+  color: #a0aec0;
+  margin-bottom: 15px;
+}
+
+.info-link {
+  display: inline-block;
+  color: #2d3748;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.info-image {
+  max-width: 50%;
+  height: auto;
+}
+
+.data-charts {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.chart-card {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.chart-title {
+  font-size: 18px;
+  color: #2d3748;
+  margin-bottom: 5px;
+}
+
+.chart-subtitle {
+  font-size: 14px;
+  color: #a0aec0;
+}
+
+.chart-container {
+  height: 300px;
+  margin: 20px 0;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: space-between;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.legend-label {
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+.legend-value {
+  font-size: 18px;
+  color: #2d3748;
+}
+
+.projects-overview {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.projects-table th,
+.projects-table td {
+  padding: 15px;
+  text-align: left;
+}
+
+.projects-table th {
+  font-size: 10px;
+  color: #a0aec0;
+  text-transform: uppercase;
+}
+
+.company-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.team-members {
+  width: 74px;
+  height: 23px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 3px;
+  background-color: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4fd1c5;
+}
+
+.progress-text {
+  font-size: 14px;
+  color: #4fd1c5;
+  margin-left: 5px;
+}
+
+.orders-overview {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.order-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.order-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.order-description {
+  font-size: 14px;
+  color: #2d3748;
+}
+
+.order-date {
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+@media (max-width: 991px) {
+  .dashboard-screen {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .stats-overview,
+  .info-cards,
+  .data-charts {
+    flex-direction: column;
+  }
+
+  .stat-card,
+  .info-card,
+  .chart-card {
+    width: 100%;
+  }
+}

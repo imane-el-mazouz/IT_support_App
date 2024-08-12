@@ -35,7 +35,14 @@ export const routes: Routes = [
   // { path : 'userU' , component: DashUserComponent},
   { path: 'technician', component: DashTechComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician }},
   { path: 'userU', component: DashUserComponent, canActivate: [GuardService], data: { expectedRole: Role.UserU }},
-  { path: 'dashboard', component: AdminComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin }},
+
+
+  { path: 'dashboard', component: AdminComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } , children: [
+      {
+        path: 'saveUser',
+        loadChildren: () => import('./../app/components/Admin/save-user/save-user.module').then(m => m.SaveUserModule)
+      }
+    ]} ,
   { path: 'access-denied', component: GuardComponent },
   { path: 'saveUser', component: SaveUserComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin }},
   { path: 'saveTech', component: SaveTechnicianComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin } },

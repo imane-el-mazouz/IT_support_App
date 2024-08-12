@@ -3,13 +3,13 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {NgIf} from "@angular/common";
 import {User} from "../../../model/User/user";
 import {UserUService} from "../../../service/user/user.service";
-import {Router} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 import {UserU} from "../../../model/UserU/userU";
 
 @Component({
   selector: 'app-save-user',
   standalone: true,
-  imports: [ReactiveFormsModule , NgIf],
+  imports: [ReactiveFormsModule, NgIf, RouterOutlet],
   templateUrl: './save-user.component.html',
   styleUrls: ['./save-user.component.scss']
 })

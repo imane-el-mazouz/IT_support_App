@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {SaveUserComponent} from "./save-user/save-user.component";
 import {AsyncPipe, NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterOutlet} from "@angular/router";
 import {UserUService} from "../../service/user/user.service";
+import {AsideComponent} from "./aside/aside.component";
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +13,9 @@ import {UserUService} from "../../service/user/user.service";
     SaveUserComponent,
     NgIf,
     AsyncPipe,
-    RouterLink
+    RouterLink,
+    AsideComponent,
+    RouterOutlet
   ],
   styleUrls: ['./admin.component.scss']
 })
