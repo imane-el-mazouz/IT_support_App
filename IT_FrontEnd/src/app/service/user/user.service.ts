@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserUService {
-  private apiUrl = 'http://localhost:8081/api/users';
+  private apiUrl = 'http://localhost:8080/api/users';
   private usersSubject = new BehaviorSubject<UserU[]>([]);
   usersU$: Observable<UserU[]> = this.usersSubject.asObservable();
 

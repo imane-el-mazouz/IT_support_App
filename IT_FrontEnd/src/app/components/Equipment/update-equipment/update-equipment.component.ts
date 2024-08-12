@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { EquipmentService } from '../../../service/equipment/equipment.service';
 import { NgForOf, NgIf } from "@angular/common";
-import {EquipmentStatus} from "../../../enums/equipment-status";
+import {EquipmentStatus} from "../../../model/Equipment/equipment";
 
 @Component({
   selector: 'app-update-equipment',
@@ -29,11 +29,12 @@ export class UpdateEquipmentComponent implements OnInit {
   ) {
     this.equipmentForm = this.fb.group({
       name: ['', Validators.required],
-      description: [''],
-      status: ['', Validators.required],
-      purchaseDate: [''],
-      warrantyEndDate: [''],
-      type: ['']
+      description: ['' , Validators.required] ,
+      purchaseDate: ['' , Validators.required],
+      warrantyEndDate: ['' , Validators.required],
+      type: ['' , Validators.required],
+      equipmentstatus: ['', Validators.required],
+
     });
   }
 

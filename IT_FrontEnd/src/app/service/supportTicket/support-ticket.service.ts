@@ -12,7 +12,7 @@ import {catchError} from "rxjs/operators";
 export class SupportTicketService {
 
   // private apiUrl = 'http://localhost:8080/api/ticket';
-  private apiUrl = 'http://localhost:8081/api/ticket';
+  private apiUrl = 'http://localhost:8080/api/ticket';
 
   constructor(private http : HttpClient) { }
 

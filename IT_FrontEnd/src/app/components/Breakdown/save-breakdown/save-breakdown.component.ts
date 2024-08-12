@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {BreakdownService} from "../../../service/breakdown/breakdown.service";
 import {Router} from "@angular/router";
@@ -17,7 +17,7 @@ import {KeyValuePipe, NgForOf} from "@angular/common";
   templateUrl: './save-breakdown.component.html',
   styleUrl: './save-breakdown.component.scss'
 })
-export class SaveBreakdownComponent {
+export class SaveBreakdownComponent implements OnInit{
   breakdownForm: FormGroup;
   repairStatuses = RepairStatus;
 
@@ -44,7 +44,7 @@ export class SaveBreakdownComponent {
         () => {
           this.router.navigate(['/list-breakdowns']);
         },
-        error => console.error('Error saving breakdown:', error)
+        error => console.error('Error saving equipment:', error)
       );
     }
   }

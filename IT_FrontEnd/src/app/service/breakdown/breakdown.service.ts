@@ -12,7 +12,7 @@ export class BreakdownService {
 
 
   // private apiUrl = 'http://localhost:8080/api/breakdowns';
-  private apiUrl = 'http://localhost:8081/api/breakdowns';
+  private apiUrl = 'http://localhost:8080/api/breakdowns';
 
   constructor(private http: HttpClient) { }
 

@@ -10,18 +10,22 @@ import {Breakdown} from "../../model/Breakdow/breakdown";
 })
 export class EquipmentService {
 
-  // private apiUrl = 'http://localhost:8080/api/equipment';
-  private apiUrl = 'http://localhost:8081/api/equipment';
+  // private apiUrl = 'http://localhost:8081/api/equipment';
+  private apiUrl = 'http://localhost:8080/api/equipment';
 
   constructor(private http: HttpClient) { }
 
+
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
+    console.log('Token:', token);  // Debugging line
     return new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
   }
+
+
 
   getEquipments(): Observable<Equipment[]> {
     return this.http.get<Equipment[]>(`${this.apiUrl}`, { headers: this.getHeaders() })
@@ -30,9 +34,13 @@ export class EquipmentService {
   }
 
   saveEquipment(equipment: Equipment): Observable<Equipment> {
-    return this.http.post<Equipment>(`${this.apiUrl}`, equipment, { headers: this.getHeaders() })
-      .pipe(catchError(this.handleError));
+    return this.http.post<Equipment>(`${this.apiUrl}`, equipment, {
+      headers: this.getHeaders(),
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
+
 
   getEquipmentById(id: number | undefined): Observable<Equipment> {
     return this.http.get<Equipment>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() })

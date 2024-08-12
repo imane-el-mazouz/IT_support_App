@@ -9,7 +9,7 @@
     <h3 class="t-op-nextlvl">{{ equipment.purchaseDate | date }}</h3>
     <h3 class="t-op-nextlvl">{{ equipment.warrantyEndDate | date }}</h3>
     <h3 class="t-op-nextlvl">{{ equipment.type }}</h3>
-    <h3 class="t-op-nextlvl">{{ equipmentStatus[equipment.equipmentStatus] }}</h3>
+    <h3 class="t-op-nextlvl">{{ equipment.equipmentstatus}}</h3>
     <div class="t-op-nextlvl">
       <button (click)="editEquipment(equipment.id)">Edit</button>
       <button (click)="deleteEquipment(equipment.id)">Delete</button>

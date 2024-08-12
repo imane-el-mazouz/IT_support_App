@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from "@angular/common";
-import { Equipment } from "../../../model/Equipment/equipment";
-import { EquipmentService } from "../../../service/equipment/equipment.service";
-import { Router } from "@angular/router";
-import { EquipmentStatus } from "../../../enums/equipment-status";
-import { Breakdown } from "../../../model/Breakdow/breakdown";
-import { BreakdownService } from "../../../service/breakdown/breakdown.service";
+import {Component, OnInit} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {Equipment} from "../../../model/Equipment/equipment";
+import {Breakdown} from "../../../model/Breakdow/breakdown";
+import {EquipmentService} from "../../../service/equipment/equipment.service";
+import {BreakdownService} from "../../../service/breakdown/breakdown.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-equipment',
@@ -16,7 +15,6 @@ import { BreakdownService } from "../../../service/breakdown/breakdown.service";
 })
 export class ListEquipmentComponent implements OnInit {
   equipments: Equipment[] = [];
-  equipmentStatus = EquipmentStatus;
   breakdowns: Breakdown[] = [];
   selectedEquipmentId: number | null = null;
   loading: boolean = false;

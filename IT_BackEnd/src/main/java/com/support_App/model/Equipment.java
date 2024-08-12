@@ -32,7 +32,6 @@ public class Equipment {
     private String description;
 
 
-
     private LocalDate purchaseDate;
     private LocalDate warrantyEndDate;
 
