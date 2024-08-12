@@ -1,0 +1,32 @@
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>Ticket ID</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let ticket of tickets">
+    <td>{{ ticket.id }}</td>
+    <td>{{ ticket.description }}</td>
+    <td>{{ ticket.ticketStatus }}</td>
+    <td>
+      <button (click)="onSelectTicket(ticket.id)">Update Status</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div *ngIf="selectedTicketId">
+  <form [formGroup]="updateStatusForm" (ngSubmit)="onUpdateStatus()">
+    <label for="status">Status:</label>
+    <select formControlName="status" id="status">
+      <option *ngFor="let status of statusEnum" [value]="status">{{ status }}</option>
+    </select>
+    <button type="submit">Update</button>
+  </form>
+</div>

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserU } from '../../model/UserU/userU';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import {Technician} from "../../model/Technician/technician";
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,12 @@ export class UserUService {
 
   toggleSaveUserDisplay(show: boolean) {
     this.showSaveUserSubject.next(show);
+  }
+
+
+  getTechnicians(): Observable<Technician[]> {
+    return this.http.get<Technician[]>(`${this.apiUrl}/technicians`, { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: any): Observable<never> {

@@ -30,10 +30,13 @@ export class SupportTicketService {
   }
 
 
-  assignTicketToTechnician(ticketId: number, technicianId: number): Observable<SupportTicket> {
-    return this.http.put<SupportTicket>(`${this.apiUrl}/${ticketId}/assign/${technicianId}`,  { headers: this.getHeaders() })
+  assignTicketToTechnician(ticketId: number, technicianId: number ): Observable<SupportTicket> {
+    return this.http.put<SupportTicket>(`${this.apiUrl}/${ticketId}/assign/${technicianId}`,null, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
+
   }
+
+
 
   getTicketById(ticketId: number | undefined): Observable<SupportTicket> {
     return this.http.get<SupportTicket>(`${this.apiUrl}/${ticketId}`, { headers: this.getHeaders() })
@@ -52,7 +55,7 @@ export class SupportTicketService {
   }
 
   updateTicketStatus(ticketId: number, status: Status): Observable<SupportTicket> {
-    return this.http.put<SupportTicket>(`${this.apiUrl}/${ticketId}/status?status=${status}`, { headers: this.getHeaders() })
+    return this.http.put<SupportTicket>(`${this.apiUrl}/${ticketId}/status?status=${status}`, null ,{ headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }
 

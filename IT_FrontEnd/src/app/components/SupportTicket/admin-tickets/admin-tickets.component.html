@@ -19,6 +19,7 @@
     <td>{{ ticket.createdDate | date }}</td>
     <td>{{ ticket.ticketStatus }}</td>
     <td>
+      <button (click)="onAssignButtonClick(ticket.id)">Assign Technician</button>
     </td>
   </tr>
   </tbody>
@@ -27,3 +28,16 @@
 <ng-template #noTickets>
   <p>No tickets available.</p>
 </ng-template>
+
+<div *ngIf="showAssignForm" class="assign-ticket-container">
+  <h2>Assign Ticket to Technician</h2>
+  <form [formGroup]="assignForm" (ngSubmit)="onSubmit()">
+    <label for="technician">Technician</label>
+    <select id="technician" formControlName="technicianId">
+      <option *ngFor="let technician of technicians" [value]="technician.id">{{ technician.name }}</option>
+    </select>
+
+    <button type="submit" [disabled]="assignForm.invalid">Assign Technician</button>
+    <button type="button" (click)="onCancel()">Cancel</button>
+  </form>
+</div>
