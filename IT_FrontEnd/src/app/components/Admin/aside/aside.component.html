@@ -7,21 +7,24 @@
     <nav class="sidebar-nav">
       <ul class="nav-list">
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a [routerLink]="['dashboard']" class="nav-link">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/62e33eef970da576b082d7724b49659359ae920373b640ff26cf87b6797f80bb?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d" alt="" class="nav-icon" />
             <span>Dashboard</span>
           </a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/saveUser']" class="nav-link">
+          <a [routerLink]="['saveUser']" class="nav-link">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1431c88248b8b8eba42f9096941ed0296047919a1541d8a2254434b9522701b9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d" alt="" class="nav-icon" />
-            <span>Tables</span>
+            <span>Save new user</span>
           </a>
         </li>
+        <div *ngIf="showSaveUserForm">
+          <app-save-user></app-save-user>
+        </div>
         <li class="nav-item">
           <a href="#" class="nav-link" (click)="toggleSaveUserDisplay()">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1431c88248b8b8eba42f9096941ed0296047919a1541d8a2254434b9522701b9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d" alt="" class="nav-icon" />
-            <span>Show Save User</span>
+            <span>Show Save Technician</span>
           </a>
         </li>
         <li class="nav-item">

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SaveUserComponent } from './save-user.component';
+import { SaveUserRoutingModule } from './save-user-routing.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,7 @@ import { SaveUserComponent } from './save-user.component';
   imports: [
     CommonModule,
     SaveUserRoutingModule,
-    SaveUserComponent
+    SaveUserComponent,
   ]
 })
 export class SaveUserModule { }

@@ -3,7 +3,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {SignupComponent} from "./components/Admin/singup/singup.component";
 import {DashUserComponent} from "./components/Dash User/dash-user.component";
 import {DashTechComponent} from "./components/dash-tech/dash-tech.component";
-import {AdminComponent} from "./components/Admin/admin.component";
+import {AdminComponent} from "./components/Admin/admin-dash/admin.component";
 import {GuardService} from "./service/auth_guard/guard.service";
 import {GuardComponent} from "./components/guard/guard.component";
 import {Role} from "./enums/role";
@@ -25,11 +25,11 @@ import {UserTicketsComponent} from "./components/SupportTicket/user-tickets/user
 import {UpdateBreakdownComponent} from "./components/Breakdown/update-breakdown/update-breakdown.component";
 import {AdminTicketsComponent} from "./components/SupportTicket/admin-tickets/admin-tickets.component";
 import {TechnicianTicketsComponent} from "./components/SupportTicket/technician-tickets/technician-tickets.component";
+import {HomeComponent} from "./components/home/home.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path : 'signup' , component: SignupComponent},
-  { path : 'home' , component: SignupComponent},
   // { path : 'dashboard' , component: AdminComponent},
   // { path : 'technician' , component: DashTechComponent},
   // { path : 'userU' , component: DashUserComponent},
@@ -37,14 +37,15 @@ export const routes: Routes = [
   { path: 'userU', component: DashUserComponent, canActivate: [GuardService], data: { expectedRole: Role.UserU }},
 
 
-  { path: 'dashboard', component: AdminComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } , children: [
+  { path: 'dashboard', component: AdminComponent /*, canActivate: [GuardService], data: { expectedRole: Role.Admin } */
+    , children: [
       {
         path: 'saveUser',
         loadChildren: () => import('./../app/components/Admin/save-user/save-user.module').then(m => m.SaveUserModule)
       }
     ]} ,
   { path: 'access-denied', component: GuardComponent },
-  { path: 'saveUser', component: SaveUserComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin }},
+  { path: 'saveUser', component: SaveUserComponent , /*canActivate: [GuardService], data: { expectedRole: Role.Admin }*/},
   { path: 'saveTech', component: SaveTechnicianComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin } },
   { path: 'users', component: ListUsersComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin }},
   { path: 'equipments', component: ListEquipmentComponent ,/* canActivate: [GuardService], data: { expectedRole: Role.Admin } */ },
@@ -66,7 +67,10 @@ export const routes: Routes = [
 
   { path: 'technician-tickets/:technicianId', component: TechnicianTicketsComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician } },
 
-  { path : 'nav' , component: NavComponent}
+  { path : 'nav' , component: NavComponent},
+  { path : 'home' , component: HomeComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
+
 
 
 ];

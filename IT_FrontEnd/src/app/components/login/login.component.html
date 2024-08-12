@@ -1,29 +1,90 @@
-<div class="limiter">
-  <div class="container-login100">
-    <div class="wrap-login100 p-t-85 p-b-20">
-      <form [formGroup]="loginForm" (ngSubmit)="login()" class="login100-form validate-form">
-        <span class="login100-form-title p-b-70">
-          Login
-        </span>
-        <span class="login100-form-avatar">
-          <img src="assets/img/team/team-1.jpg" alt="AVATAR">
-        </span>
-        <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">
-          <input class="input100" type="text" id="email" formControlName="email" required>
-          <span class="focus-input100" data-placeholder="email"></span>
-        </div>
-        <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
-          <input class="input100" type="password" id="password" formControlName="password" required>
-          <span class="focus-input100" data-placeholder="Password"></span>
-        </div>
-        <div class="container-login100-form-btn">
-          <button class="login100-form-btn" type="submit" [disabled]="loginForm.invalid">
-            Login
-          </button>
-        </div>
+<!--<div class="limiter">-->
+<!--  <div class="container-login100">-->
+<!--    <div class="wrap-login100 p-t-85 p-b-20">-->
+<!--      <form [formGroup]="loginForm" (ngSubmit)="login()" class="login100-form validate-form">-->
+<!--        <span class="login100-form-title p-b-70">-->
+<!--          Login-->
+<!--        </span>-->
+<!--        <span class="login100-form-avatar">-->
+<!--          <img src="assets/img/team/team-1.jpg" alt="AVATAR">-->
+<!--        </span>-->
+<!--        <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">-->
+<!--          <input class="input100" type="text" id="email" formControlName="email" required>-->
+<!--          <span class="focus-input100" data-placeholder="email"></span>-->
+<!--        </div>-->
+<!--        <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">-->
+<!--          <input class="input100" type="password" id="password" formControlName="password" required>-->
+<!--          <span class="focus-input100" data-placeholder="Password"></span>-->
+<!--        </div>-->
+<!--        <div class="container-login100-form-btn">-->
+<!--          <button class="login100-form-btn" type="submit" [disabled]="loginForm.invalid">-->
+<!--            Login-->
+<!--          </button>-->
+<!--        </div>-->
 
-      </form>
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div id="dropDownSelect1"></div>-->
+<div class="sign-up-screen">
+  <div class="div">
+    <div class="div-2">
+      <div class="div-3">
+        <img
+          loading="lazy"
+          srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/e3caeed9c263681b9ea642eb9e5cec56bab4c9b640d9d94fe59b92ddf2b50bc9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/e3caeed9c263681b9ea642eb9e5cec56bab4c9b640d9d94fe59b92ddf2b50bc9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e3caeed9c263681b9ea642eb9e5cec56bab4c9b640d9d94fe59b92ddf2b50bc9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/e3caeed9c263681b9ea642eb9e5cec56bab4c9b640d9d94fe59b92ddf2b50bc9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/e3caeed9c263681b9ea642eb9e5cec56bab4c9b640d9d94fe59b92ddf2b50bc9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e3caeed9c263681b9ea642eb9e5cec56bab4c9b640d9d94fe59b92ddf2b50bc9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/e3caeed9c263681b9ea642eb9e5cec56bab4c9b640d9d94fe59b92ddf2b50bc9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/e3caeed9c263681b9ea642eb9e5cec56bab4c9b640d9d94fe59b92ddf2b50bc9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d"
+          class="img"/>
+        <div class="div-4">
+          <div class="div-8">
+            <div class="register-with">Sign In</div>
+            <div class="div-9">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/88cba128276c57fbd8627a2e543d467f3ca72afa53ca36017e3795ed0af91112?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d"
+                class="img-7"
+              />
+              <div class="div-10">
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/4831e57398b86f9523a92598abf22c993438f43a56bdc59db1947f5e39109586?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d"
+                  class="img-8"
+                />
+                <div class="or">or</div>
+              </div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/f4de470feebce04a6b5a12d26f3dadd091d50c23ec31b0ac4935141238d776c9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d"
+                class="img-9"
+              />
+            </div>
+            <div class="email">Email</div>
+            <div class="email-2">
+              <div class="input-field-text">
+                <input type="email" formControlName="email" placeholder="Your email address" />
+                <div class="🔛-min-width-3"></div>
+              </div>
+            </div>
+            <div class="password">Password</div>
+            <div class="email-3">
+              <div class="input-field-text">
+                <input type="password" formControlName="password" placeholder="Your password" />
+                <div class="🔛-min-width-4"></div>
+              </div>
+            </div>
+            <div class="button-base-2">
+              <button class="width-structure-5" type="submit" [disabled]="loginForm.invalid">
+                <div class="height-structure-5">
+                  <div class="button-body-5">SIGN UP</div>
+                </div>
+              </button>
+            </div>
+            <div class="already-have-an-account-sign-in">
+              Don't have an account? <a routerLink="/register"><span style="color: rgba(79, 209, 197, 1)">Sign up</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<div id="dropDownSelect1"></div>
