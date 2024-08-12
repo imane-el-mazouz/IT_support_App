@@ -1,0 +1,29 @@
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
+<table *ngIf="tickets.length > 0; else noTickets">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Description</th>
+    <th>Created Date</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let ticket of tickets">
+    <td>{{ ticket.id }}</td>
+    <td>{{ ticket.description }}</td>
+    <td>{{ ticket.createdDate | date }}</td>
+    <td>{{ ticket.ticketStatus }}</td>
+    <td>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-template #noTickets>
+  <p>No tickets available.</p>
+</ng-template>

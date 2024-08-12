@@ -40,6 +40,12 @@ export class SupportTicketService {
       .pipe(catchError(this.handleError));
   }
 
+  getAllTicketsOfUser(): Observable<SupportTicket[]> {
+    return this.http.get<SupportTicket[]>(`${this.apiUrl}/tickets`, { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
+  }
+
+
   getTicketsByTechnicianId(technicianId: number | undefined): Observable<SupportTicket[]> {
     return this.http.get<SupportTicket[]>(`${this.apiUrl}/technician/${technicianId}`, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));

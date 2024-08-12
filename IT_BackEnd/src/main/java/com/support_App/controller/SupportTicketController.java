@@ -2,8 +2,10 @@ package com.support_App.controller;
 
 
 import com.support_App.enums.Status;
+import com.support_App.model.Admin;
 import com.support_App.model.SupportTicket;
 import com.support_App.model.User;
+import com.support_App.model.UserU;
 import com.support_App.service.SupportTicketService;
 import com.support_App.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -73,14 +76,30 @@ public ResponseEntity<SupportTicket> assignTicketToTechnician(@PathVariable Long
         return ResponseEntity.ok(ticket);
     }
 
-    @PreAuthorize("hasRole('UserU') or hasRole('Admin') or hasRole('Technician')")
+    @PreAuthorize("hasRole('Admin')")
     @GetMapping
-    public ResponseEntity<SupportTicket> getAllTickets(){
-        SupportTicket ticket = supportTicketService.getAllTickets();
-        return ResponseEntity.ok(ticket);
+    public ResponseEntity<List<SupportTicket>> getAllTickets() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        Admin admin = (Admin) userService.findByEmail(email);
+        List<SupportTicket> tickets = supportTicketService.getAllTickets();
+        System.out.println("Admin with email " + email + " requested all tickets.");
+        return ResponseEntity.ok(tickets);
     }
 
-//    @PreAuthorize("hasRole('Technician')")
+
+    @PreAuthorize("hasRole('UserU')")
+    @GetMapping("/tickets")
+    public ResponseEntity<List<SupportTicket>> getAllTicketsOfUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        UserU userU = (UserU) userService.findByEmail(email);
+        List<SupportTicket> tickets = supportTicketService.getAllTicketsOfUser(userU);
+        return ResponseEntity.ok(tickets);
+    }
+
+
+    //    @PreAuthorize("hasRole('Technician')")
 @PreAuthorize("hasRole('Admin') or hasRole('UserU') or hasRole('Technician')")
 @GetMapping("/technician/{technicianId}")
     public ResponseEntity<List<SupportTicket>> getTicketsByTechnicianId(@PathVariable Long technicianId) {

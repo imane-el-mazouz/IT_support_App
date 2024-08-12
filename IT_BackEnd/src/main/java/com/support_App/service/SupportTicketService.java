@@ -69,9 +69,15 @@ public SupportTicket saveTicket(SupportTicket supportTicket, Long breakdownId, L
                 .orElseThrow(() -> new SupportTicketNotFoundException("Ticket not found with ID " + ticketId));
     }
 
-    public SupportTicket getAllTickets() {
-        return (SupportTicket) supportTicketRepository.findAll();
+    public List<SupportTicket> getAllTickets() {
+        return supportTicketRepository.findAll();
     }
+
+
+    public List<SupportTicket> getAllTicketsOfUser(UserU userU) {
+        return supportTicketRepository.findByUserU(userU);
+    }
+
 
     public List<SupportTicket> getTicketsByTechnicianId(Long technicianId) {
         User user = userRepository.findById(technicianId)

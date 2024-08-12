@@ -25,9 +25,6 @@ export class SaveTicketComponent implements OnInit{
   equipments: Equipment[] = [];
   statusOptions = Object.values(Status);
 
-
-
-
   constructor(
     private fb: FormBuilder,
     private supportTicketService: SupportTicketService,
@@ -66,7 +63,7 @@ export class SaveTicketComponent implements OnInit{
     if (this.addTicketForm.valid) {
       const formValue = this.addTicketForm.value;
       this.supportTicketService.saveTicket(formValue, formValue.breakdownId, formValue.equipmentId).subscribe(
-        () => this.router.navigate(['/list-tickets']),
+        () => this.router.navigate(['/tickets']),
         error => {
           console.error('Error adding ticket:', error);
         }
