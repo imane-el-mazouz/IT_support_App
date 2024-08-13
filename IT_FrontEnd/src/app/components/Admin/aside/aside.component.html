@@ -22,14 +22,22 @@
           <app-save-user></app-save-user>
         </div>
         <li class="nav-item">
+          <a [routerLink]="['pageUser']" class="nav-link">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1431c88248b8b8eba42f9096941ed0296047919a1541d8a2254434b9522701b9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d" alt="" class="nav-icon" />
+            <span>Users</span>
+          </a>
+        </li>
+        <div *ngIf="showSaveUserForm">
+          <app-user-page></app-user-page>
+        </div>
+        <li class="nav-item">
           <a [routerLink]="['saveTech']" class="nav-link">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1431c88248b8b8eba42f9096941ed0296047919a1541d8a2254434b9522701b9?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d" alt="" class="nav-icon" />
             <span>Show Save Technician</span>
           </a>
         </li>
-        <div *ngIf="showTechForm">
          <app-save-technician></app-save-technician>
-        </div>
+
         <li class="nav-item">
           <a href="#" class="nav-link">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d637af45d76d27a181eb228bede809162f275a7584216f42a49824c45147dc69?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d" alt="" class="nav-icon" />

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {SaveUserComponent} from "../save-user/save-user.component";
+import {SaveUserComponent} from "../user_management/save-user/save-user.component";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {RouterLink, RouterOutlet} from "@angular/router";
 import {UserUService} from "../../../service/user/user.service";

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {User} from "../../../model/User/user";
-import {UserUService} from "../../../service/user/user.service";
+import {User} from "../../../../model/User/user";
+import {UserUService} from "../../../../service/user/user.service";
 import {Router, RouterOutlet} from "@angular/router";
-import {UserU} from "../../../model/UserU/userU";
+import {UserU} from "../../../../model/UserU/userU";
 
 @Component({
   selector: 'app-save-user',

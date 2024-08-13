@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule, NgForOf, NgIf} from "@angular/common";
-import {User} from "../../../model/User/user";
-import {UserU} from "../../../model/UserU/userU";
-import {UserUService} from "../../../service/user/user.service";
+import {User} from "../../../../model/User/user";
+import {UserU} from "../../../../model/UserU/userU";
+import {UserUService} from "../../../../service/user/user.service";
 
 @Component({
   selector: 'app-list-users',
