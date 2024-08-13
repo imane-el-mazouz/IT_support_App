@@ -14,6 +14,7 @@ export class UserUService {
   usersU$: Observable<UserU[]> = this.usersSubject.asObservable();
 
   private showSaveUserSubject = new BehaviorSubject<boolean>(false);
+  private showSaveTechSubject = new BehaviorSubject<boolean>(false);
   showSaveUser$ = this.showSaveUserSubject.asObservable();
 
   constructor(private http: HttpClient) { }
@@ -50,4 +51,9 @@ export class UserUService {
     console.error('An error occurred', error);
     return throwError(() => new Error('Something went wrong, please try again later.'));
   }
+  toggleSaveTechDisplay(show: boolean) {
+    this.showSaveTechSubject.next(show);
+  }
+
+
 }

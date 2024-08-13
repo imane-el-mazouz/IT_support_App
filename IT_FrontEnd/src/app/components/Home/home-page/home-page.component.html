@@ -1,0 +1,565 @@
+<app-nav-bar></app-nav-bar>
+<section id="hero" class="hero section dark-background">
+
+
+  <div class="container">
+    <div class="row" style="margin-bottom: 260px">
+      <div class="col-lg-8 d-flex flex-column align-items-center align-items-lg-start">
+        <h2 data-aos="fade-up" data-aos-delay="100">Welcome to <span>It Company</span></h2>
+        <p data-aos="fade-up" data-aos-delay="200">Innovative IT services for the modern world.</p>
+        <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+          <a [routerLink]="['/home']" fragment="home" routerLinkActive="active" class="cta-btn">Get In Touch</a>
+          <a routerLink="/login" class="cta-btn">Show More</a>
+        </div>
+      </div>
+<!--      <div class="col-lg-4 d-flex align-items-center justify-content-center mt-5 mt-lg-0">-->
+<!--        <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>-->
+<!--      </div>-->
+    </div>
+  </div>
+  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d6b157f2b719f669d3bdf83f25902722da651f878514bf458b063a0582db601a?placeholderIfAbsent=true&apiKey=fbeb5a321590488ab4d866ae3e262c8d" alt="Login illustration" class="login-image"
+        style="  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  z-index: 1;" alt="" data-aos="fade-in">
+
+</section><!-- /Hero Section -->
+
+<section id="about" class="about section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row gy-4">
+      <div class="col-lg-6 order-1 order-lg-2">
+        <img src="assets/img/about.jpg" class="img-fluid about-img" alt="">
+      </div>
+      <div class="col-lg-6 order-2 order-lg-1 content">
+        <h3 style="color: white;margin: 0; font-size: 36px;font-weight: 600;font-family: var(--heading-font);">Creating Memorable Events</h3>
+        <p class="fst-italic">
+          We specialize in organizing a wide range of events tailored to your needs, ensuring every detail is perfect.
+        </p>
+        <ul>
+          <li><i class="bi bi-check2-all"></i> <span>Expert event planning and coordination.</span></li>
+          <li><i class="bi bi-check2-all"></i> <span>Personalized services to meet your unique requirements.</span></li>
+          <li><i class="bi bi-check2-all"></i> <span>Comprehensive support from start to finish, ensuring a seamless experience.</span></li>
+        </ul>
+        <p>
+          Our team is dedicated to providing exceptional service and creating unforgettable experiences for our clients. Whether it's a wedding, corporate event, or private party, we are here to bring your vision to life.
+        </p>
+        <a routerLink="/about" href="#" class="cta-btn" style="color: var(--default-color);border: 2px solid var(--accent-color);font-weight: 400;font-size: 14px;text-transform: uppercase;letter-spacing: 1px;display: inline-block;padding: 8px 30px;border-radius: 50px;transition: 0.3s;flex-shrink: 0;">Learn More About Us</a>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /About Section -->
+
+<section id="why-us" class="why-us section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>WHY US</h2>
+    <p>Why Choose Our Event Services</p>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+
+    <div class="row gy-4">
+
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-item">
+          <span>01</span>
+          <h4><a href="" class="stretched-link">Experienced Team</a></h4>
+          <p>Our team has extensive experience in organizing various types of events, ensuring every detail is perfect.</p>
+        </div>
+      </div><!-- Card Item -->
+
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-item">
+          <span>02</span>
+          <h4><a href="" class="stretched-link">Personalized Services</a></h4>
+          <p>We offer customized solutions to meet your unique event needs, making your event truly special.</p>
+        </div>
+      </div><!-- Card Item -->
+
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-item">
+          <span>03</span>
+          <h4><a href="" class="stretched-link">Comprehensive Support</a></h4>
+          <p>From planning to execution, we provide full support to ensure a seamless and successful event.</p>
+        </div>
+      </div><!-- Card Item -->
+
+    </div>
+
+  </div>
+
+
+</section><!-- /Why Us Section -->
+<section id="menu" class="menu section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Our Services</h2>
+    <p>Explore Our Event Packages</p>
+  </div><!-- End Section Title -->
+
+  <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <ul class="menu-filters isotope-filters">
+          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter=".filter-starters">Conferences</li>
+          <li data-filter=".filter-salads">Festivals</li>
+          <li data-filter=".filter-specialty">Workshops</li>
+          <li data-filter=".filter-specialty">Sports</li>
+        </ul>
+      </div>
+    </div><!-- Menu Filters -->
+
+    <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+      <div class="col-lg-6 menu-item isotope-item filter-starters">
+        <img src="https://weezevent.com/wp-content/uploads/2022/11/30111540/comment-organiser-festival.jpg" class="menu-img" alt="">
+        <div class="menu-content">
+          <a href="#">Mawazine Festival</a><span>Join Us !</span>
+        </div>
+        <div class="menu-ingredients">
+          Experience the vibrant Mawazine Festival with top-notch performances, cultural showcases, and more.
+        </div>
+      </div><!-- Menu Item -->
+
+      <div class="col-lg-6 menu-item isotope-item filter-specialty">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Montreux_Jazz_2M2C_juillet_2023.jpg" class="menu-img" alt="">
+        <div class="menu-content">
+          <a href="#">Jazz Fest</a><span>Join Us!</span>
+        </div>
+        <div class="menu-ingredients">
+          Enjoy world-class jazz performances, local cuisine, and vibrant street performances at the Jazz Fest.
+        </div>
+      </div><!-- Menu Item -->
+
+      <div class="col-lg-6 menu-item isotope-item filter-specialty">
+        <img src="https://www.thetravelteam.com/wp-content/uploads/2019/03/team-travel.jpg" class="menu-img" alt="">
+        <div class="menu-content">
+          <a href="#">Sports Tournament</a><span>Don't Miss Out!</span>
+        </div>
+        <div class="menu-ingredients">
+          Participate in exciting sports tournaments featuring various sports, competitions, and thrilling matches.
+        </div>
+      </div><!-- Menu Item -->
+
+      <div class="col-lg-6 menu-item isotope-item filter-specialty">
+        <img src="https://media.gq-magazine.co.uk/photos/6422b386a74758f5d02d2b44/master/pass/How-to-train-for-a-marathon-hp-a.jpg" class="menu-img" alt="">
+        <div class="menu-content">
+          <a href="#">City Marathon</a><span>Join the Race!</span>
+        </div>
+        <div class="menu-ingredients">
+          Participate in the City Marathon and experience the excitement of a challenging race through iconic city landmarks.
+        </div>
+      </div><!-- Menu Item -->
+
+      <div class="col-lg-6 menu-item isotope-item filter-starters">
+        <img src="https://www.exordo.com/blog/wp-content/uploads/2023/12/Resized-image.jpeg" class="menu-img" alt="">
+        <div class="menu-content">
+          <a href="#">Tech Conference 2024</a><span>Sold Out</span>
+        </div>
+        <div class="menu-ingredients">
+          Join industry leaders and innovators at the Tech Conference 2024 for insightful talks, networking opportunities, and the latest technology trends.
+        </div>
+      </div><!-- Menu Item -->
+
+      <div class="col-lg-6 menu-item isotope-item filter-starters">
+        <img src="https://www.fisu.net/app/uploads/2023/10/wconf4.jpeg" class="menu-img" alt="">
+        <div class="menu-content">
+          <a href="#">Innovation Expo</a><span>Sold Out</span>
+        </div>
+        <div class="menu-ingredients">
+          Discover cutting-edge technologies and innovations at the Innovation Expo, featuring demonstrations and presentations from industry leaders.
+        </div>
+      </div><!-- Menu Item -->
+
+    </div><!-- Menu Container -->
+
+  </div>
+
+</section><!-- /Menu Section -->
+<section id="testimonials" class="testimonials section dark-background" style="">
+
+  <img src="assets/img/events-bg.jpg" class="testimonials-bg" alt="">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="swiper init-swiper">
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "autoplay": {
+            "delay": 5000
+          },
+          "slidesPerView": "auto",
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+          }
+        }
+      </script>
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+            <h3>Michael Smith</h3>
+            <h4>Senior Account Manager</h4>
+            <div class="stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>
+              <i class="bi bi-quote quote-icon-left"></i>
+              <span>"Our experience with this event has been exceptional. The organization was impeccable, and the participant support was top-notch. It has revolutionized the way we attend and enjoy events."</span>
+              <i class="bi bi-quote quote-icon-right"></i>
+            </p>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+            <h3>Linda Johnson</h3>
+            <h4>Financial Advisor</h4>
+            <div class="stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>
+              <i class="bi bi-quote quote-icon-left"></i>
+              <span>"The organization and features of this event are outstanding. I trust it for providing a seamless and enjoyable experience, and appreciate the smooth coordination with other event services."</span>
+              <i class="bi bi-quote quote-icon-right"></i>
+            </p>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+            <h3>David Williams</h3>
+            <h4>Business Owner</h4>
+            <div class="stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>
+              <i class="bi bi-quote quote-icon-left"></i>
+              <span>"Managing event logistics has never been easier. The user-friendly interface and excellent support make this platform my go-to for all event needs."</span>
+              <i class="bi bi-quote quote-icon-right"></i>
+            </p>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+            <h3>Emily Davis</h3>
+            <h4>Customer Service Specialist</h4>
+            <div class="stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>
+              <i class="bi bi-quote quote-icon-left"></i>
+              <span>"I have attended various events, but this one stands out for its reliability and ease of participation. It's a game-changer for enjoying both personal and professional events."</span>
+              <i class="bi bi-quote quote-icon-right"></i>
+            </p>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+            <h3>Robert Brown</h3>
+            <h4>Entrepreneur</h4>
+            <div class="stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>
+              <i class="bi bi-quote quote-icon-left"></i>
+              <span>"The comprehensive features and exceptional participant support make this event platform an excellent choice for anyone looking to streamline their event management."</span>
+              <i class="bi bi-quote quote-icon-right"></i>
+            </p>
+          </div>
+        </div><!-- End testimonial item -->
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+
+</section><!-- End Testimonials Section -->
+
+
+
+<!-- Team Section -->
+<section id="team" class="team section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Our Team</h2>
+    <p>Meet the Experts Behind Our Success</p>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+
+    <div class="row gy-4">
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>James Smith</h4>
+            <span>Organisator</span>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Emily Davis</h4>
+            <span>Director</span>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Michael Johnson</h4>
+            <span>Chief Technology Officer</span>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Olivia Brown</h4>
+            <span>Financial Analyst</span>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+    </div>
+
+  </div>
+
+</section><!-- /Team Section -->
+
+<!-- Gallery Section -->
+<section id="gallery" class="gallery section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>IM</h2>
+    <p>Explore our organisations</p>
+  </div><!-- End Section Title -->
+
+  <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row g-0">
+
+      <div class="col-lg-3 col-md-4">
+        <div class="gallery-item">
+          <a href="assets/img/gallery/gallery-1.jpg" class="glightbox" data-gallery="images-gallery">
+            <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div><!-- End Gallery Item -->
+
+      <div class="col-lg-3 col-md-4">
+        <div class="gallery-item">
+          <a href="assets/img/gallery/gallery-2.jpg" class="glightbox" data-gallery="images-gallery">
+            <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div><!-- End Gallery Item -->
+
+      <div class="col-lg-3 col-md-4">
+        <div class="gallery-item">
+          <a href="assets/img/gallery/gallery-3.jpg" class="glightbox" data-gallery="images-gallery">
+            <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div><!-- End Gallery Item -->
+
+      <div class="col-lg-3 col-md-4">
+        <div class="gallery-item">
+          <a href="assets/img/gallery/gallery-4.jpg" class="glightbox" data-gallery="images-gallery">
+            <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div><!-- End Gallery Item -->
+
+      <div class="col-lg-3 col-md-4">
+        <div class="gallery-item">
+          <a href="assets/img/gallery/gallery-5.jpg" class="glightbox" data-gallery="images-gallery">
+            <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div><!-- End Gallery Item -->
+
+      <div class="col-lg-3 col-md-4">
+        <div class="gallery-item">
+          <a href="assets/img/gallery/gallery-6.jpg" class="glightbox" data-gallery="images-gallery">
+            <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div><!-- End Gallery Item -->
+
+      <div class="col-lg-3 col-md-4">
+        <div class="gallery-item">
+          <a href="assets/img/gallery/gallery-7.jpg" class="glightbox" data-gallery="images-gallery">
+            <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div><!-- End Gallery Item -->
+
+      <div class="col-lg-3 col-md-4">
+        <div class="gallery-item">
+          <a href="assets/img/gallery/gallery-8.jpg" class="glightbox" data-gallery="images-gallery">
+            <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div><!-- End Gallery Item -->
+
+    </div>
+
+  </div>
+
+</section><!-- /Gallery Section -->
+<section id="contact" class="contact section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Contact Us</p>
+  </div><!-- End Section Title -->
+
+  <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
+    <iframe style="border:0; width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div><!-- End Google Maps -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row gy-4">
+
+      <div class="col-lg-4">
+        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+          <i class="bi bi-geo-alt flex-shrink-0"></i>
+          <div>
+            <h3>Location</h3>
+            <p>A108 Adam Street, New York, NY 535022</p>
+          </div>
+        </div><!-- End Info Item -->
+
+        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+          <i class="bi bi-telephone flex-shrink-0"></i>
+          <div>
+            <h3>Open Hours</h3>
+            <p>Monday-Saturday:<br>11:00 AM - 2300 PM</p>
+          </div>
+        </div><!-- End Info Item -->
+
+        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+          <i class="bi bi-telephone flex-shrink-0"></i>
+          <div>
+            <h3>Call Us</h3>
+            <p>+1 5589 55488 55</p>
+          </div>
+        </div><!-- End Info Item -->
+
+        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+          <i class="bi bi-envelope flex-shrink-0"></i>
+          <div>
+            <h3>Email Us</h3>
+            <p>info&#64;example.com</p>
+          </div>
+        </div><!-- End Info Item -->
+
+      </div>
+
+      <div class="col-lg-8">
+        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+          <div class="row gy-4">
+
+            <div class="col-md-6">
+              <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+            </div>
+
+            <div class="col-md-6 ">
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+            </div>
+
+            <div class="col-md-12">
+              <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+            </div>
+
+            <div class="col-md-12">
+              <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+            </div>
+
+            <div class="col-md-12 text-center">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+
+              <button type="submit">Send Message</button>
+            </div>
+
+          </div>
+        </form>
+      </div><!-- End Contact Form -->
+
+    </div>
+
+  </div>
+
+</section><!-- /Contact Section -->
+<app-footer></app-footer>

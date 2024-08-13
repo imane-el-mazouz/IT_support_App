@@ -21,10 +21,12 @@ import {AsideComponent} from "../aside/aside.component";
 })
 export class AdminComponent {
   showSaveUserForm = false;
+  showTechForm = false;
 
   constructor(private userService: UserUService) { }
 
   toggleSaveUserForm() {
     this.showSaveUserForm = !this.showSaveUserForm;
+    this.showTechForm = !this.showTechForm;
   }
 }
