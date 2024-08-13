@@ -1,0 +1,39 @@
+
+<form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
+  <h2>Update Equipment</h2>
+
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <textarea id="name" formControlName="name" class="form-control"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description" class="form-control"></textarea>
+  </div>
+
+
+  <div class="form-group">
+    <label for="purchaseDate">Purchase Date:</label>
+    <input id="purchaseDate" formControlName="purchaseDate" type="date" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="warrantyEndDate">Warranty End Date:</label>
+    <input id="warrantyEndDate" formControlName="warrantyEndDate" type="date" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="type">Type:</label>
+    <input id="type" formControlName="type" type="text" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="equipmentstatus">Status:</label>
+    <select id="equipmentstatus" formControlName="equipmentstatus" class="form-control">
+      <option *ngFor="let status of statusOptions" [value]="status">{{status}}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="equipmentForm.invalid">Update</button>
+</form>

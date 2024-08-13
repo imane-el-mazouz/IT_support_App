@@ -1,0 +1,135 @@
+/* Main Section */
+main {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+/* Loading Spinner */
+.spinner {
+  text-align: center;
+  margin: 20px;
+  font-size: 18px;
+  color: #4a5568;
+  font-weight: 600;
+}
+
+/* Equipment List Styles */
+.items-table {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.table-title {
+  color: #2d3748;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.table-subtitle {
+  color: #f97316;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.table-content {
+  border-top: 1px solid #e2e8f0;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.equipment-info {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.info-item {
+  margin-bottom: 8px;
+  color: #4a5568;
+  font-size: 14px;
+}
+
+.info-item strong {
+  color: #2d3748;
+}
+
+.equipment-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-view {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+}
+
+.btn-edit {
+  background-color: #f97316;
+}
+
+.btn-delete {
+  background-color: #e53e3e;
+}
+
+.btn-view {
+  background-color: #3182ce;
+}
+
+/* Breakdowns List Styles */
+.breakdowns-table {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.breakdown-info {
+  color: #4a5568;
+  font-size: 14px;
+}
+
+.breakdown-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-update {
+  background-color: #4a5568;
+}
+
+.error-message {
+  color: #e53e3e;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* No Breakdowns Message */
+.no-breakdowns {
+  color: #718096;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+}

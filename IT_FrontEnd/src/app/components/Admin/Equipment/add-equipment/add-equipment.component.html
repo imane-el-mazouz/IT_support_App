@@ -1,0 +1,55 @@
+<main class="signup-form">
+  <h2 class="visually-hidden">Create Equipment</h2>
+  <form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" class="form-label">Name</label>
+      <input id="name" type="text" formControlName="name" class="form-input" placeholder="Equipment name" required>
+      <div *ngIf="equipmentForm.get('name')?.invalid && equipmentForm.get('name')?.touched" class="error-message">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description" class="form-label">Description</label>
+      <input id="description" type="text" formControlName="description" class="form-input" placeholder="Equipment description" required>
+      <div *ngIf="equipmentForm.get('description')?.invalid && equipmentForm.get('description')?.touched" class="error-message">
+        Description is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="purchaseDate" class="form-label">Purchase Date</label>
+      <input id="purchaseDate" type="datetime-local" formControlName="purchaseDate" class="form-input" required>
+      <div *ngIf="equipmentForm.get('purchaseDate')?.invalid && equipmentForm.get('purchaseDate')?.touched" class="error-message">
+        Purchase date is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="warrantyEndDate" class="form-label">Warranty End Date</label>
+      <input id="warrantyEndDate" type="datetime-local" formControlName="warrantyEndDate" class="form-input" required>
+      <div *ngIf="equipmentForm.get('warrantyEndDate')?.invalid && equipmentForm.get('warrantyEndDate')?.touched" class="error-message">
+        Warranty end date is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="type" class="form-label">Type</label>
+      <select id="type" formControlName="type" class="form-select">
+        <option *ngFor="let type of typeOptions" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="equipmentstatus" class="form-label">Status</label>
+      <select id="equipmentstatus" formControlName="equipmentstatus" class="form-select" required>
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+      </select>
+      <div *ngIf="equipmentForm.get('equipmentstatus')?.invalid && equipmentForm.get('equipmentstatus')?.touched" class="error-message">
+        Status is required.
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="equipmentForm.invalid">Add</button>
+  </form>
+</main>

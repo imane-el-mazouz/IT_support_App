@@ -1,24 +1,27 @@
-<main class="main">
-
-  <div class="report-container">
-    <div class="report-header">
-      <h1 class="recent-Articles">All Users</h1>
+<main>
+  <section class="authors-table">
+    <div class="table-header">
+      <h2 class="table-title">Users Table</h2>
+      <span class="table-subtitle">USER LIST</span>
     </div>
-
-    <div class="report-body">
-      <div class="report-topic-heading"style="color: black;">
-        <h3 class="t-op">Name</h3>
-        <h3 class="t-op">Email</h3>
-        <h3 class="t-op">Password</h3>
-      </div>
-
-      <div class="items">
-        <div class="item1" *ngFor="let userU of usersU">
-          <h3 class="t-op-nextlvl">{{ userU.name}}</h3>
-          <h3 class="t-op-nextlvl">{{ userU.email}}</h3>
-          <h3 class="t-op-nextlvl">{{ userU.password}}</h3>
+    <div class="table-content">
+      <div class="table-row" *ngFor="let userU of usersU">
+        <div class="author-info">
+          <img src="https://via.placeholder.com/50" alt="User Avatar" class="author-avatar">
+          <div class="author-details">
+            <span class="author-name">{{ userU.name }}</span>
+            <span class="author-email">{{ userU.email }}</span>
+          </div>
         </div>
+        <div class="author-role">
+          <span class="author-role">Password:</span>
+          <span class="author-department">{{ userU.password }}</span>
+        </div>
+        <span class="author-action">
+<!--          <button class="btn-edit">Edit</button>-->
+<!--          <button class="btn-delete">Delete</button>-->
+        </span>
       </div>
     </div>
-  </div>
+  </section>
 </main>

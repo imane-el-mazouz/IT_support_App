@@ -1,181 +1,4 @@
-//.dashboard-screen { background-color: #f8f9fa; display: flex; padding-left: 18px; gap: 2px; flex-wrap: wrap; }
-//.sidebar { align-self: start; display: flex; margin-top: 44px; flex-direction: column; font-family: 'Abhaya Libre ExtraBold', sans-serif; color: #a0aec0; font-weight: 800; }
-//.sidebar-content { display: flex; width: 100%; flex-direction: column; align-items: start; padding: 0 7px; }
-//.logo-container { align-self: center; display: flex; width: 179px; max-width: 100%; gap: 12px; font-size: 14px; color: #2d3748; }
-//.logo { aspect-ratio: 1; object-fit: contain; object-position: center; width: 22px; align-self: start; }
-//.logo-text { flex-grow: 1; width: 141px; }
-//.divider { aspect-ratio: 250; object-fit: contain; object-position: center; width: 100%; align-self: stretch; margin-top: 27px; }
-//.nav-item { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; gap: 12px; font-size: 12px; color: #2d3748; white-space: nowrap; padding: 12px 16px; }
-//.nav-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 30px; border-radius: 12px; }
-//.nav-text { flex-grow: 1; margin: auto 0; }
-//.account-section { color: #2d3748; font-size: 12px; margin: 29px 0 0 23px; }
-//.help-section { display: flex; flex-direction: column; border-radius: 0; position: relative; aspect-ratio: 1.29; margin-top: 70px; width: 100%; align-items: start; color: #fff; padding: 16px; }
-//.help-background { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: cover; object-position: center; }
-//.help-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 35px; border-radius: 0; }
-//.help-title { position: relative; font-size: 14px; line-height: 1.4; margin-top: 25px; }
-//.help-description { position: relative; font-size: 12px; margin-top: 8px; }
-//.help-button { position: relative; justify-content: center; align-items: center; border-radius: 12px; background: #fff; display: flex; margin-top: 14px; min-height: 35px; font-size: 10px; color: #2d3748; white-space: nowrap; text-align: center; padding: 0 8px; }
-//.button-content { align-self: stretch; display: flex; width: 88px; flex-direction: column; overflow: hidden; align-items: center; justify-content: center; margin: auto 0; }
-//.button-text { width: 88px; align-self: stretch; gap: 4px; overflow: hidden; margin: auto 0; }
-//.main-content { background-color: #f8f9fa; display: flex; flex-direction: column; flex-grow: 1; flex-basis: 0; width: fit-content; padding: 26px 31px; }
-//.header { display: flex; margin-top: 9px; width: 100%; flex-direction: column; }
-//.breadcrumb { display: flex; margin-left: 17px; width: 64px; flex-direction: column; color: #2d3748; }
-//.breadcrumb-text { align-self: start; font: 400 24px Helvetica, sans-serif; }
-//.page-title { margin-top: 5px; font: 800 14px/1.4 'Abhaya Libre ExtraBold', sans-serif; }
-//.stats-container { display: flex; margin-top: 40px; gap: 24px; font-family: 'Abhaya Libre ExtraBold', sans-serif; font-weight: 800; flex-wrap: wrap; }
-//.stat-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; gap: 40px 100px; flex: 1; padding: 18px 20px; }
-//.stat-content { align-self: start; display: flex; flex-direction: column; }
-//.stat-label { color: #a0aec0; font-size: 12px; align-self: start; }
-//.stat-value { display: flex; margin-top: 9px; gap: 9px; white-space: nowrap; line-height: 1.4; }
-//.stat-number { color: #2d3748; font-size: 18px; flex-grow: 1; }
-//.stat-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 45px; border-radius: 0; }
-//.search-section { align-self: center; display: flex; width: 335px; max-width: 100%; gap: 40px 48px; }
-//.search-container { display: flex; gap: 18px; flex-grow: 1; flex-basis: auto; }
-//.search-input { border-radius: 15px; border: 0.5px solid #e2e8f0; background: #fff; display: flex; min-height: 40px; overflow: hidden; justify-content: start; }
-//.search-icon-container { display: flex; align-items: center; overflow: hidden; justify-content: center; height: 100%; width: 38px; }
-//.search-icon { align-self: stretch; display: flex; min-height: 20px; align-items: center; gap: 5px; overflow: hidden; justify-content: start; margin: auto 0; padding: 3px 6px; }
-//.search-icon-img { aspect-ratio: 1; object-fit: contain; object-position: center; width: 15px; align-self: stretch; margin: auto 0; }
-//.search-placeholder { display: flex; flex-direction: column; overflow: hidden; color: #a0aec0; justify-content: center; margin: auto 0; font: 800 12px 'Abhaya Libre ExtraBold', sans-serif; }
-//.user-menu { display: flex; min-height: 16px; align-items: center; gap: 4px; overflow: hidden; color: #718096; justify-content: start; margin: auto 0; font: 800 12px 'Abhaya Libre ExtraBold', sans-serif; }
-//.user-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 12px; align-self: stretch; margin: auto 0; }
-//.user-text { align-self: stretch; width: 67px; margin: auto 0; }
-//.notification-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 12px; margin: auto 0; }
-//.total-sales-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; margin-top: 42px; width: 100%; gap: 20px; font-family: 'Abhaya Libre ExtraBold', sans-serif; font-weight: 800; justify-content: space-between; padding: 18px 20px; }
-//.total-sales-content { align-self: start; display: flex; gap: 12px; }
-//.total-sales-info { display: flex; flex-direction: column; }
-//.total-sales-label { color: #a0aec0; font-size: 12px; align-self: start; }
-//.total-sales-value { color: #2d3748; font-size: 18px; line-height: 1.4; margin-top: 11px; }
-//.total-sales-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 45px; border-radius: 0; }
-//.info-cards-container { margin-top: 23px; width: 100%; }
-//.info-cards-row { gap: 20px; display: flex; }
-//.info-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); flex-grow: 1; width: 100%; padding: 18px 19px; }
-//.info-card-content { gap: 20px; display: flex; }
-//.info-card-text { display: flex; width: 100%; flex-direction: column; align-items: start; font-family: 'Abhaya Libre ExtraBold', sans-serif; color: #a0aec0; font-weight: 800; }
-//.info-card-subtitle { font-size: 12px; }
-//.info-card-title { color: #2d3748; font-size: 18px; line-height: 1.4; margin-top: 11px; }
-//.info-card-description { font-size: 14px; line-height: 20px; align-self: stretch; margin-top: 16px; }
-//.info-card-button { display: flex; margin-top: 148px; gap: 5px; color: #2d3748; text-align: center; font: 700 10px Helvetica, sans-serif; }
-//.info-card-button-text { align-self: stretch; gap: 4px; overflow: hidden; margin: auto 0; }
-//.info-card-image { aspect-ratio: 1.41; object-fit: contain; object-position: center; width: 100%; border-radius: 0; flex-grow: 1; }
-//.chart-container { margin-top: 24px; }
-//.chart-row { gap: 20px; display: flex; }
-//.chart-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; width: 100%; flex-direction: column; align-items: start; font-family: 'Abhaya Libre ExtraBold', sans-serif; font-weight: 800; margin: 0 auto; padding: 16px 16px 30px; }
-//.chart-content { border-radius: 12px; align-self: stretch; display: flex; align-items: end; gap: 40px 52px; font-size: 10px; color: #fff; white-space: nowrap; flex-wrap: wrap; padding: 34px 33px; }
-//.chart-labels { align-self: start; display: flex; flex-direction: column; flex: 1; }
-//.chart-bar { border-radius: 15px; background: #fff; display: flex; width: 7px; }
-//.chart-title { color: #2d3748; font-size: 18px; line-height: 1.4; margin-top: 24px; }
-//.chart-subtitle { color: #a0aec0; font-size: 14px; line-height: 1.4; margin-top: 20px; }
-//.chart-legend { display: flex; margin-top: 45px; width: 531px; max-width: 100%; gap: 20px; white-space: nowrap; flex-wrap: wrap; justify-content: space-between; }
-//.legend-item { display: flex; flex-direction: column; align-items: start; width: 101px; max-width: 100%; }
-//.legend-label { display: flex; gap: 10px; font-size: 12px; color: #a0aec0; }
-//.legend-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 25px; border-radius: 0; }
-//.legend-value { color: #2d3748; font-size: 18px; line-height: 1.4; margin-top: 6px; }
-//.legend-chart { object-fit: contain; object-position: center; width: 100%; border-radius: 0; align-self: stretch; margin-top: 22px; }
-//.projects-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; width: 100%; flex-direction: column; margin: 0 auto; padding: 27px 21px; }
-//.projects-header { display: flex; gap: 20px; font-family: 'Abhaya Libre ExtraBold', sans-serif; color: #a0aec0; font-weight: 800; justify-content: space-between; }
-//.projects-title-container { align-self: start; display: flex; margin-top: 5px; flex-direction: column; align-items: start; }
-//.projects-title { color: #2d3748; font-size: 18px; line-height: 1.4; }
-//.projects-subtitle { align-self: stretch; display: flex; margin-top: 16px; gap: 5px; font-size: 14px; line-height: 1.4; }
-//.projects-subtitle-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 15px; align-self: start; }
-//.projects-subtitle-text { flex-grow: 1; width: 109px; }
-//.projects-column-label { font-size: 10px; margin-top: 31px; }
-//.projects-list { display: flex; margin-top: 19px; width: 966px; max-width: 100%; gap: 20px; flex-wrap: wrap; justify-content: space-between; font: 800 14px/1.4 'Abhaya Libre ExtraBold', sans-serif; }
-//.project-item { display: flex; gap: 17px; color: #2d3748; margin: auto 0; }
-//.project-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 20px; }
-//.project-name { flex-basis: auto; }
-//.project-details { display: flex; align-items: start; gap: 40px 100px; flex-wrap: wrap; }
-//.project-budget { aspect-ratio: 3.22; object-fit: contain; object-position: center; width: 74px; }
-//.project-progress { display: flex; flex-direction: column; }
-//.project-progress-text { display: flex; width: 209px; max-width: 100%; gap: 20px; white-space: nowrap; justify-content: space-between; }
-//.project-progress-bar { align-self: end; display: flex; margin-top: 8px; width: 125px; max-width: 100%; flex-direction: column; }
-//.progress-bar-bg { background-color: #e2e8f0; height: 3px; }
-//<style>
-// .progress-bar-fill { background-color: #4fd1c5; z-index: 10; height: 3px; }
-//.orders-card { border-radius: 15px; background: #fff; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); display: flex; width: 100%; flex-direction: column; align-items: start; margin: 0 auto; padding: 30px 80px 30px 19px; }
-//.orders-title { color: #2d3748; font: 800 18px/1.4 'Abhaya Libre ExtraBold', sans-serif; }
-//.orders-subtitle { color: #a0aec0; margin-top: 6px; font: 800 14px/1.4 'Abhaya Libre ExtraBold', sans-serif; }
-//.order-item { display: flex; margin-top: 45px; gap: 19px; }
-//.order-icon-container { display: flex; flex-direction: column; }
-//.order-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 16px; }
-//.order-details { align-self: start; display: flex; flex-direction: column; font-family: 'Abhaya Libre ExtraBold', sans-serif; font-weight: 800; }
-//.order-description { color: #2d3748; font-size: 14px; line-height: 1.4; }
-//.order-date { color: #a0aec0; font-size: 12px; align-self: start; margin-top: 12px; }
-//.footer { display: flex; margin-top: 29px; width: 100%; gap: 40px 100px; flex-wrap: wrap; font: 800 12px 'Abhaya Libre ExtraBold', sans-serif; }
-//.footer-text { color: #38b2ac; }
-//.footer-links { align-self: start; display: flex; gap: 40px 46px; color: #a0aec0; flex: 1; }
-//
-//@media (max-width: 991px) {
-//  .sidebar { margin-top: 40px; }
-//  .nav-item { white-space: initial; margin: 0 7px; }
-//  .help-section { margin-top: 40px; }
-//  .help-button { white-space: initial; }
-//  .main-content { max-width: 100%; padding: 0 20px; }
-//  .header { max-width: 100%; margin-top: 33px; }
-//  .breadcrumb { margin-left: 10px; }
-//  .stats-container { margin-top: 40px; }
-//  .total-sales-card { margin-top: 40px; }
-//  .info-cards-container { max-width: 100%; }
-//  .info-card { max-width: 100%; margin-top: 24px; padding: 0 20px; }
-//  .info-card-button { margin-top: 40px; }
-//  .info-card-image { margin-top: 40px; }
-//  .chart-container { max-width: 100%; }
-//  .chart-card { max-width: 100%; margin-top: 24px; padding: 0 20px; }
-//  .chart-content { max-width: 100%; white-space: initial; padding: 0 20px; }
-//  .chart-labels { display: none; white-space: initial; }
-//  .chart-bar { margin-top: 40px; }
-//  .chart-title { margin-left: 5px; }
-//  .chart-subtitle { margin-left: 6px; }
-//  .chart-legend { margin-top: 40px; white-space: initial; }
-//  .projects-card { max-width: 100%; margin-top: 24px; }
-//  .projects-list { max-width: 100%; }
-//  .orders-card { max-width: 100%; margin-top: 24px; padding-right: 20px; }
-//  .orders-title { margin-left: 2px; }
-//  .orders-subtitle { margin-left: 2px; }
-//  .order-item { margin: 40px 0 0 2px; }
-//  .footer { max-width: 100%; margin-right: 4px; }
-//}
 
-
-
-:root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Playfair Display",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
-}
-
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root {
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: rgba(255, 255, 255, 0.7); /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #fd7401; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-}
-
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: #ffffff;  /* The default color of the main navmenu links */
-  --nav-hover-color: #fd7401; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #ffffff; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #fd7401; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
-}
-
-
-.light-background {
-  --background-color: #29261f;
-  --surface-color: #464135;
-}
-
-.dark-background {
-  --background-color: #ffffff;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
-  --surface-color: #ffffff;
-  --contrast-color: #ffffff;
-}
 .dashboard-screen {
   display: flex;
   background-color: #f8f9fa;
@@ -205,38 +28,6 @@
   font-size: 14px;
   color: #2d3748;
 }
-
-.nav-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.nav-item {
-  margin-bottom: 12px;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 15px;
-  color: #a0aec0;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.nav-link:hover,
-.nav-item.active .nav-link {
-  background-color: #fff;
-  color: #2d3748;
-}
-
-.nav-icon {
-  width: 30px;
-  height: 30px;
-}
-
 .section-title {
   font-size: 12px;
   color: #2d3748;
@@ -556,3 +347,76 @@
     width: 100%;
   }
 }
+
+
+
+
+
+.result-count { color: #2d3748; font-size: 24px; font-weight: 600; }
+.map-view-toggle { display: flex; align-items: center; gap: 16px; }
+.map-view-label { color: #2d3748; font-size: 16px; font-weight: 500; }
+.toggle-switch { width: 50px; height: 24px; background-color: #eee; border-radius: 12px; position: relative; cursor: pointer; }
+.toggle-switch::after { content: ''; position: absolute; width: 20px; height: 20px; background-color: #fff; border-radius: 50%; top: 2px; left: 2px; transition: 0.3s; }
+.toggle-switch.active::after { left: 28px; }
+.search-bar { display: flex; align-items: center; background-color: #fff; border: 1px solid #b7bfc5; border-radius: 24px; padding: 12px 16px; }
+.search-input { border: none; outline: none; font-size: 16px; color: #2d3748; width: 100%; }
+.search-icon { width: 24px; height: 24px; }
+.filter-button { display: flex; align-items: center; background-color: #fff; border: 1px solid #b7bfc5; border-radius: 24px; padding: 12px 16px; cursor: pointer; }
+.filter-text { font-size: 16px; color: #b7bfc5; margin-right: 8px; }
+.filter-icon { width: 24px; height: 24px; }
+.sort-options { display: flex; gap: 24px; margin-top: 24px; }
+.sort-option { font-size: 14px; color: #2d3748; cursor: pointer; }
+.sort-option.active { color: #ff5b19; font-weight: 700; font-size: 16px; }
+.authors-table { background-color: #fff; border-radius: 15px; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); padding: 24px; margin-top: 24px; }
+.table-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.table-title { color: #2d3748; font-size: 18px; font-weight: 700; }
+.table-subtitle { color: #a0aec0; font-size: 10px; font-weight: 700; margin-top: 8px; }
+.table-row { display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #e2e8f0; }
+.author-info { display: flex; align-items: center; gap: 16px; flex: 1; }
+.author-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.author-details { display: flex; flex-direction: column; }
+.author-name { color: #2d3748; font-size: 14px; font-weight: 700; }
+.author-email { color: #718096; font-size: 14px; }
+.author-role { flex: 1; color: #2d3748; font-size: 14px; font-weight: 700; }
+.author-department { color: #718096; font-size: 14px; }
+.author-status { flex: 1; font-size: 14px; font-weight: 700; padding: 4px 8px; border-radius: 8px; text-align: center; }
+.status-online { background-color: #48bb78; color: #fff; }
+.status-offline { background-color: #cbd5e0; color: #fff; }
+.author-date { flex: 1; color: #2d3748; font-size: 14px; font-weight: 700; text-align: center; }
+.author-action { color: #718096; font-size: 12px; font-weight: 700; cursor: pointer; }
+.activity-feed { background-color: #fff; border-radius: 15px; box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02); padding: 24px; margin-top: 24px; }
+.activity-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+.activity-icon { width: 24px; height: 24px; }
+.activity-content { flex: 1; }
+.activity-title { color: #2d3748; font-size: 14px; font-weight: 700; }
+.activity-time { color: #a0aec0; font-size: 12px; margin-top: 4px; }
+.signup-form { background-color: #fff; border-radius: 16px; padding: 48px; border: 1px solid #f4f4f4; }
+.form-group { margin-bottom: 24px; }
+.form-label { color: #2d3748; font-size: 14px; margin-bottom: 8px; display: block; }
+.form-input { width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 15px; font-size: 14px; color: #2d3748; }
+.form-input::placeholder { color: #a0aec0; }
+.submit-button { background-color: #ff5b19; color: #fff; font-size: 14px; font-weight: 700; padding: 12px 24px; border: none; border-radius: 12px; cursor: pointer; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+
+.image-container {
+  width: 100%;
+  margin-top: 14px;
+}
+.responsive-image {
+  aspect-ratio: 0.86;
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.main-content{
+  background-color: white;
+}
+@media (max-width: 991px) {
+  .dashboard-layout { flex-direction: column; }
+  .sidebar { width: 100%; margin-bottom: 24px; }
+  .main-content { width: 100%; }
+}
+

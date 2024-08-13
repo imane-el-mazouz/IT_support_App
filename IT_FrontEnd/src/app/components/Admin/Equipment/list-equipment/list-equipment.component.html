@@ -1,0 +1,82 @@
+<main>
+  <!-- Loading Indicator -->
+  <div *ngIf="loading" class="spinner">Loading...</div>
+
+  <!-- Equipment List -->
+  <section class="items-table">
+    <div class="table-header">
+      <h2 class="table-title">Equipment List</h2>
+      <span class="table-subtitle">EQUIPMENT OVERVIEW</span>
+    </div>
+    <div class="table-content">
+      <div class="table-row" *ngFor="let equipment of equipments">
+        <div class="equipment-info">
+          <div class="info-item">
+            <strong>Name:</strong> {{ equipment.name }}
+          </div>
+          <div class="info-item">
+            <strong>Description:</strong> {{ equipment.description }}
+          </div>
+          <div class="info-item">
+            <strong>Purchase Date:</strong> {{ equipment.purchaseDate | date }}
+          </div>
+          <div class="info-item">
+            <strong>Warranty End Date:</strong> {{ equipment.warrantyEndDate | date }}
+          </div>
+          <div class="info-item">
+            <strong>Type:</strong> {{ equipment.type }}
+          </div>
+          <div class="info-item">
+            <strong>Status:</strong> {{ equipment.equipmentstatus }}
+          </div>
+        </div>
+        <div class="equipment-actions">
+          <button (click)="editEquipment(equipment.id)" class="btn-edit">Edit</button>
+          <button (click)="deleteEquipment(equipment.id)" class="btn-delete">Delete</button>
+          <button (click)="viewBreakdowns(equipment.id)" class="btn-view">View Breakdowns</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breakdowns List -->
+  <section *ngIf="selectedEquipmentId !== null" class="breakdowns-table">
+    <div class="table-header">
+      <h2 class="table-title">Breakdowns for Equipment ID: {{ selectedEquipmentId }}</h2>
+    </div>
+    <div class="table-content">
+      <div *ngIf="breakdowns.length > 0; else noBreakdowns">
+        <div class="table-row" *ngFor="let breakdown of breakdowns">
+          <div class="info-item">
+            <strong>ID:</strong> {{ breakdown.id }}
+          </div>
+          <div class="info-item">
+            <strong>Description:</strong> {{ breakdown.description }}
+          </div>
+          <div class="info-item">
+            <strong>Reported Date:</strong> {{ breakdown.reportedDate | date }}
+          </div>
+          <div class="info-item">
+            <strong>Repair Status:</strong> {{ breakdown.repairStatus }}
+          </div>
+          <div class="breakdown-actions">
+            <div *ngIf="selectedEquipmentId !== null">
+              <button *ngIf="showUpdateButton" (click)="editBreakdown(breakdown.id)" class="btn-edit">Update</button>
+            </div>
+
+<!--            <button (click)="editBreakdown(breakdown.id)" class="btn-edit">Update</button>-->
+            <button (click)="deleteBreakdown(breakdown.id)" class="btn-delete">Delete</button>
+          </div>
+        </div>
+      </div>
+      <ng-template #noBreakdowns>
+        <p class="no-breakdowns">No breakdowns available for this equipment.</p>
+      </ng-template>
+    </div>
+  </section>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</main>

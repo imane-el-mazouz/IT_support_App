@@ -1,0 +1,28 @@
+<main>
+  <section class="authors-table">
+    <div class="table-header">
+      <h2 class="table-title">All Technicians</h2>
+      <span class="table-subtitle">Technicians List</span>
+    </div>
+    <div class="table-content">
+      <div class="table-row" *ngFor="let technician of technician">
+        <div class="author-info">
+          <img src="https://via.placeholder.com/50" alt="Technician Avatar" class="author-avatar">
+          <div class="author-details">
+            <span class="author-name">{{ technician.name }}</span>
+            <span class="author-email">{{ technician.email }}</span>
+          </div>
+        </div>
+        <div class="author-role">
+          <span class="author-role">Password:</span>
+          <span class="author-department">{{ technician.password }}</span>
+        </div>
+        <span class="author-action">
+          <!-- Uncomment and add functionality for buttons if needed -->
+          <!-- <button class="btn-edit">Edit</button> -->
+          <!-- <button class="btn-delete">Delete</button> -->
+        </span>
+      </div>
+    </div>
+  </section>
+</main>

@@ -47,7 +47,7 @@ export class SaveUserComponent implements OnInit {
       this.userService.saveUser(userU).subscribe({
         next: (response) => {
           console.log('UserU saved successfully', response);
-          this.router.navigate(['/users']);
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           console.error('Error during saving userU', error);
@@ -56,4 +56,5 @@ export class SaveUserComponent implements OnInit {
       });
     }
   }
+
 }

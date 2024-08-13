@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class TechnicianService {
   // private apiUrl = 'http://localhost:8080/api/ticket';
-  private apiUrl = 'http://localhost:8080/api/ticket';
+  private apiUrl = 'http://localhost:8080/api/users';
 
   constructor(private http: HttpClient) { }
 
