@@ -47,7 +47,7 @@ export class SaveTechnicianComponent implements OnInit {
       this.technicianService.saveTechnician(technician).subscribe({
         next: (response) => {
           console.log('Technician saved successfully', response);
-          this.router.navigate(['/users']);
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           console.error('Error during saving technician', error);

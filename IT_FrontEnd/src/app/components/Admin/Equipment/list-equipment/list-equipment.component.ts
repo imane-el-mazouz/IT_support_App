@@ -67,7 +67,7 @@ export class ListEquipmentComponent implements OnInit {
       (data: Breakdown[]) => {
         this.breakdowns = data;
         this.selectedEquipmentId = equipmentId;
-        this.showUpdateButton = true; // Show the button
+        this.showUpdateButton = true;
         this.loading = false;
       },
       error => {

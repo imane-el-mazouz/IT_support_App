@@ -4,6 +4,7 @@ import { UserU } from '../../model/UserU/userU';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {Technician} from "../../model/Technician/technician";
+import {User} from "../../model/User/user";
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,19 @@ export class UserUService {
     this.showSaveTechSubject.next(show);
   }
 
+  updateUser(id: number | undefined, userDTO: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/update/${id}`, userDTO, { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
+  }
+
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}` , { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
+  }
+
+  getUserById(userId: number | undefined): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${userId}` ,  { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
+  }
 
 }

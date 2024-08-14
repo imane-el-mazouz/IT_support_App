@@ -33,6 +33,7 @@ import {UpdateBreakdownComponent} from "./components/Admin/Breakdown/update-brea
 import {
   EquipmentManagementComponent
 } from "./components/Admin/Equipment/equipment-management/equipment-management.component";
+import {UpdateUserComponent} from "./components/Admin/user_management/update-user/update-user.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -92,8 +93,8 @@ export const routes: Routes = [
   { path : 'nav' , component: NavComponent},
   { path : 'home' , component: HomePageComponent},
   { path : 'pageUser' , component: UserPageComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
-
+  { path: 'users/update/:id', component: UpdateUserComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin }},
 
 ];

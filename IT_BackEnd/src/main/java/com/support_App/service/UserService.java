@@ -249,4 +249,43 @@ public class UserService implements UserDetailsService {
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    public Technician getTechById(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+        if (!(user instanceof Technician)) {
+            throw new UserNotFoundException("User with ID " + id + " is not a Technician.");
+        }
+        return (Technician) user;
+    }
+
+    public Technician updateTechnician(UserDTO userDTO, Long id) {
+        logger.info("Updating technician with ID: {}", id);
+        logger.info("New data: {}", userDTO);
+
+        User userToUpdate = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found : " + id));
+
+        if (!(userToUpdate instanceof Technician technicianToUpdate)) {
+            throw new UserNotFoundException("User with ID " + id + " is not a Technician.");
+        }
+
+        technicianToUpdate.setName(userDTO.getName());
+        technicianToUpdate.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+
+        Technician updatedTechnician = (Technician) userRepository.save(technicianToUpdate);
+        logger.info("Updated technician: {}", updatedTechnician);
+
+        return updatedTechnician;
+    }
+
+    public void deleteTechnician(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+        if (!(user instanceof Technician)) {
+            throw new UserNotFoundException("User with ID " + id + " is not a Technician.");
+        }
+        userRepository.deleteById(id);
+    }
+
 }

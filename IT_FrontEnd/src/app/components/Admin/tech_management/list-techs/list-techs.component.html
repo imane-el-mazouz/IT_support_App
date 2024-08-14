@@ -18,9 +18,9 @@
           <span class="author-department">{{ technician.password }}</span>
         </div>
         <span class="author-action">
-          <!-- Uncomment and add functionality for buttons if needed -->
-          <!-- <button class="btn-edit">Edit</button> -->
-          <!-- <button class="btn-delete">Delete</button> -->
+             <button [routerLink]="['/users/update', technician.id]" class="btn-edit">Edit</button>
+             <button (click)="deleteTech(technician.id)" class="btn-delete">Delete</button>
+
         </span>
       </div>
     </div>

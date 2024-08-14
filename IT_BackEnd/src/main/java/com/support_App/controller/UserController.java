@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users")
 @CrossOrigin("*")
+
 public class UserController {
 
     @Autowired
@@ -42,11 +43,16 @@ public class UserController {
         return userService.getAllTechnicians();
     }
 
-
     @PreAuthorize("hasRole('Admin')")
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
+    }
+
+    @PreAuthorize("hasRole('Admin')")
+    @GetMapping("/technician/{id}")
+    public Technician getTechById(@PathVariable Long id) {
+        return userService.getTechById(id);
     }
 
     @PreAuthorize("hasRole('Admin')")
@@ -56,8 +62,14 @@ public class UserController {
     }
 
     @PreAuthorize("hasRole('Admin')")
-    @DeleteMapping("/delete/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
+    @PutMapping("/updateTechnician/{id}")
+    public Technician updateTechnician(@RequestBody UserDTO userDTO, @PathVariable Long id) {
+        return userService.updateTechnician(userDTO, id);
+    }
+
+    @PreAuthorize("hasRole('Admin')")
+    @DeleteMapping("/deleteTechnician/{id}")
+    public void deleteTechnician(@PathVariable Long id) {
+        userService.deleteTechnician(id);
     }
 }

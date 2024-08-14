@@ -60,6 +60,8 @@ export class UpdateEquipmentComponent implements OnInit {
   }
 
 
+
+
   onSubmit(): void {
     if (this.equipmentForm.valid) {
       this.equipmentService.updateEquipment(this.id, this.equipmentForm.value).subscribe(

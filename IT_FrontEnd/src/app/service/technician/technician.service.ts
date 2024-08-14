@@ -31,6 +31,22 @@ export class TechnicianService {
       .pipe(catchError(this.handleError));
   }
 
+  getTechnicianById(id: number): Observable<Technician> {
+    return this.http.get<Technician>(`${this.apiUrl}/technician/${id}`, { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
+  }
+
+  updateTechnician(id: number, technician: Technician): Observable<Technician> {
+    return this.http.put<Technician>(`${this.apiUrl}/updateTechnician/${id}`, technician, { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
+  }
+
+  deleteTechnician(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/deleteTechnician/${id}`, {headers: this.getHeaders()})
+
+  }
+
+
   private handleError(error: any): Observable<never> {
     console.error('An error occurred', error);
     return throwError(() => new Error('Something went wrong, please try again later.'));
