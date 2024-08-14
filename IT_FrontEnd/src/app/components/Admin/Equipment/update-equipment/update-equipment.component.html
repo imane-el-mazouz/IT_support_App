@@ -1,39 +1,95 @@
 
-<form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
-  <h2>Update Equipment</h2>
+<!--<form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">-->
+<!--  <h2>Update Equipment</h2>-->
 
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <textarea id="name" formControlName="name" class="form-control"></textarea>
-  </div>
+<!--  <div class="form-group">-->
+<!--    <label for="name">Name:</label>-->
+<!--    <textarea id="name" formControlName="name" class="form-control"></textarea>-->
+<!--  </div>-->
 
-  <div class="form-group">
-    <label for="description">Description:</label>
-    <textarea id="description" formControlName="description" class="form-control"></textarea>
-  </div>
+<!--  <div class="form-group">-->
+<!--    <label for="description">Description:</label>-->
+<!--    <textarea id="description" formControlName="description" class="form-control"></textarea>-->
+<!--  </div>-->
 
 
-  <div class="form-group">
-    <label for="purchaseDate">Purchase Date:</label>
-    <input id="purchaseDate" formControlName="purchaseDate" type="date" class="form-control" />
-  </div>
+<!--  <div class="form-group">-->
+<!--    <label for="purchaseDate">Purchase Date:</label>-->
+<!--    <input id="purchaseDate" formControlName="purchaseDate" type="date" class="form-control" />-->
+<!--  </div>-->
 
-  <div class="form-group">
-    <label for="warrantyEndDate">Warranty End Date:</label>
-    <input id="warrantyEndDate" formControlName="warrantyEndDate" type="date" class="form-control" />
-  </div>
+<!--  <div class="form-group">-->
+<!--    <label for="warrantyEndDate">Warranty End Date:</label>-->
+<!--    <input id="warrantyEndDate" formControlName="warrantyEndDate" type="date" class="form-control" />-->
+<!--  </div>-->
 
-  <div class="form-group">
-    <label for="type">Type:</label>
-    <input id="type" formControlName="type" type="text" class="form-control" />
-  </div>
+<!--  <div class="form-group">-->
+<!--    <label for="type">Type:</label>-->
+<!--    <input id="type" formControlName="type" type="text" class="form-control" />-->
+<!--  </div>-->
 
-  <div class="form-group">
-    <label for="equipmentstatus">Status:</label>
-    <select id="equipmentstatus" formControlName="equipmentstatus" class="form-control">
-      <option *ngFor="let status of statusOptions" [value]="status">{{status}}</option>
-    </select>
-  </div>
+<!--  <div class="form-group">-->
+<!--    <label for="equipmentstatus">Status:</label>-->
+<!--    <select id="equipmentstatus" formControlName="equipmentstatus" class="form-control">-->
+<!--      <option *ngFor="let status of statusOptions" [value]="status">{{status}}</option>-->
+<!--    </select>-->
+<!--  </div>-->
 
-  <button type="submit" class="btn btn-primary" [disabled]="equipmentForm.invalid">Update</button>
-</form>
+<!--  <button type="submit" class="btn btn-primary" [disabled]="equipmentForm.invalid">Update</button>-->
+<!--</form>-->
+<main class="signup-form">
+  <h2 class="visually-hidden">Update Equipment</h2>
+  <form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" class="form-label">Name</label>
+      <input id="name" type="text" formControlName="name" class="form-input" placeholder="Equipment name" required>
+      <div *ngIf="equipmentForm.get('name')?.invalid && equipmentForm.get('name')?.touched" class="error-message">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description" class="form-label">Description</label>
+      <input id="description" type="text" formControlName="description" class="form-input" placeholder="Equipment description" required>
+      <div *ngIf="equipmentForm.get('description')?.invalid && equipmentForm.get('description')?.touched" class="error-message">
+        Description is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="purchaseDate" class="form-label">Purchase Date</label>
+      <input id="purchaseDate" type="date" formControlName="purchaseDate" class="form-input" required>
+      <div *ngIf="equipmentForm.get('purchaseDate')?.invalid && equipmentForm.get('purchaseDate')?.touched" class="error-message">
+        Purchase date is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="warrantyEndDate" class="form-label">Warranty End Date</label>
+      <input id="warrantyEndDate" type="date" formControlName="warrantyEndDate" class="form-input" required>
+      <div *ngIf="equipmentForm.get('warrantyEndDate')?.invalid && equipmentForm.get('warrantyEndDate')?.touched" class="error-message">
+        Warranty end date is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="type" class="form-label">Type</label>
+      <input id="type" type="date" formControlName="type" class="form-input" required>
+      <div *ngIf="equipmentForm.get('type')?.invalid && equipmentForm.get('type')?.touched" class="error-message">
+        Type.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="equipmentstatus" class="form-label">Status</label>
+      <select id="equipmentstatus" formControlName="equipmentstatus" class="form-select" required>
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+      </select>
+      <div *ngIf="equipmentForm.get('equipmentstatus')?.invalid && equipmentForm.get('equipmentstatus')?.touched" class="error-message">
+        Status is required.
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="equipmentForm.invalid">Update</button>
+  </form>
+</main>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {KeyValuePipe, NgForOf} from "@angular/common";
+import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 import {RepairStatus} from "../../../../enums/repair-status";
 import {BreakdownService} from "../../../../service/breakdown/breakdown.service";
 import {Breakdown} from "../../../../model/Breakdow/breakdown";
@@ -12,7 +12,8 @@ import {Breakdown} from "../../../../model/Breakdow/breakdown";
   imports: [
     ReactiveFormsModule,
     KeyValuePipe,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './save-breakdown.component.html',
   styleUrl: './save-breakdown.component.scss'
@@ -42,7 +43,7 @@ export class SaveBreakdownComponent implements OnInit{
       const breakdown: Breakdown = this.breakdownForm.value;
       this.breakdownService.saveBreakdowns(breakdown).subscribe(
         () => {
-          this.router.navigate(['/list-breakdowns']);
+          this.router.navigate(['/dashboard']);
         },
         error => console.error('Error saving equipment:', error)
       );

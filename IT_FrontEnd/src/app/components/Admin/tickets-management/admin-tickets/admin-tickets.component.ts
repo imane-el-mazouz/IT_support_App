@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {SupportTicket} from "../../../model/SupportTicket/support-ticket";
-import {SupportTicketService} from "../../../service/supportTicket/support-ticket.service";
+import {SupportTicket} from "../../../../model/SupportTicket/support-ticket";
+import {SupportTicketService} from "../../../../service/supportTicket/support-ticket.service";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import {Router, RouterLink} from "@angular/router";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {TechnicianService} from "../../../service/technician/technician.service";
-import {Technician} from "../../../model/Technician/technician";
-import {UserUService} from "../../../service/user/user.service";
+import {TechnicianService} from "../../../../service/technician/technician.service";
+import {Technician} from "../../../../model/Technician/technician";
+import {UserUService} from "../../../../service/user/user.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 

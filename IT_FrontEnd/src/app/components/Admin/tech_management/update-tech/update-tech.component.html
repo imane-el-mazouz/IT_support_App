@@ -1,0 +1,31 @@
+<section class="signup-form">
+  <h2 class="visually-hidden">Update User</h2>
+  <form [formGroup]="techForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" class="form-label">Name</label>
+      <input id="name" type="text" formControlName="name" class="form-input" placeholder="Your full name" required>
+      <div *ngIf="techForm.get('name')?.invalid && techForm.get('name')?.touched" class="error-message">
+        Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="form-label">Email</label>
+      <input id="email" type="email" formControlName="email" class="form-input" placeholder="Your email address" required>
+      <div *ngIf="techForm.get('email')?.invalid && techForm.get('email')?.touched" class="error-message">
+        A valid email is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="form-label">Password</label>
+      <input id="password" type="password" formControlName="password" class="form-input" placeholder="Your password" required>
+      <div *ngIf="techForm.get('password')?.invalid && techForm.get('password')?.touched" class="error-message">
+        A valid password is required.
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="techForm.invalid">UPDATE</button>
+  </form>
+</section>
+
+<router-outlet></router-outlet>

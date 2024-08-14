@@ -1,28 +1,81 @@
-<main>
-  <section class="authors-table">
-    <div class="table-header">
-      <h2 class="table-title">All Technicians</h2>
-      <span class="table-subtitle">Technicians List</span>
-    </div>
-    <div class="table-content">
-      <div class="table-row" *ngFor="let technician of technician">
-        <div class="author-info">
-          <img src="https://via.placeholder.com/50" alt="Technician Avatar" class="author-avatar">
-          <div class="author-details">
-            <span class="author-name">{{ technician.name }}</span>
-            <span class="author-email">{{ technician.email }}</span>
-          </div>
-        </div>
-        <div class="author-role">
-          <span class="author-role">Password:</span>
-          <span class="author-department">{{ technician.password }}</span>
-        </div>
-        <span class="author-action">
-             <button [routerLink]="['/users/update', technician.id]" class="btn-edit">Edit</button>
-             <button (click)="deleteTech(technician.id)" class="btn-delete">Delete</button>
+<!--<main>-->
+<!--  <section class="authors-table">-->
+<!--    <div class="table-header">-->
+<!--      <h2 class="table-title">All Technicians</h2>-->
+<!--      <span class="table-subtitle">Technicians List</span>-->
+<!--    </div>-->
+<!--    <div class="table-content">-->
+<!--      <div class="table-row" *ngFor="let technician of technician">-->
+<!--        <div class="author-info">-->
+<!--          <img src="https://via.placeholder.com/50" alt="Technician Avatar" class="author-avatar">-->
+<!--          <div class="author-details">-->
+<!--            <span class="author-name">{{ technician.name }}</span>-->
+<!--            <span class="author-email">{{ technician.email }}</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="author-role">-->
+<!--          <span class="author-role">Password:</span>-->
+<!--          <span class="author-department">{{ technician.password }}</span>-->
+<!--        </div>-->
+<!--        <span class="author-action">-->
+<!--             <button [routerLink]="['/techs/update', technician.id]" class="btn-edit">Edit</button>-->
+<!--             <button (click)="deleteTech(technician.id)" class="btn-delete">Delete</button>-->
 
-        </span>
+<!--        </span>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+<!--</main>-->
+<section class="authors-table">
+  <div class="table-header">
+    <h2 class="table-title">All Technicians</h2>
+    <span class="table-subtitle">Technicians List</span>
+  </div>
+  <div class="table-content">
+    <div class="table-row" *ngFor="let technician of technicians">
+      <div class="author-info">
+        <img src="https://via.placeholder.com/50" alt="Technician Avatar" class="author-avatar">
+        <div class="author-details">
+          <span class="author-name">{{ technician.name }}</span>
+          <span class="author-email">{{ technician.email }}</span>
+        </div>
+      </div>
+      <div class="author-role">
+        <span class="author-role">Password:</span>
+        <span class="author-department">{{ technician.password }}</span>
+      </div>
+      <span class="author-action">
+        <button (click)="loadTech(technician.id)" class="btn-edit">Edit</button>
+        <button (click)="deleteTech(technician.id)" class="btn-delete">Delete</button>
+      </span>
+    </div>
+  </div>
+</section>
+
+<section class="signup-form" *ngIf="selectedTechId !== null">
+  <h2 class="visually-hidden">Update Technician</h2>
+  <form [formGroup]="techForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" class="form-label">Name</label>
+      <input id="name" type="text" formControlName="name" class="form-input" placeholder="Technician's full name" required>
+      <div *ngIf="techForm.get('name')?.invalid && techForm.get('name')?.touched" class="error-message">
+        Name is required.
       </div>
     </div>
-  </section>
-</main>
+    <div class="form-group">
+      <label for="email" class="form-label">Email</label>
+      <input id="email" type="email" formControlName="email" class="form-input" placeholder="Technician's email address" required>
+      <div *ngIf="techForm.get('email')?.invalid && techForm.get('email')?.touched" class="error-message">
+        A valid email is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password" class="form-label">Password</label>
+      <input id="password" type="password" formControlName="password" class="form-input" placeholder="Technician's password" required>
+      <div *ngIf="techForm.get('password')?.invalid && techForm.get('password')?.touched" class="error-message">
+        A valid password is required.
+      </div>
+    </div>
+    <button type="submit" class="submit-button" [disabled]="techForm.invalid">UPDATE</button>
+  </form>
+</section>

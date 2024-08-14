@@ -9,13 +9,13 @@ import {GuardComponent} from "./components/guard/guard.component";
 import {Role} from "./enums/role";
 
 import {SaveTicketComponent} from "./components/SupportTicket/save-ticket/save-ticket.component";
-import {AssignTicketComponent} from "./components/SupportTicket/assign-ticket/assign-ticket.component";
+import {AssignTicketComponent} from "./components/Admin/tickets-management/assign-ticket/assign-ticket.component";
 import {TicketDetailsComponent} from "./components/SupportTicket/ticket-details/ticket-details.component";
 
 import {UpdateTicketComponent} from "./components/SupportTicket/update-ticket/update-ticket.component";
 import {NavComponent} from "./components/nav/nav.component";
 import {UserTicketsComponent} from "./components/SupportTicket/user-tickets/user-tickets.component";
-import {AdminTicketsComponent} from "./components/SupportTicket/admin-tickets/admin-tickets.component";
+import {AdminTicketsComponent} from "./components/Admin/tickets-management/admin-tickets/admin-tickets.component";
 import {TechnicianTicketsComponent} from "./components/SupportTicket/technician-tickets/technician-tickets.component";
 import {HOME} from "@angular/cdk/keycodes";
 import {HomePageComponent} from "./components/Home/home-page/home-page.component";
@@ -34,6 +34,11 @@ import {
   EquipmentManagementComponent
 } from "./components/Admin/Equipment/equipment-management/equipment-management.component";
 import {UpdateUserComponent} from "./components/Admin/user_management/update-user/update-user.component";
+import {UpdateTechComponent} from "./components/Admin/tech_management/update-tech/update-tech.component";
+import {
+  BreakdownManagementComponent
+} from "./components/Admin/Breakdown/breakdown-management/breakdown-management.component";
+import {TicketsPageComponent} from "./components/Admin/tickets-management/tickets-page/tickets-page.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -63,9 +68,17 @@ export const routes: Routes = [
       { path: 'list-breakdowns', component: ListBreakdownComponent ,  /*canActivate: [GuardService], data: { expectedRole: Role.Admin } */},
       { path: 'add-breakdown', component: SaveBreakdownComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin } },
       { path: 'update-breakdown/:id', component: UpdateBreakdownComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin }},
+
       { path: 'ticket-details/:technicianId', component: TicketDetailsComponent },
-      { path: 'assign-ticket/:ticketId', component: AssignTicketComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } },
+
       { path: 'equipments-page', component: EquipmentManagementComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } },
+      { path: 'break-page', component: BreakdownManagementComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } },
+      { path: 'tickets-management', component: TicketsPageComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } },
+
+      { path: 'admin/tickets', component: AdminTicketsComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin }  },
+
+      { path: 'assign-ticket/:ticketId', component: AssignTicketComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } },
+
 
     ]
   },
@@ -93,8 +106,13 @@ export const routes: Routes = [
   { path : 'nav' , component: NavComponent},
   { path : 'home' , component: HomePageComponent},
   { path : 'pageUser' , component: UserPageComponent},
+  { path : 'break-page' , component: BreakdownManagementComponent},
+  { path : 'tickets-management' , component: BreakdownManagementComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   { path: 'users/update/:id', component: UpdateUserComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin }},
+  { path: 'techs/update/:id', component: UpdateTechComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin }},
+  { path: 'update-breakdown/:id', component: UpdateBreakdownComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } }
+
 
 ];

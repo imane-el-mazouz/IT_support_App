@@ -1,19 +1,31 @@
-<div class="container">
-  <h2>Add New Breakdown</h2>
+<main class="signup-form">
+  <h2 class="visually-hidden">Add New Breakdown</h2>
   <form [formGroup]="breakdownForm" (ngSubmit)="onSubmit()">
-    <label for="description">Description:</label>
-    <input id="description" formControlName="description" type="text" />
-    <label for="reportedDate">Description:</label>
-    <input id="reportedDate" formControlName="reportedDate" type="datetime-local" />
+    <div class="form-group">
+      <label for="description" class="form-label">Description</label>
+      <input id="description" type="text" formControlName="description" class="form-input" placeholder="Enter description" required>
+      <div *ngIf="breakdownForm.get('description')?.invalid && breakdownForm.get('description')?.touched" class="error-message">
+        Description is required.
+      </div>
+    </div>
 
-    <label for="repairStatus">Repair Status:</label>
-    <select id="repairStatus" formControlName="repairStatus">
-      <option *ngFor="let status of repairStatuses | keyvalue" [value]="status.value">
-        {{ status.value }}
-      </option>
-    </select>
+    <div class="form-group">
+      <label for="reportedDate" class="form-label">Reported Date</label>
+      <input id="reportedDate" type="datetime-local" formControlName="reportedDate" class="form-input" required>
+      <div *ngIf="breakdownForm.get('reportedDate')?.invalid && breakdownForm.get('reportedDate')?.touched" class="error-message">
+        Reported date is required.
+      </div>
+    </div>
 
+    <div class="form-group">
+      <label for="repairStatus" class="form-label">Repair Status</label>
+      <select id="repairStatus" formControlName="repairStatus" class="form-select">
+        <option *ngFor="let status of repairStatuses | keyvalue" [value]="status.value">
+          {{ status.value }}
+        </option>
+      </select>
+    </div>
 
-    <button type="submit" [disabled]="breakdownForm.invalid">Save Breakdown</button>
+    <button type="submit" class="submit-button" [disabled]="breakdownForm.invalid">Save Breakdown</button>
   </form>
-</div>
+</main>

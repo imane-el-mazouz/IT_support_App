@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,19 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'it';
+
+  ngOnInit(): void {
+  }
+  // constructor(private router: Router) {}
+  //
+  // ngOnInit() {
+  //   this.router.events.subscribe(event => {
+  //     if (event instanceof NavigationEnd) {
+  //       document.body.className = this.router.url === '/home' ? 'home-page' : '';
+  //     }
+  //   });
+  // }
+
 }

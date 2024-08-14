@@ -1,10 +1,35 @@
-<div>
-  <h2>Breakdowns List</h2>
-  <ul>
-    <li *ngFor="let breakdown of breakdowns">
-      <p>{{ breakdown.id }} - {{ breakdown.description }} - {{ breakdown.reportedDate }} - {{ breakdown.repairStatus }}</p>
-      <button (click)="updateBreakdown(breakdown.id)">Update</button>
-      <button (click)="deleteBreakdown(breakdown.id)">Delete</button>
-    </li>
-  </ul>
-</div>
+<main>
+  <!-- Loading Indicator -->
+
+  <!-- Breakdowns List -->
+  <section class="breakdowns-table">
+    <div class="table-content">
+      <div *ngIf="breakdowns.length > 0; else noBreakdowns">
+        <div class="table-row" *ngFor="let breakdown of breakdowns">
+          <div class="info-item">
+            <strong>ID:</strong> {{ breakdown.id }}
+          </div>
+          <div class="info-item">
+            <strong>Description:</strong> {{ breakdown.description }}
+          </div>
+          <div class="info-item">
+            <strong>Reported Date:</strong> {{ breakdown.reportedDate | date }}
+          </div>
+          <div class="info-item">
+            <strong>Repair Status:</strong> {{ breakdown.repairStatus }}
+          </div>
+          <div class="breakdown-actions">
+            <button [routerLink]="['/update-breakdown', breakdown.id]" class="btn-edit">Update</button>
+            <button (click)="deleteBreakdown(breakdown.id)" class="btn-delete">Delete</button>
+          </div>
+        </div>
+      </div>
+      <ng-template #noBreakdowns>
+        <p class="no-breakdowns">No breakdowns available for this equipment.</p>
+      </ng-template>
+    </div>
+  </section>
+
+  <!-- Error Message -->
+
+</main>

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Technician} from "../../../model/Technician/technician";
-import {UserUService} from "../../../service/user/user.service";
+import {Technician} from "../../../../model/Technician/technician";
+import {UserUService} from "../../../../service/user/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {TechnicianService} from "../../../service/technician/technician.service";
-import {SupportTicketService} from "../../../service/supportTicket/support-ticket.service";
+import {TechnicianService} from "../../../../service/technician/technician.service";
+import {SupportTicketService} from "../../../../service/supportTicket/support-ticket.service";
 import {NgForOf} from "@angular/common";
 
 @Component({

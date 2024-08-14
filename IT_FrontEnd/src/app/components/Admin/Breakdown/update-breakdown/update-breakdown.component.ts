@@ -53,7 +53,7 @@ export class UpdateBreakdownComponent implements OnInit {
     if (this.updateForm.valid && this.breakdownId) {
       this.breakdownService.updateBreakdown(this.breakdownId, this.updateForm.value).subscribe(
         () => {
-          this.router.navigate(['/list-breakdowns']);
+          this.router.navigate(['/dashboard']);
         },
         error => {
           this.errorMessage = 'Error updating breakdown. Please try again later.';

@@ -65,7 +65,7 @@ export class UpdateEquipmentComponent implements OnInit {
   onSubmit(): void {
     if (this.equipmentForm.valid) {
       this.equipmentService.updateEquipment(this.id, this.equipmentForm.value).subscribe(
-        () => this.router.navigate(['/equipments']),
+        () => this.router.navigate(['/dashboard']),
         error => console.error('Error updating equipment:', error)
       );
     }

@@ -36,7 +36,7 @@ export class TechnicianService {
       .pipe(catchError(this.handleError));
   }
 
-  updateTechnician(id: number, technician: Technician): Observable<Technician> {
+  updateTechnician(id: number | undefined, technician: Technician): Observable<Technician> {
     return this.http.put<Technician>(`${this.apiUrl}/updateTechnician/${id}`, technician, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }

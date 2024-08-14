@@ -1,0 +1,52 @@
+<main>
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Tickets Table -->
+  <section *ngIf="tickets.length > 0; else noTickets" class="items-table">
+    <div class="table-header">
+      <h2 class="table-title">Tickets List</h2>
+      <span class="table-subtitle">OVERVIEW OF TICKETS</span>
+    </div>
+    <div class="table-content">
+      <table class="styled-table">
+        <tbody>
+        <tr *ngFor="let ticket of tickets">
+          <td>{{ ticket.id }}</td>
+          <td>{{ ticket.description }}</td>
+          <td>{{ ticket.createdDate | date }}</td>
+          <td>{{ ticket.ticketStatus }}</td>
+          <td>
+            <button (click)="onAssignButtonClick(ticket.id)" class="btn-assign">Assign Technician</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- No Tickets Message -->
+  <ng-template #noTickets>
+    <p class="no-tickets">No tickets available.</p>
+  </ng-template>
+
+</main>
+
+<div *ngIf="showAssignForm" class="assign-ticket-container">
+  <h2 class="form-title">Assign Ticket to Technician</h2>
+  <form [formGroup]="assignForm" (ngSubmit)="onSubmit()" class="assign-form">
+    <div class="form-group">
+      <label for="technician" class="form-label">Technician</label>
+      <select id="technician" formControlName="technicianId" class="form-select">
+        <option *ngFor="let technician of technicians" [value]="technician.id">{{ technician.name }}</option>
+      </select>
+    </div>
+    <div class="form-actions">
+      <button type="submit" [disabled]="assignForm.invalid" class="btn-submit">Assign Technician</button>
+      <button type="button" (click)="onCancel()" class="btn-cancel">Cancel</button>
+    </div>
+  </form>
+</div>
+

@@ -1,82 +1,95 @@
-<main>
-  <!-- Loading Indicator -->
-  <div *ngIf="loading" class="spinner">Loading...</div>
+<!-- Loading Indicator -->
+<div *ngIf="loading" class="spinner">Loading...</div>
 
-  <!-- Equipment List -->
-  <section class="items-table">
-    <div class="table-header">
-      <h2 class="table-title">Equipment List</h2>
-      <span class="table-subtitle">EQUIPMENT OVERVIEW</span>
-    </div>
-    <div class="table-content">
-      <div class="table-row" *ngFor="let equipment of equipments">
-        <div class="equipment-info">
-          <div class="info-item">
-            <strong>Name:</strong> {{ equipment.name }}
-          </div>
-          <div class="info-item">
-            <strong>Description:</strong> {{ equipment.description }}
-          </div>
-          <div class="info-item">
-            <strong>Purchase Date:</strong> {{ equipment.purchaseDate | date }}
-          </div>
-          <div class="info-item">
-            <strong>Warranty End Date:</strong> {{ equipment.warrantyEndDate | date }}
-          </div>
-          <div class="info-item">
-            <strong>Type:</strong> {{ equipment.type }}
-          </div>
-          <div class="info-item">
-            <strong>Status:</strong> {{ equipment.equipmentstatus }}
-          </div>
-        </div>
-        <div class="equipment-actions">
-          <button (click)="editEquipment(equipment.id)" class="btn-edit">Edit</button>
-          <button (click)="deleteEquipment(equipment.id)" class="btn-delete">Delete</button>
-          <button (click)="viewBreakdowns(equipment.id)" class="btn-view">View Breakdowns</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Breakdowns List -->
-  <section *ngIf="selectedEquipmentId !== null" class="breakdowns-table">
-    <div class="table-header">
-      <h2 class="table-title">Breakdowns for Equipment ID: {{ selectedEquipmentId }}</h2>
-    </div>
-    <div class="table-content">
-      <div *ngIf="breakdowns.length > 0; else noBreakdowns">
-        <div class="table-row" *ngFor="let breakdown of breakdowns">
-          <div class="info-item">
-            <strong>ID:</strong> {{ breakdown.id }}
-          </div>
-          <div class="info-item">
-            <strong>Description:</strong> {{ breakdown.description }}
-          </div>
-          <div class="info-item">
-            <strong>Reported Date:</strong> {{ breakdown.reportedDate | date }}
-          </div>
-          <div class="info-item">
-            <strong>Repair Status:</strong> {{ breakdown.repairStatus }}
-          </div>
-          <div class="breakdown-actions">
-            <div *ngIf="selectedEquipmentId !== null">
-              <button *ngIf="showUpdateButton" (click)="editBreakdown(breakdown.id)" class="btn-edit">Update</button>
-            </div>
-
-<!--            <button (click)="editBreakdown(breakdown.id)" class="btn-edit">Update</button>-->
-            <button (click)="deleteBreakdown(breakdown.id)" class="btn-delete">Delete</button>
-          </div>
-        </div>
-      </div>
-      <ng-template #noBreakdowns>
-        <p class="no-breakdowns">No breakdowns available for this equipment.</p>
-      </ng-template>
-    </div>
-  </section>
-
-  <!-- Error Message -->
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
+<!-- Equipment List -->
+<section class="items-table">
+  <div class="table-header">
+    <h2 class="table-title">Equipment List</h2>
+    <span class="table-subtitle">EQUIPMENT OVERVIEW</span>
   </div>
-</main>
+  <div class="table-content">
+    <div class="table-row" *ngFor="let equipment of equipments">
+      <div class="equipment-info">
+        <div class="info-item">
+          <strong>Name:</strong> {{ equipment.name }}
+        </div>
+        <div class="info-item">
+          <strong>Description:</strong> {{ equipment.description }}
+        </div>
+        <div class="info-item">
+          <strong>Purchase Date:</strong> {{ equipment.purchaseDate | date }}
+        </div>
+        <div class="info-item">
+          <strong>Warranty End Date:</strong> {{ equipment.warrantyEndDate | date }}
+        </div>
+        <div class="info-item">
+          <strong>Type:</strong> {{ equipment.type }}
+        </div>
+        <div class="info-item">
+          <strong>Status:</strong> {{ equipment.equipmentstatus }}
+        </div>
+      </div>
+      <div class="equipment-actions">
+        <button (click)="onEdit(equipment)" class="btn-edit">Edit</button>
+        <button (click)="deleteEquipment(equipment.id)" class="btn-delete">Delete</button>
+        <button (click)="viewBreakdowns(equipment.id)" class="btn-view">View Breakdowns</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Update Form -->
+<section *ngIf="editing" class="update-form">
+  <form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" class="form-label">Name</label>
+      <input id="name" type="text" formControlName="name" class="form-input" placeholder="Equipment name" required>
+      <div *ngIf="equipmentForm.get('name')?.invalid && equipmentForm.get('name')?.touched" class="error-message">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description" class="form-label">Description</label>
+      <input id="description" type="text" formControlName="description" class="form-input" placeholder="Equipment description" required>
+      <div *ngIf="equipmentForm.get('description')?.invalid && equipmentForm.get('description')?.touched" class="error-message">
+        Description is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="purchaseDate" class="form-label">Purchase Date</label>
+      <input id="purchaseDate" type="date" formControlName="purchaseDate" class="form-input" required>
+      <div *ngIf="equipmentForm.get('purchaseDate')?.invalid && equipmentForm.get('purchaseDate')?.touched" class="error-message">
+        Purchase date is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="warrantyEndDate" class="form-label">Warranty End Date</label>
+      <input id="warrantyEndDate" type="date" formControlName="warrantyEndDate" class="form-input" required>
+      <div *ngIf="equipmentForm.get('warrantyEndDate')?.invalid && equipmentForm.get('warrantyEndDate')?.touched" class="error-message">
+        Warranty end date is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="type" class="form-label">Type</label>
+      <input id="type" type="text" formControlName="type" class="form-input" required>
+      <div *ngIf="equipmentForm.get('type')?.invalid && equipmentForm.get('type')?.touched" class="error-message">
+        Type is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="equipmentstatus" class="form-label">Status</label>
+      <select id="equipmentstatus" formControlName="equipmentstatus" class="form-select" required>
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+      </select>
+      <div *ngIf="equipmentForm.get('equipmentstatus')?.invalid && equipmentForm.get('equipmentstatus')?.touched" class="error-message">
+        Status is required.
+      </div>
+    </div>    <button type="submit" class="submit-button" [disabled]="equipmentForm.invalid">Update</button>
+    <button type="button" (click)="onCancel()" class="submit-button" style="background-color: blueviolet" >Cancel</button>
+  </form>
+</section>

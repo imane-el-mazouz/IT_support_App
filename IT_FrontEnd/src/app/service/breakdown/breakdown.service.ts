@@ -45,7 +45,7 @@ export class BreakdownService {
   }
 
   updateBreakdown(id: number | undefined, breakdown: Breakdown): Observable<Breakdown> {
-    return this.http.put<Breakdown>(`${this.apiUrl}/${id}`, breakdown, { headers: this.getHeaders() })
+    return this.http.put<Breakdown>(`${this.apiUrl}/${id}` ,breakdown, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }
 

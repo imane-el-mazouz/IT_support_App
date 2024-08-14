@@ -1,0 +1,180 @@
+main {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+/* Error Message */
+.error-message {
+  color: #e53e3e;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Table Styles */
+.items-table {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.table-title {
+  color: #2d3748;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.table-subtitle {
+  color: #f97316;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.table-content {
+  border-top: 2px solid #f97316;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.styled-table th, .styled-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.styled-table th {
+  background-color: #f97316;
+  color: #fff;
+  font-weight: 600;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: #f3f4f6;
+}
+
+.styled-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Button Styles */
+.btn-assign {
+  padding: 10px 20px;
+  background-color: #f97316;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  padding: 10px 20px;
+  background-color: #e53e3e;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* No Tickets Message */
+.no-tickets {
+  color: #718096;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Assign Ticket Form */
+/* Assign Ticket Form Container */
+.assign-ticket-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-top: 20px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Form Title */
+.form-title {
+  color: #2d3748;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Form Label */
+.form-label {
+  color: #4a5568;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Form Select */
+.form-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #2d3748;
+  background-color: #f7fafc;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Buttons */
+.btn-submit {
+  padding: 10px 20px;
+  background-color: #f97316;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  flex: 1;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.btn-cancel {
+  padding: 10px 20px;
+  background-color: #e53e3e;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+}

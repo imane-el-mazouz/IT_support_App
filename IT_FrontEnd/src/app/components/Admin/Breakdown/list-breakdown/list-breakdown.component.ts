@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgForOf } from '@angular/common';
 import {Breakdown} from "../../../../model/Breakdow/breakdown";
@@ -8,7 +8,7 @@ import {BreakdownService} from "../../../../service/breakdown/breakdown.service"
 @Component({
   selector: 'app-list-breakdown',
   standalone: true,
-  imports: [CommonModule, NgForOf],
+  imports: [CommonModule, NgForOf, RouterLink],
   templateUrl: './list-breakdown.component.html',
   styleUrls: ['./list-breakdown.component.scss']
 })
