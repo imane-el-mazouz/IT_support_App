@@ -1,0 +1,116 @@
+/* Main Section */
+main {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+/* Loading Spinner */
+.spinner {
+  text-align: center;
+  margin: 20px;
+  font-size: 18px;
+  color: #4a5568;
+  font-weight: 600;
+}
+
+/* Breakdowns List Styles */
+.breakdowns-table {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.table-header {
+  margin-bottom: 20px;
+}
+
+.table-title {
+  color: #2d3748;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Table Content */
+.table-content {
+  border-top: 1px solid #e2e8f0;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.info-item {
+  flex: 1;
+  margin-bottom: 8px;
+  color: #4a5568;
+  font-size: 14px;
+}
+
+.info-item strong {
+  color: #2d3748;
+}
+
+.breakdown-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Buttons */
+.btn-edit,
+.btn-delete {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+}
+
+.btn-edit {
+  background-color: #f97316;
+}
+
+.btn-delete {
+  background-color: #e53e3e;
+}
+
+.btn-update {
+  background-color: #4a5568;
+}
+
+/* No Breakdowns Message */
+.no-breakdowns {
+  color: #718096;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Error Message */
+.error-message {
+  color: #e53e3e;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+.activity-content { flex: 1; }
+.activity-title { color: #2d3748; font-size: 14px; font-weight: 700; }
+.activity-time { color: #a0aec0; font-size: 12px; margin-top: 4px; }
+.signup-form { background-color: #fff; border-radius: 16px; padding: 48px; border: 1px solid #f4f4f4; }
+.form-group { margin-bottom: 24px; }
+.form-label { color: #2d3748; font-size: 14px; margin-bottom: 8px; display: block; }
+.form-input { width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 15px; font-size: 14px; color: #2d3748; }
+.form-input::placeholder { color: #a0aec0; }
+.submit-button { background-color: #ff5b19; color: #fff; font-size: 14px; font-weight: 700; padding: 12px 24px; border: none; border-radius: 12px; cursor: pointer; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+
+

@@ -101,7 +101,7 @@ public ResponseEntity<SupportTicket> assignTicketToTechnician(@PathVariable Long
 
     //    @PreAuthorize("hasRole('Technician')")
 @PreAuthorize("hasRole('Admin') or hasRole('UserU') or hasRole('Technician')")
-@GetMapping("/technician/{technicianId}")
+   @GetMapping("/technician/{technicianId}")
     public ResponseEntity<List<SupportTicket>> getTicketsByTechnicianId(@PathVariable Long technicianId) {
         List<SupportTicket> tickets = supportTicketService.getTicketsByTechnicianId(technicianId);
         return ResponseEntity.ok(tickets);

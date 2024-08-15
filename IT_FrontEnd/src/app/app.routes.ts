@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {SignupComponent} from "./components/Admin/singup/singup.component";
 import {DashUserComponent} from "./components/Dash User/user_dash/dash-user.component";
-import {DashTechComponent} from "./components/dash-tech/dash-tech.component";
 import {AdminComponent} from "./components/Admin/admin-dash/admin.component";
 import {GuardService} from "./service/auth_guard/guard.service";
 import {GuardComponent} from "./components/guard/guard.component";
@@ -13,7 +12,6 @@ import {AssignTicketComponent} from "./components/Admin/tickets-management/assig
 import {TicketDetailsComponent} from "./components/SupportTicket/ticket-details/ticket-details.component";
 
 import {UpdateTicketComponent} from "./components/SupportTicket/update-ticket/update-ticket.component";
-import {NavComponent} from "./components/nav/nav.component";
 import {UserTicketsComponent} from "./components/SupportTicket/user-tickets/user-tickets.component";
 import {AdminTicketsComponent} from "./components/Admin/tickets-management/admin-tickets/admin-tickets.component";
 import {TechnicianTicketsComponent} from "./components/SupportTicket/technician-tickets/technician-tickets.component";
@@ -40,6 +38,7 @@ import {
 } from "./components/Admin/Breakdown/breakdown-management/breakdown-management.component";
 import {TicketsPageComponent} from "./components/Admin/tickets-management/tickets-page/tickets-page.component";
 import {UserTicketsManagComponent} from "./components/SupportTicket/user-tickets-manag/user-tickets-manag.component";
+import {TechDashComponent} from "./components/dash-tech/tech-dash/tech-dash.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -47,7 +46,7 @@ export const routes: Routes = [
   // { path : 'dashboard' , component: AdminComponent},
   // { path : 'technician' , component: DashTechComponent},
   // { path : 'userU' , component: DashUserComponent},
-  { path: 'technician', component: DashTechComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician }},
+  { path: 'technician', component: TechDashComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician }},
   { path: 'userU', component: DashUserComponent, canActivate: [GuardService], data: { expectedRole: Role.UserU }},
 
 
@@ -63,6 +62,17 @@ export const routes: Routes = [
       { path: 'user-tickets-manag', component: UserTicketsManagComponent  , canActivate: [GuardService], data: { expectedRole: Role.UserU }},
 
 
+    ]
+  },
+  {
+    path: 'technician',
+    component: TechDashComponent ,
+    canActivate: [GuardService],
+    data: {expectedRole: Role.Technician},
+    children: [
+      // { path: 'technician-tickets/:technicianId', component: TechnicianTicketsComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician } },
+      { path: 'technician-tickets/:technicianId', component: TechnicianTicketsComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician } },
+      { path: 'update-ticket-status/:ticketId', component: UpdateTicketComponent , canActivate: [GuardService], data: { expectedRole: Role.Technician } },
     ]
   },
 
@@ -120,7 +130,6 @@ export const routes: Routes = [
 
   { path: 'technician-tickets/:technicianId', component: TechnicianTicketsComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician } },
 
-  { path : 'nav' , component: NavComponent},
   { path : 'home' , component: HomePageComponent},
   { path : 'pageUser' , component: UserPageComponent},
   { path : 'break-page' , component: BreakdownManagementComponent},
@@ -134,6 +143,10 @@ export const routes: Routes = [
 
   { path: 'user-tickets-manag', component: UserTicketsManagComponent  , canActivate: [GuardService], data: { expectedRole: Role.UserU }},
   { path: 'userU', component: DashUserComponent, canActivate: [GuardService], data: { expectedRole: Role.UserU }},
+
+  // { path: 'technician-tickets/:technicianId', component: TechnicianTicketsComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician } },
+  { path: 'technician/technician-tickets', component: TechnicianTicketsComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician } },
+  { path: 'update-ticket-status/:ticketId', component: UpdateTicketComponent , canActivate: [GuardService], data: { expectedRole: Role.Technician } },
 
 
 ];

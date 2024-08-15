@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashTechComponent } from './dash-tech.component';
+import { TechDashComponent } from './tech-dash.component';
 
-describe('DashTechComponent', () => {
-  let component: DashTechComponent;
-  let fixture: ComponentFixture<DashTechComponent>;
+describe('TechDashComponent', () => {
+  let component: TechDashComponent;
+  let fixture: ComponentFixture<TechDashComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashTechComponent]
+      imports: [TechDashComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(DashTechComponent);
+    fixture = TestBed.createComponent(TechDashComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

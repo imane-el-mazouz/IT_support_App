@@ -1,32 +1,80 @@
-<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+<!--<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>-->
 
-<table>
-  <thead>
-  <tr>
-    <th>Ticket ID</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let ticket of tickets">
-    <td>{{ ticket.id }}</td>
-    <td>{{ ticket.description }}</td>
-    <td>{{ ticket.ticketStatus }}</td>
-    <td>
-      <button (click)="onSelectTicket(ticket.id)">Update Status</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<!--<table>-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>Ticket ID</th>-->
+<!--    <th>Description</th>-->
+<!--    <th>Status</th>-->
+<!--    <th>Actions</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <tr *ngFor="let ticket of tickets">-->
+<!--    <td>{{ ticket.id }}</td>-->
+<!--    <td>{{ ticket.description }}</td>-->
+<!--    <td>{{ ticket.ticketStatus }}</td>-->
+<!--    <td>-->
+<!--      <button (click)="onSelectTicket(ticket.id)">Update Status</button>-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
 
-<div *ngIf="selectedTicketId">
-  <form [formGroup]="updateStatusForm" (ngSubmit)="onUpdateStatus()">
-    <label for="status">Status:</label>
-    <select formControlName="status" id="status">
-      <option *ngFor="let status of statusEnum" [value]="status">{{ status }}</option>
-    </select>
-    <button type="submit">Update</button>
-  </form>
-</div>
+<!--<div *ngIf="selectedTicketId">-->
+<!--  <form [formGroup]="updateStatusForm" (ngSubmit)="onUpdateStatus()">-->
+<!--    <label for="status">Status:</label>-->
+<!--    <select formControlName="status" id="status">-->
+<!--      <option *ngFor="let status of statusEnum" [value]="status">{{ status }}</option>-->
+<!--    </select>-->
+<!--    <button type="submit">Update</button>-->
+<!--  </form>-->
+<!--</div>-->
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+<main>
+
+  <!-- Table Section -->
+  <section class="breakdowns-table">
+    <div class="table-content">
+      <div *ngIf="tickets.length > 0; else noBreakdowns">
+        <div class="table-row" *ngFor="let ticket of tickets">
+          <div class="info-item">
+            <strong>ID:</strong> {{ ticket.id }}
+          </div>
+          <div class="info-item">
+            <strong>Description:</strong> {{ ticket.description }}
+          </div>
+          <div class="info-item">
+            <strong>Status:</strong> {{ ticket.ticketStatus }}
+          </div>
+          <div class="breakdown-actions">
+            <button (click)="onSelectTicket(ticket.id)" class="btn-edit">Update Status</button>
+          </div>
+        </div>
+      </div>
+      <ng-template #noBreakdowns>
+        <p class="no-breakdowns">No tickets available.</p>
+      </ng-template>
+    </div>
+  </section>
+
+  <!-- Update Form Section -->
+  <section *ngIf="selectedTicketId" class="update-form">
+    <form [formGroup]="updateStatusForm" (ngSubmit)="onUpdateStatus()">
+      <div class="form-group">
+        <label for="status" class="form-label">Status</label>
+        <select id="status" formControlName="status" class="form-select">
+          <option *ngFor="let status of statusEnum" [value]="status">{{ status }}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="updateStatusForm.invalid">Update Status</button>
+    </form>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </section>
+
+</main>
