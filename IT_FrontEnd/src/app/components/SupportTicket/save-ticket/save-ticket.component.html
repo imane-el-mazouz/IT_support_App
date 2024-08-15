@@ -1,27 +1,53 @@
 <div class="add-ticket-container">
-  <h2>Add Support Ticket</h2>
+  <h2 class="visually-hidden">Add Support Ticket</h2>
   <form [formGroup]="addTicketForm" (ngSubmit)="onSubmit()">
-    <label for="description">Description</label>
-    <input id="description" formControlName="description" type="text" />
 
-    <label for="createdDate">Created Date</label>
-    <input id="createdDate" formControlName="createdDate" type="date" />
+    <div class="form-group">
+      <label for="description" class="form-label">Description</label>
+      <input id="description" type="text" formControlName="description" class="form-input" placeholder="Ticket description" required>
+      <div *ngIf="addTicketForm.get('description')?.invalid && addTicketForm.get('description')?.touched" class="error-message">
+        Description is required.
+      </div>
+    </div>
 
-    <label for="ticketStatus">Ticket Status</label>
-    <select id="ticketStatus" formControlName="ticketStatus">
-      <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
-    </select>
+    <div class="form-group">
+      <label for="createdDate" class="form-label">Created Date</label>
+      <input id="createdDate" type="date" formControlName="createdDate" class="form-input" required>
+      <div *ngIf="addTicketForm.get('createdDate')?.invalid && addTicketForm.get('createdDate')?.touched" class="error-message">
+        Created date is required.
+      </div>
+    </div>
 
-    <label for="breakdown">Breakdown</label>
-    <select id="breakdown" formControlName="breakdownId">
-      <option *ngFor="let breakdown of breakdowns" [value]="breakdown.id">{{ breakdown.description }}</option>
-    </select>
+    <div class="form-group">
+      <label for="ticketStatus" class="form-label">Ticket Status</label>
+      <select id="ticketStatus" formControlName="ticketStatus" class="form-select" required>
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+      </select>
+      <div *ngIf="addTicketForm.get('ticketStatus')?.invalid && addTicketForm.get('ticketStatus')?.touched" class="error-message">
+        Ticket status is required.
+      </div>
+    </div>
 
-    <label for="equipment">Equipment</label>
-    <select id="equipment" formControlName="equipmentId">
-      <option *ngFor="let equipment of equipments" [value]="equipment.id">{{ equipment.name }}</option>
-    </select>
+    <div class="form-group">
+      <label for="breakdown" class="form-label">Breakdown</label>
+      <select id="breakdown" formControlName="breakdownId" class="form-select" required>
+        <option *ngFor="let breakdown of breakdowns" [value]="breakdown.id">{{ breakdown.description }}</option>
+      </select>
+      <div *ngIf="addTicketForm.get('breakdownId')?.invalid && addTicketForm.get('breakdownId')?.touched" class="error-message">
+        Breakdown is required.
+      </div>
+    </div>
 
-    <button type="submit" [disabled]="addTicketForm.invalid">Add Ticket</button>
+    <div class="form-group">
+      <label for="equipment" class="form-label">Equipment</label>
+      <select id="equipment" formControlName="equipmentId" class="form-select" required>
+        <option *ngFor="let equipment of equipments" [value]="equipment.id">{{ equipment.name }}</option>
+      </select>
+      <div *ngIf="addTicketForm.get('equipmentId')?.invalid && addTicketForm.get('equipmentId')?.touched" class="error-message">
+        Equipment is required.
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="addTicketForm.invalid">Add Ticket</button>
   </form>
 </div>

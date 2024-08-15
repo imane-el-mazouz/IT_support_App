@@ -1,6 +1,40 @@
-<div *ngIf="tickets.length > 0; else noTickets">
-  <h2>Your Support Tickets</h2>
-  <table>
+<!--<section class="tickets-table">-->
+<!--  <div class="table-header">-->
+<!--    <h2 class="table-title">Your Support Tickets</h2>-->
+<!--    <span class="table-subtitle">TICKET OVERVIEW</span>-->
+<!--  </div>-->
+<!--  <div class="table-content">-->
+<!--    <div class="table-row" *ngFor="let ticket of tickets">-->
+<!--      <div class="ticket-info">-->
+<!--        <div class="info-item">-->
+<!--          <strong>Ticket ID:</strong> {{ ticket.id }}-->
+<!--        </div>-->
+<!--        <div class="info-item">-->
+<!--          <strong>Description:</strong> {{ ticket.description }}-->
+<!--        </div>-->
+<!--        <div class="info-item">-->
+<!--          <strong>Date Created:</strong> {{ ticket.createdDate | date }}-->
+<!--        </div>-->
+<!--        <div class="info-item">-->
+<!--          <strong>Status:</strong> {{ ticket.ticketStatus }}-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <ng-template #noTickets>-->
+<!--      <p>No tickets found.</p>-->
+<!--    </ng-template>-->
+<!--  </div>-->
+<!--</section>-->
+
+<!--<div *ngIf="errorMessage">-->
+<!--  <p class="error-message">{{ errorMessage }}</p>-->
+<!--</div>-->
+<section class="tickets-table">
+  <div class="table-header">
+    <h2 class="table-title">Your Support Tickets</h2>
+    <span class="table-subtitle">TICKET OVERVIEW</span>
+  </div>
+  <table class="table-content">
     <thead>
     <tr>
       <th>Ticket ID</th>
@@ -13,17 +47,18 @@
     <tr *ngFor="let ticket of tickets">
       <td>{{ ticket.id }}</td>
       <td>{{ ticket.description }}</td>
-      <td>{{ ticket.createdDate | date}}</td>
+      <td>{{ ticket.createdDate | date }}</td>
       <td>{{ ticket.ticketStatus }}</td>
     </tr>
+    <ng-template #noTickets>
+      <tr>
+        <td colspan="4">No tickets found.</td>
+      </tr>
+    </ng-template>
     </tbody>
   </table>
-</div>
-
-<ng-template #noTickets>
-  <p>No tickets found.</p>
-</ng-template>
+</section>
 
 <div *ngIf="errorMessage">
-  <p class="error">{{ errorMessage }}</p>
+  <p class="error-message">{{ errorMessage }}</p>
 </div>

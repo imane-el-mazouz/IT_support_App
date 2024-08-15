@@ -1,7 +1,71 @@
-<main>
-  <!-- Loading Indicator -->
+<!--<main>-->
+<!--  &lt;!&ndash; Loading Indicator &ndash;&gt;-->
 
-  <!-- Breakdowns List -->
+<!--  &lt;!&ndash; Breakdowns List &ndash;&gt;-->
+<!--  <section class="breakdowns-table">-->
+<!--    <div class="table-content">-->
+<!--      <div *ngIf="breakdowns.length > 0; else noBreakdowns">-->
+<!--        <div class="table-row" *ngFor="let breakdown of breakdowns">-->
+<!--          <div class="info-item">-->
+<!--            <strong>ID:</strong> {{ breakdown.id }}-->
+<!--          </div>-->
+<!--          <div class="info-item">-->
+<!--            <strong>Description:</strong> {{ breakdown.description }}-->
+<!--          </div>-->
+<!--          <div class="info-item">-->
+<!--            <strong>Reported Date:</strong> {{ breakdown.reportedDate | date }}-->
+<!--          </div>-->
+<!--          <div class="info-item">-->
+<!--            <strong>Repair Status:</strong> {{ breakdown.repairStatus }}-->
+<!--          </div>-->
+<!--          <div class="breakdown-actions">-->
+<!--            <button [routerLink]="['/update-breakdown', breakdown.id]" class="btn-edit">Update</button>-->
+<!--            <button (click)="deleteBreakdown(breakdown.id)" class="btn-delete">Delete</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <ng-template #noBreakdowns>-->
+<!--        <p class="no-breakdowns">No breakdowns available for this equipment.</p>-->
+<!--      </ng-template>-->
+<!--    </div>-->
+<!--  </section>-->
+
+<!--  &lt;!&ndash; Error Message &ndash;&gt;-->
+<!--  <h2 class="visually-hidden">Update Breakdown</h2>-->
+<!--  <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">-->
+<!--    <div class="form-group">-->
+<!--      <label for="description" class="form-label">Description</label>-->
+<!--      <input id="description" type="text" formControlName="description" class="form-input" placeholder="Enter description" required>-->
+<!--      <div *ngIf="updateForm.get('description')?.invalid && updateForm.get('description')?.touched" class="error-message">-->
+<!--        Description is required.-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="reportedDate" class="form-label">Reported Date</label>-->
+<!--      <input id="reportedDate" type="date" formControlName="reportedDate" class="form-input" required>-->
+<!--      <div *ngIf="updateForm.get('reportedDate')?.invalid && updateForm.get('reportedDate')?.touched" class="error-message">-->
+<!--        Reported date is required.-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="repairStatus" class="form-label">Repair Status</label>-->
+<!--      <select id="repairStatus" formControlName="repairStatus" class="form-select">-->
+<!--        <option *ngFor="let status of repairStatuses" [value]="status">{{ status }}</option>-->
+<!--      </select>-->
+<!--    </div>-->
+
+<!--    <button type="submit" class="submit-button" [disabled]="updateForm.invalid">Update Breakdown</button>-->
+<!--  </form>-->
+
+<!--  &lt;!&ndash; Error Message &ndash;&gt;-->
+<!--  <div *ngIf="errorMessage" class="error-message">-->
+<!--    {{ errorMessage }}-->
+<!--  </div>-->
+<!--</main>-->
+<main>
+
   <section class="breakdowns-table">
     <div class="table-content">
       <div *ngIf="breakdowns.length > 0; else noBreakdowns">
@@ -19,7 +83,7 @@
             <strong>Repair Status:</strong> {{ breakdown.repairStatus }}
           </div>
           <div class="breakdown-actions">
-            <button [routerLink]="['/update-breakdown', breakdown.id]" class="btn-edit">Update</button>
+            <button (click)="updateBreakdown(breakdown.id)" class="btn-edit">Update</button>
             <button (click)="deleteBreakdown(breakdown.id)" class="btn-delete">Delete</button>
           </div>
         </div>
@@ -30,6 +94,37 @@
     </div>
   </section>
 
-  <!-- Error Message -->
+  <section *ngIf="selectedBreakdownId" class="update-form">
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="description" class="form-label">Description</label>
+        <input id="description" type="text" formControlName="description" class="form-input" placeholder="Enter description" required>
+        <div *ngIf="updateForm.get('description')?.invalid && updateForm.get('description')?.touched" class="error-message">
+          Description is required.
+        </div>
+      </div>
 
+      <div class="form-group">
+        <label for="reportedDate" class="form-label">Reported Date</label>
+        <input id="reportedDate" type="date" formControlName="reportedDate" class="form-input" required>
+        <div *ngIf="updateForm.get('reportedDate')?.invalid && updateForm.get('reportedDate')?.touched" class="error-message">
+          Reported date is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="repairStatus" class="form-label">Repair Status</label>
+        <select id="repairStatus" formControlName="repairStatus" class="form-select">
+          <option *ngFor="let status of repairStatuses" [value]="status">{{ status }}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="updateForm.invalid">Update Breakdown</button>
+      <button type="button" class="submit-button" style="background-color: blueviolet" (click)="cancelUpdate()">Cancel</button>
+    </form>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </section>
 </main>

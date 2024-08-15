@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {SignupComponent} from "./components/Admin/singup/singup.component";
-import {DashUserComponent} from "./components/Dash User/dash-user.component";
+import {DashUserComponent} from "./components/Dash User/user_dash/dash-user.component";
 import {DashTechComponent} from "./components/dash-tech/dash-tech.component";
 import {AdminComponent} from "./components/Admin/admin-dash/admin.component";
 import {GuardService} from "./service/auth_guard/guard.service";
@@ -39,6 +39,7 @@ import {
   BreakdownManagementComponent
 } from "./components/Admin/Breakdown/breakdown-management/breakdown-management.component";
 import {TicketsPageComponent} from "./components/Admin/tickets-management/tickets-page/tickets-page.component";
+import {UserTicketsManagComponent} from "./components/SupportTicket/user-tickets-manag/user-tickets-manag.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -51,6 +52,21 @@ export const routes: Routes = [
 
 
   {
+    path: 'userU',
+    component: DashUserComponent ,
+    canActivate: [GuardService],
+    data: {expectedRole: Role.UserU},
+    children: [
+      { path : 'userU' , component: DashUserComponent , canActivate: [GuardService], data: { expectedRole: Role.UserU }},
+      { path: 'add-ticket', component: SaveTicketComponent , canActivate: [GuardService], data: { expectedRole: Role.UserU } },
+      { path: 'tickets', component: UserTicketsComponent /* , canActivate: [GuardService], data: { expectedRole: Role.Admin }*/ },
+      { path: 'user-tickets-manag', component: UserTicketsManagComponent  , canActivate: [GuardService], data: { expectedRole: Role.UserU }},
+
+
+    ]
+  },
+
+  {
     path: 'dashboard',
     component: AdminComponent,
     canActivate: [GuardService],
@@ -58,7 +74,7 @@ export const routes: Routes = [
     children: [
       { path : 'pageUser' , component: UserPageComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin }},
       { path : 'pageTech' , component: TechsPageComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin }},
-      {path: 'access-denied', component: GuardComponent},
+      // {path: 'access-denied', component: GuardComponent},
       { path: 'saveUser', component: SaveUserComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin }},
       { path: 'saveTech', component: SaveTechnicianComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin } },
       { path: 'users', component: ListUsersComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin }},
@@ -82,6 +98,7 @@ export const routes: Routes = [
 
     ]
   },
+
   { path: 'access-denied', component: GuardComponent },
 
 
@@ -89,12 +106,12 @@ export const routes: Routes = [
   { path: 'update-equipment/:id', component: UpdateEquipmentComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin } },
 
 
-  { path: 'add-ticket', component: SaveTicketComponent ,/* canActivate: [GuardService], data: { expectedRole: Role.UserU } */},
+  { path: 'add-ticket', component: SaveTicketComponent , canActivate: [GuardService], data: { expectedRole: Role.UserU } },
   { path: 'assign-ticket/:ticketId', component: AssignTicketComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } },
   { path: 'ticket-details/:technicianId', component: TicketDetailsComponent },
   { path: 'update-ticket-status/:ticketId', component: UpdateTicketComponent , canActivate: [GuardService], data: { expectedRole: Role.Technician } },
 
-  { path: 'tickets', component: UserTicketsComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin } },
+  { path: 'tickets', component: UserTicketsComponent /* , canActivate: [GuardService], data: { expectedRole: Role.Admin }*/ },
   { path: 'admin/tickets', component: AdminTicketsComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin }  },
   { path: 'saveTech', component: SaveTechnicianComponent , canActivate: [GuardService], data: { expectedRole: Role.Admin } },
 
@@ -112,7 +129,11 @@ export const routes: Routes = [
 
   { path: 'users/update/:id', component: UpdateUserComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin }},
   { path: 'techs/update/:id', component: UpdateTechComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin }},
-  { path: 'update-breakdown/:id', component: UpdateBreakdownComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } }
+  { path: 'update-breakdown/:id', component: UpdateBreakdownComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } },
+
+
+  { path: 'user-tickets-manag', component: UserTicketsManagComponent  , canActivate: [GuardService], data: { expectedRole: Role.UserU }},
+  { path: 'userU', component: DashUserComponent, canActivate: [GuardService], data: { expectedRole: Role.UserU }},
 
 
 ];

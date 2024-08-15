@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 import {Breakdown} from "../../../model/Breakdow/breakdown";
 import {Equipment} from "../../../model/Equipment/equipment";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {Status} from "../../../enums/status";
 
 @Component({
@@ -14,7 +14,8 @@ import {Status} from "../../../enums/status";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './save-ticket.component.html',
   styleUrl: './save-ticket.component.scss'
@@ -63,12 +64,16 @@ export class SaveTicketComponent implements OnInit{
     if (this.addTicketForm.valid) {
       const formValue = this.addTicketForm.value;
       this.supportTicketService.saveTicket(formValue, formValue.breakdownId, formValue.equipmentId).subscribe(
-        () => this.router.navigate(['/tickets']),
+        () => {
+          console.log('Ticket added successfully !');
+          this.router.navigateByUrl('/userU');
+        },
         error => {
-          console.error('Error adding ticket:', error);
+          console.error('eror adding this ticket:', error);
         }
       );
     }
   }
+
 
 }
