@@ -55,11 +55,15 @@ export class BreakdownService {
   }
 
 
-  getBreakdownsByEquipmentId(equipmentId: number): Observable<Breakdown[]> {
+  // getBreakdownsByEquipmentId(equipmentId: number): Observable<Breakdown[]> {
+  //   return this.http.get<Breakdown[]>(`${this.apiUrl}/equipment/${equipmentId}/breakdowns`, { headers: this.getHeaders() })
+  //     .pipe(catchError(this.handleError));
+  // }
+
+  getBreakdownsByEquipmentId(equipmentId: number | undefined): Observable<Breakdown[]> {
     return this.http.get<Breakdown[]>(`${this.apiUrl}/equipment/${equipmentId}/breakdowns`, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }
-
 
   private handleError(error: any): Observable<never> {
     console.error('An error occurred', error);

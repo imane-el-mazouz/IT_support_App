@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Equipment, EquipmentStatus} from '../../../../model/Equipment/equipment';

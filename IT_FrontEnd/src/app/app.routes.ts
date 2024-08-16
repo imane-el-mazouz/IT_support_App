@@ -105,6 +105,7 @@ export const routes: Routes = [
 
       { path: 'assign-ticket/:ticketId', component: AssignTicketComponent, canActivate: [GuardService], data: { expectedRole: Role.Admin } },
 
+      { path: 'breakdowns/:id', component: ListBreakdownComponent },
 
     ]
   },
@@ -147,6 +148,8 @@ export const routes: Routes = [
   // { path: 'technician-tickets/:technicianId', component: TechnicianTicketsComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician } },
   { path: 'technician/technician-tickets', component: TechnicianTicketsComponent, canActivate: [GuardService], data: { expectedRole: Role.Technician } },
   { path: 'update-ticket-status/:ticketId', component: UpdateTicketComponent , canActivate: [GuardService], data: { expectedRole: Role.Technician } },
+
+  { path: 'breakdowns/:id', component: ListBreakdownComponent },
 
 
 ];
